@@ -5,13 +5,14 @@
   "scripts": {
     "start": "node src/index.js",
     "server": "nodemon src/index.js",
-    "web": "browser-sync start --proxy 'localhost:3000' --files 'public/css/*.min.css, src/view/*.njk'",
+    "web": "browser-sync start --proxy 'localhost:3333' --files 'public/css/*.min.css, src/view/*.njk'",
     "dev": "npm-run-all -p server web"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/jquery": "^3.3.38",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "knex": "^0.21.1",

@@ -21,7 +21,7 @@
 }
 
 .product__item {
-	margin-bottom: 50px;
+	margin-bottom: 35px;
 
 	.product__quantity {
 		display: flex;
@@ -63,6 +63,12 @@
 	height: 150px;
 	position: relative;
 	overflow: hidden;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
 }
 
 .product__item__text {
@@ -80,5 +86,34 @@
 	h5 {
 		color: $heading-color-2;
 		font-weight: 700;
+	}
+}
+
+.buttons {
+	display: flex;
+	width: 60%;
+	margin-bottom: 20px;
+	flex-direction: column;
+
+	button {
+		width: 100%;
+		height: 38px;	
+		border: none;
+		font-weight: 600;		
+		background-color: $black_color;
+		color: $white_color;
+
+		&:active {
+			background-color: $heading-color-2;
+			transform: scale(1.02);
+		}
+	}
+
+	.more__products {
+		margin-top: 15px;
+	}
+
+	.more__products.hide {
+		display: none;
 	}
 }

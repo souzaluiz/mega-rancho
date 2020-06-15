@@ -1,12 +1,16 @@
 const knex = require('../database/connection')
-const { v4: uuidv4 } = require('uuid');
-const { checkout } = require('../routes');
 
 module.exports = {
   async home (req, res) {
-    const products = await knex('products').select('*')
+    const [totalProducts] = await knex('products').count('id')
+    const totalPages = Math.ceil(totalProducts.count / 4)
+
+    const products = await knex('products')
+      .select('*')
+      .limit(4)
+      .offset(0)
     
-    return res.render('products', {products})
+    return res.render('products', {products, totalPages})
   },
 
   async cart (req, res) {

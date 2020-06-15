@@ -3,19 +3,22 @@
 {% block main %}
 	<!-- Product Section Begin -->
 	<section class="product">
+		<span id="total-pages" style="display: none;">{{totalPages}}</span>
 		<div class="container">
 			<div class="section-title product__title">
 				<h3>Produtos</h3>
 			</div>
 			<div class="row">
 				<div class="col-lg-12 col-md-12">
-					<div class="row">
+					<div class="row" id="list-products">
 						<!-- único produto -->
 						{% for product in products %}
 							<div class="col-lg-4 col-md-6 col-sm-6 col-6">
 								<div class="product__item">
 									<span class="id__product" style="display: none;">{{product.id}}</span>
-									<div class="product__item__pic set-bg" data-setbg="/uploads/{{product.image}}"></div>
+									<div class="product__item__pic">
+										<img src="/uploads/{{product.image}}">
+									</div>
 									<div class="product__item__text">
 										<h6>
 											<a href="#">{{product.name}}</a>
@@ -33,6 +36,14 @@
 						{% endfor %}
 					</div>
 				</div>
+				{% if totalPages > 1 %}
+					<div class="container buttons">
+						<a href="/cart">
+							<button>Ver carrinho</button>
+						</a>
+						<button id="btn-more" class="more__products" name="2">Mais produtos</button>
+					</div>
+				{% endif %}
 			</div>
 		</div>
 	</section>

@@ -104,12 +104,6 @@ ol {
   }
 }
 
-.set-bg {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-
 .text-white h1,
 .text-white h2,
 .text-white h3,
@@ -125,7 +119,7 @@ ol {
 
 /* buttons */
 .action-btn {
-  font-size: 18px;
+  font-size: 16px;
   color: $black-color;
   font-weight: 800;
   display: inline-block;

@@ -3,7 +3,17 @@ const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
   async index (req, res) {
-    const products = await knex('products').select('*')
+    let { page } = req.query
+
+    page = page || 1
+    const limit = 4
+    const offset = (page - 1) * limit
+
+    const products = await knex('products')
+      .select('*')
+      .limit(limit)
+      .offset(offset)
+
     return res.send(products)
   },
 
