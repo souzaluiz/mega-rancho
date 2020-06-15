@@ -1,0 +1,84 @@
+/*---------------------
+  Shop Grid
+-----------------------*/
+.product {
+	padding-bottom: 10px;
+}
+
+.product__title {
+	text-align: left;
+	margin-bottom: 45px;
+	margin-left: 10px;
+
+	h3 {
+		display: inline-block;
+
+		&:after {
+			margin: 0;
+			width: 100%;
+		}
+	}
+}
+
+.product__item {
+	margin-bottom: 50px;
+
+	.product__quantity {
+		display: flex;
+		margin: 6px 0;
+		padding: 2px 4px;
+		border: 1px solid $black_color;
+		justify-content: space-between;
+		align-items: center;
+
+		button {
+			color: $para_color;
+			font-size: 20px;
+
+			&:active {
+				color: $black_color;
+			}
+		}
+
+		span {
+			font-weight: bold;
+			display: inline-block;
+		}
+	}
+
+	.add__to__cart {
+		width: 100%;
+		background-color: $black_color;
+		color: $white_color;
+		padding: 6px 0;
+
+		&:active {
+			background-color: $heading-color-2;
+			transform: scale(1.02);
+		}
+	}
+}
+
+.product__item__pic {
+	height: 150px;
+	position: relative;
+	overflow: hidden;
+}
+
+.product__item__text {
+	text-align: center;
+	padding-top: 15px;
+
+	h6 {
+		margin-bottom: 10px;
+
+		a {
+			color: $heading-color-2;
+		}
+	}
+
+	h5 {
+		color: $heading-color-2;
+		font-weight: 700;
+	}
+}

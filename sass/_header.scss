@@ -1,0 +1,155 @@
+/*---------------------
+  Header
+-----------------------*/
+.header {
+	box-shadow: 2px 2px 2px rgba($color: #000000, $alpha: 0.2);
+}
+
+.header__logo {
+	padding: 14px 0 0;
+
+	a {
+		display: inline-block;
+	}
+}
+
+.header__menu {
+	padding: 24px 0;
+
+	ul {
+		li {
+			list-style: none;
+			display: inline-block;
+			margin-right: 50px;
+			position: relative;
+
+			.header__menu__dropdown {
+				position: absolute;
+				left: 0;
+				top: 50px;
+				background: #222222;
+				width: 180px;
+				z-index: 9;
+				padding: 5px 0;
+				@include transition(all, 0.3s);
+				opacity: 0;
+				visibility: hidden;
+
+				li {
+					margin-right: 0;
+					display: block;
+
+					&:hover {
+						& > a {
+							color: $primary-color;
+						}
+					}
+
+					a {
+						text-transform: capitalize;
+						color: $white-color;
+						font-weight: 400;
+						padding: 5px 15px;
+					}
+				}
+			}
+
+			&.active {
+				a {
+					color: $primary-color;
+				}
+			}
+
+			&:hover {
+				.header__menu__dropdown {
+					top: 30px;
+					opacity: 1;
+					visibility: visible;
+				}
+
+				& > a {
+					color: $primary-color;
+				}
+			}
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+			a {
+				font-size: 14px;
+				color: $heading-color-2;
+				text-transform: uppercase;
+				font-weight: 700;
+				letter-spacing: 2px;
+				@include transition(all, 0.3s);
+				padding: 5px 0;
+				display: block;
+			}
+		}
+	}
+}
+
+.header__cart {
+	text-align: right;
+	padding: 24px 0;
+
+	ul {
+		display: inline-block;
+		margin-right: 25px;
+
+		li {
+			list-style: none;
+			display: inline-block;
+			margin-right: 15px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+			a {
+				position: relative;
+
+				i {
+					font-size: 25px;
+					color: $normal-color;
+				}
+
+				span {
+					height: 15px;
+					width: 15px;
+					background: $primary-color;
+					font-size: 13px;
+					color: $white-color;
+					line-height: 13px;
+					text-align: center;
+					font-weight: 700;
+					display: inline-block;
+					border-radius: 50%;
+					position: absolute;
+					top: 0;
+					right: -12px;
+				}
+			}
+		}
+	}
+
+	.header__cart__price {
+		font-size: 16px;
+		color: #6f6f6f;
+		display: inline-block;
+
+		span {
+			color: $heading-color-2;
+			font-weight: 700;
+		}
+	}
+}
+
+.humberger__menu__wrapper {
+	display: none;
+}
+
+.humberger__open {
+	display: none;
+}

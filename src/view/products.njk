@@ -1,0 +1,44 @@
+{% extends "base.njk" %}
+
+{% block main %}
+	<!-- Product Section Begin -->
+	<section class="product">
+		<div class="container">
+			<div class="section-title product__title">
+				<h3>Produtos</h3>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12">
+					<div class="row">
+						<!-- único produto -->
+						{% for product in products %}
+							<div class="col-lg-4 col-md-6 col-sm-6 col-6">
+								<div class="product__item">
+									<span class="id__product" style="display: none;">{{product.id}}</span>
+									<div class="product__item__pic set-bg" data-setbg="/uploads/{{product.image}}"></div>
+									<div class="product__item__text">
+										<h6>
+											<a href="#">{{product.name}}</a>
+										</h6>
+										<h5>R$ <span>{{product.price}}</span></h5>
+									</div>
+									<div class="product__quantity">
+										<button class="any__less action-btn">-</button>
+										<span class="quantity__value">1</span>
+										<button class="more action-btn">+</button>
+									</div>
+									<button class="add__to__cart action-btn">ADICIONAR</button>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Product Section End -->
+{% endblock %}
+
+{% block script %}
+	<script src="/js/products.js"></script>
+{% endblock %}

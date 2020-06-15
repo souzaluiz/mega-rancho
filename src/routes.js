@@ -1,0 +1,17 @@
+const express = require('express')
+const routes = express.Router()
+
+const products = require('./controllers/products')
+const pages = require('./controllers/pages')
+const upload = require('./config/multer')
+
+// Pages
+routes.get('/', pages.home)
+routes.get('/cart', pages.cart)
+routes.get('/checkout', pages.checkout)
+
+// CRUD
+routes.get('/products', products.index)
+routes.post('/products', upload.single('image'), products.store)
+
+module.exports = routes
