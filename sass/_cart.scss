@@ -36,41 +36,47 @@
 
 	.item__content {
 		display: flex;
-		justify-content: space-evenly;
+		justify-content: space-around;
 		margin: 10px 0;
-		padding: 10px 0 ;
-
-		.item__quantity {
-			input {
-				margin-top: 4px;
-				padding-left: 12px;
-				width: 40px;
-			}
-		}
+		padding: 10px 0;
 
 		div {
 			display: flex;
 			flex-direction: column;
-			align-items: center;
+			text-align: center;
 
-			span:first-child {
-				font-weight: 600;
-			}
-
-			span:last-child {
+			span {
 				margin-top: 8px;
 				font-weight: 600;
+			}
+		}
+
+		.item__quantity {
+			margin-left: 10px;
+			.quantity_actions {
+				flex-direction: row;
+				justify-content: space-between;
+				width: 100px;
+
+				button {
+					color: $para_color;
+					font-size: 22px;
+
+					&:active {
+						color: $black_color;
+					}
+				}
 			}
 		}
 	}
 
 	.item__actions {
-		display: flex;
-		justify-content: space-evenly;
-		
+		text-align: center;
+
 		button {
 			width: 100px;
 			height: 32px;	
+			margin: 0 auto;
 			border: none;
 			font-weight: 600;		
 			background-color: $black_color;
@@ -160,10 +166,5 @@
 				float: right;
 			}
 		}
-	}
-
-	.primary-btn {
-		display: block;
-		text-align: center;
 	}
 }

@@ -328,7 +328,7 @@
 
   .shoping-cart {
     padding-top: $padding-top-header;
-    overflow-y: auto;
+    overflow: hidden;
   }
 
   .shoping__discount form input {
