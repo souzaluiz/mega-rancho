@@ -6,7 +6,7 @@ module.exports = {
     let { page } = req.query
 
     page = page || 1
-    const limit = 4
+    const limit = 12
     const offset = (page - 1) * limit
 
     const products = await knex('products')

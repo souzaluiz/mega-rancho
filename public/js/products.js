@@ -31,7 +31,7 @@ function addEventInElements(products) {
       const productId = element.querySelector('.id__product').innerHTML
       const productName = element.querySelector('.product__item__text h6 a').innerHTML
       const productPrice = Number(element.querySelector('.product__item__text h5 span').innerHTML)
-      const productImage = element.querySelector('.product__item .product__item__pic').getAttribute('data-setbg')
+      const productImage = element.querySelector('.product__item .product__item__pic img').getAttribute('src')
       const productQuantityValue = Number(productQuantityElement.innerHTML)
 
       const cartQuantityValue = Number(cartQuantityElement.innerHTML)

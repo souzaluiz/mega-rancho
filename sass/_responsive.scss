@@ -310,6 +310,10 @@
     text-align: center;
   }
 
+  .product {
+    padding-top: $padding-top-header;
+  }
+
   .product__details__pic {
     margin-bottom: 40px;
   }
@@ -322,7 +326,8 @@
     display: none;
   }
 
-  .shoping__cart__table {
+  .shoping-cart {
+    padding-top: $padding-top-header;
     overflow-y: auto;
   }
 
@@ -542,10 +547,6 @@
     &.active {
       visibility: visible;
     }
-  }
-
-  .product {
-    padding-top: 130px;
   }
 
   .header__top {
