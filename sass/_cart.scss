@@ -25,7 +25,8 @@
 
 		button {
 			margin-top: 15px;
-			width: 120px;
+			width: 140px;
+			font-size: 18px;
 			font-weight: 600;
 		}
 	}
@@ -98,59 +99,60 @@
 		text-align: center;
 
 		button {
-			width: 100px;
-			height: 32px;	
+			width: 140px;
+			height: auto;	
 			margin: 0 auto;
-			border: none;
-			font-weight: 600;		
-			background-color: $black_color;
-			color: $white_color;
-
-			&:active {
-				background-color: $heading-color-2;
-				transform: scale(1.02);
-			}
+			font-weight: 600;			
 		}
 	}
 }	
 
 .shoping__checkout {
-	background: $background;
-	padding: 30px;
-	padding-top: 20px;
-	margin-top: 50px;
+	background-color: $background;
+	padding: 25px;
+	padding-top: 10px;
+	margin: 25px 10px;
+	box-shadow: 0 3px 6px 0 rgba($color: #000000, $alpha: 0.4);
 
 	h5 {
-		color: $normal-color;
-		font-weight: 700;
-		font-size: 20px;
+		font-weight: 600;
+		font-size: 22px;
 		margin-bottom: 28px;
 	}
 
-	ul {
-		margin-bottom: 28px;
+	div {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 10px;
 
-		li {
-			font-size: 16px;
-			color: $normal-color;
-			font-weight: 700;
-			list-style: none;
-			overflow: hidden;
-			border-bottom: 1px solid $border;
-			padding-bottom: 13px;
-			margin-bottom: 18px;
+		span {
+			font-size: 20px;
+			font-weight: 600;
+		}
 
-			&:last-child {
-				padding-bottom: 0;
-				border-bottom: none;
-				margin-bottom: 0;
-			}
-
+		div {
 			span {
-				font-size: 18px;
 				color: #dd2222;
-				float: right;
 			}
+		}
+	}
+
+	a:last-child {
+		button {
+			font-weight: 600;
+			background-color: $white-color;
+			color: $normal-color;
+			box-shadow: 1px 1px 2px rgba($color: #000000, $alpha: 0.4);
+
+			&:active {
+				background-color: $gray;
+			}
+		}
+	}
+
+	a {
+		button {
+			font-weight: 600;
 		}
 	}
 }

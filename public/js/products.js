@@ -84,13 +84,14 @@ $('#btn-more').click(function(event) {
   $.ajax(`/products?page=${buttonValue}`)
     .then(function(results){
       if (buttonValue <= totalPages) {
-        $('#btn-more').attr('name', buttonValue + 1)
+        if(buttonValue === totalPages) {
+          $('#btn-more').toggleClass('hide')
+        } else {
+          $('#btn-more').attr('name', buttonValue + 1)
+        }
         renderProducts(results)
         const products = document.querySelectorAll('.product__item')
         addEventInElements(products)
-        if(buttonValue === totalPages) {
-          $('#btn-more').toggleClass('hide')
-        }
       }
     })
 })

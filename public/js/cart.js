@@ -2,6 +2,7 @@ const products = JSON.parse(localStorage.getItem('cart')) || []
 
 if(products.length === 0) {
   renderDivCartEmpty()
+  $('.shoping__checkout').remove()
 }
 
 function renderDivCartEmpty() {
@@ -14,9 +15,9 @@ function renderDivCartEmpty() {
 }
 
 products.forEach(function(product) {
-    let subtotal = (product.productQuantityValue * product.productPrice).toFixed(2)
+  let subtotal = (product.productQuantityValue * product.productPrice).toFixed(2)
 
-    $('.products__cart').append(`
+  $('.products__cart').append(`
     <div class="item__cart">
       <span style="display: none;">${product.productId}</span>
       <div class="header__item">
@@ -42,7 +43,7 @@ products.forEach(function(product) {
         </div>
       </div>
       <div class="item__actions">
-        <button class="delete">Excluir</button>
+        <button class="delete button__black">Excluir</button>
       </div>
     </div>
   `) 
@@ -54,6 +55,7 @@ function updateTotalAndSubtotalPrice(element, operation) {
   let subtotalElement = productElement.querySelector('#subtotal')
   let quantityElement = productElement.querySelector('.quantity__value')
   let cartTotalPriceElement = document.querySelector('#cart-total-price')
+  let checkoutTotalPriceElement = document.querySelector('#checkout_total')
 
   let cartTotalPriceValue = Number(cartTotalPriceElement.innerHTML)
   let productPrice = Number(productElement.querySelector('#product_price').innerHTML)
@@ -65,12 +67,14 @@ function updateTotalAndSubtotalPrice(element, operation) {
       if(quantityValue > 1){
         subtotalElement.innerHTML = (subtotalValue - productPrice).toFixed(2)
         cartTotalPriceElement.innerHTML = (cartTotalPriceValue - productPrice).toFixed(2)
+        checkoutTotalPriceElement.innerHTML = (cartTotalPriceValue - productPrice).toFixed(2)
         quantityElement.innerHTML = quantityValue - 1
       }
       break
     case 'addition':
       subtotalElement.innerHTML = (subtotalValue + productPrice).toFixed(2)
       cartTotalPriceElement.innerHTML = (cartTotalPriceValue + productPrice).toFixed(2)
+      checkoutTotalPriceElement.innerHTML = (cartTotalPriceValue + productPrice).toFixed(2)
       quantityElement.innerHTML = quantityValue + 1
       break
   }
@@ -96,11 +100,13 @@ function updateLocalStorageCart(element) {
 function updatePriceTotalCart(element) {
   let productElement = element.parentElement.parentElement
   let cartTotalPriceElement = document.querySelector('#cart-total-price')
+  let checkoutTotalPriceElement = document.querySelector('#checkout_total')
 
   let cartTotalPriceValue = Number(cartTotalPriceElement.innerHTML)
   let productSubtotal = Number(productElement.querySelector('#subtotal').innerHTML)
 
-  cartTotalPriceElement.innerHTML = (cartTotalPriceValue - productSubtotal).toFixed(2)  
+  cartTotalPriceElement.innerHTML = (cartTotalPriceValue - productSubtotal).toFixed(2)
+  checkoutTotalPriceElement.innerHTML = (cartTotalPriceValue - productSubtotal).toFixed(2) 
 }
 
 // Remove produto do carrinho
@@ -124,6 +130,7 @@ $('.item__actions .delete').click(function(event) {
   productData.remove()
   if(cartQuantityElement.innerHTML == 0) {
     renderDivCartEmpty()
+    $('.shoping__checkout').remove()
   }
 })
 

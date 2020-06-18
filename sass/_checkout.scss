@@ -2,35 +2,15 @@
   Checkout
 -----------------------*/
 .checkout {
-    padding-top: 80px;
-    padding-bottom: 60px;
-
-    h6 {
-        color: #999999;
-        text-align: center;
-        background: $background;
-        border-top: 1px solid #6AB963;
-        padding: 12px 0 12px;
-        margin-bottom: 75px;
-
-        span {
-            font-size: 16px;
-            color: #6AB963;
-            margin-right: 5px;
-        }
-
-        a {
-            text-decoration: underline;
-            color: #999999;
-        }
-    }
+    padding-top: $padding-top-header;
+    padding-bottom: 40px;
 }
 
 .checkout__form {
 
     h4 {
         color: $normal-color;
-        font-weight: 700;
+        font-weight: 600;
         border-bottom: 1px solid #e1e1e1;
         padding-bottom: 20px;
         margin-bottom: 25px;

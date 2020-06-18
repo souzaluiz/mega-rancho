@@ -9,7 +9,6 @@
 		$("#preloder").delay(200).fadeOut("slow");
 
 		// Load cart info
-		// localStorage.clear('cart')
 		getInfoCart()
 	});
 
@@ -54,6 +53,7 @@
 
 		$('#cart-quantity').text(quantityProducts)
 		$('#cart-total-price').text((totalProducts).toFixed(2))
+		$('#checkout_total').text((totalProducts).toFixed(2))
 	}
 
 })(jQuery);
