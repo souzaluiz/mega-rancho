@@ -1,5 +1,18 @@
 const products = JSON.parse(localStorage.getItem('cart')) || []
 
+if(products.length === 0) {
+  renderDivCartEmpty()
+}
+
+function renderDivCartEmpty() {
+  $('.products__cart').append(`
+    <div class="cart__empty">
+      <span>Seu carrinho de compras está vazio</span>
+      <a href="/"><button class="button__black">Ver produtos</button>
+    </div>
+  `)
+}
+
 products.forEach(function(product) {
     let subtotal = (product.productQuantityValue * product.productPrice).toFixed(2)
 
@@ -109,6 +122,9 @@ $('.item__actions .delete').click(function(event) {
   cartQuantityElement.innerHTML = cartQuantityValue - 1
   updatePriceTotalCart(this)
   productData.remove()
+  if(cartQuantityElement.innerHTML == 0) {
+    renderDivCartEmpty()
+  }
 })
 
 // Aumenta a quantidade de um produto da lista

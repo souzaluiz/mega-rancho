@@ -9,7 +9,7 @@ function addEventInElements(products) {
     const buttonAnyLess = element.querySelector('.product__quantity .any__less')
     const buttonMore = element.querySelector('.product__quantity .more')
     const productQuantityElement = element.querySelector('.product__quantity .quantity__value')
-    const addToCartButton = element.querySelector('.add__to__cart')
+    const addToCartButton = element.querySelector('#add__product__to__cart')
     
     buttonAnyLess.addEventListener('click', function () {
       let quantityValue = Number(productQuantityElement.innerHTML)

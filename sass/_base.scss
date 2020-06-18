@@ -127,6 +127,20 @@ ol {
   border: none;
 }
 
+.button__black {
+  width: 100%;
+  background-color: $black_color;
+  border: none;
+  font-weight: bold;
+  color: $white_color;
+  padding: 6px 0;
+
+  &:active {
+    background-color: $heading-color-2;
+    transform: scale(1.02);
+  }
+}
+
 /* Preloder */
 #preloder {
   position: fixed;
