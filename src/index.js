@@ -1,6 +1,7 @@
 const express = require('express')
 const nunjucks = require('nunjucks')
 const path = require('path')
+require('./telegram')
 
 const routes = require('./routes')
 
@@ -18,6 +19,8 @@ nunjucks.configure(path.resolve(__dirname, 'view'), {
   noCache: true,
   autoescape: false
 })
+
+app.use(express.urlencoded({extended: true}))
 
 app.use(routes)
 

@@ -30,7 +30,7 @@
 										<span class="quantity__value">1</span>
 										<button class="more action-btn">+</button>
 									</div>
-									<button class="add__to__cart action-btn">ADICIONAR</button>
+									<button class="button__black" id="add__product__to__cart">ADICIONAR</button>
 								</div>
 							</div>
 						{% endfor %}
@@ -42,6 +42,12 @@
 							<button>Ver carrinho</button>
 						</a>
 						<button id="btn-more" class="more__products" name="2">Mais produtos</button>
+					</div>
+				{% else %}
+					<div class="container buttons">
+						<a href="/cart">
+							<button>Ver carrinho</button>
+						</a>
 					</div>
 				{% endif %}
 			</div>

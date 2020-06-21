@@ -36,9 +36,10 @@
     width: 265px;
   }
 
-  .shoping__discount form input {
-    width: 240px;
+  .shoping__checkout {
   }
+
+
 }
 
 /* Tablet Device = 768px */
@@ -310,6 +311,10 @@
     text-align: center;
   }
 
+  .product {
+    padding-top: $padding-top-header;
+  }
+
   .product__details__pic {
     margin-bottom: 40px;
   }
@@ -322,8 +327,9 @@
     display: none;
   }
 
-  .shoping__cart__table {
-    overflow-y: auto;
+  .shoping-cart {
+    padding-top: $padding-top-header;
+    overflow: hidden;
   }
 
   .shoping__discount form input {
@@ -542,10 +548,6 @@
     &.active {
       visibility: visible;
     }
-  }
-
-  .product {
-    padding-top: 130px;
   }
 
   .header__top {

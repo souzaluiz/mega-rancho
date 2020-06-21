@@ -12,9 +12,11 @@
 
 	h3 {
 		display: inline-block;
+		font-weight: 600;
 
 		&:after {
 			margin: 0;
+			height: 4px;
 			width: 100%;
 		}
 	}
@@ -43,18 +45,6 @@
 		span {
 			font-weight: bold;
 			display: inline-block;
-		}
-	}
-
-	.add__to__cart {
-		width: 100%;
-		background-color: $black_color;
-		color: $white_color;
-		padding: 6px 0;
-
-		&:active {
-			background-color: $heading-color-2;
-			transform: scale(1.02);
 		}
 	}
 }
@@ -99,7 +89,8 @@
 		width: 100%;
 		height: 38px;	
 		border: none;
-		font-weight: 600;		
+		font-weight: 600;
+		font-size: 18px;
 		background-color: $black_color;
 		color: $white_color;
 

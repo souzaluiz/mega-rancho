@@ -9,7 +9,6 @@
 		$("#preloder").delay(200).fadeOut("slow");
 
 		// Load cart info
-		// localStorage.clear('cart')
 		getInfoCart()
 	});
 
@@ -44,16 +43,17 @@
 
 	// Load quantity card
 	function getInfoCart() {
-		const producstCart = JSON.parse(localStorage.getItem('cart')) || []
-		const quantityProducts = producstCart.length
+		const productsCart = JSON.parse(localStorage.getItem('cart')) || []
+		const quantityProducts = productsCart.length
 		let totalProducts = 0
 
-		producstCart.forEach(function (item) {
-			totalProducts += Number((item.productPrice * item.productQuantityValue).toFixed(2))
+		productsCart.forEach(function (item) {
+			totalProducts += Number((item.price * item.quantity).toFixed(2))
 		})
 
 		$('#cart-quantity').text(quantityProducts)
 		$('#cart-total-price').text((totalProducts).toFixed(2))
+		$('#checkout_total').text((totalProducts).toFixed(2))
 	}
 
 })(jQuery);
