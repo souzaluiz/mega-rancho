@@ -14,6 +14,7 @@ routes.get('/checkout', pages.checkout)
 // CRUD
 routes.get('/products', products.index)
 routes.post('/products', upload.single('image'), products.store)
+routes.delete('/products/:id', products.destroy)
 
 routes.post('/order', order.create)
 

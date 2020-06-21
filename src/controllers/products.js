@@ -35,5 +35,16 @@ module.exports = {
     } catch (error) {
       return res.status(400).send(error)
     }
+  },
+
+  async destroy(req, res) {
+    const { id } = req.params
+
+    try {
+      await knex('products').delete().where({id})
+      return res.send('Deletou')
+    } catch (error) {
+      return res.status(400).send(error)
+    }
   }
 }
