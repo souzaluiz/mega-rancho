@@ -15,7 +15,7 @@
 						{% for product in products %}
 							<div class="col-lg-4 col-md-6 col-sm-6 col-6">
 								<div class="product__item">
-									<span class="id__product" style="display: none;">{{product.id}}</span>
+									<span class="id__product" style="display: none;">{{product._id}}</span>
 									<div class="product__item__pic">
 										<img src="/uploads/{{product.image}}">
 									</div>
@@ -23,7 +23,7 @@
 										<h6>
 											<a href="#">{{product.name}}</a>
 										</h6>
-										<h5>R$ <span>{{product.price}}</span></h5>
+										<h5>R$ <span>{{(product.price).toFixed(2)}}</span></h5>
 									</div>
 									<div class="product__quantity">
 										<button class="any__less action-btn">-</button>

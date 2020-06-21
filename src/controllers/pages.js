@@ -1,15 +1,13 @@
-const knex = require('../database/connection')
+const Product = require('../models/Product')
 
 module.exports = {
   async home (req, res) {
-    const limit = 12
-    const [totalProducts] = await knex('products').count('id')
-    const totalPages = Math.ceil(totalProducts.count / limit)
+    const limit = 10
+    const totalProducts = await Product.countDocuments()
+    const totalPages = Math.ceil(totalProducts / limit)
 
-    const products = await knex('products')
-      .select('*')
+    const products = await Product.find()
       .limit(limit)
-      .offset(0)
     
     return res.render('products', {products, totalPages})
   },

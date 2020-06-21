@@ -1,18 +1,16 @@
-const knex = require('../database/connection')
-const { v4: uuidv4 } = require('uuid');
+const Product = require('../models/Product')
 
 module.exports = {
   async index (req, res) {
     let { page } = req.query
 
     page = page || 1
-    const limit = 12
-    const offset = (page - 1) * limit
+    const limit = 10
+    const skip = (page - 1) * limit
 
-    const products = await knex('products')
-      .select('*')
+    const products = await Product.find()
       .limit(limit)
-      .offset(offset)
+      .skip(skip)
 
     return res.send(products)
   },
@@ -22,29 +20,29 @@ module.exports = {
     const { name, price } = req.body
 
     const data = {
-      id: uuidv4(),
       name,
       price,
-      image: originalname,
-      created_at: new Date()
+      image: originalname
     }
 
-    try {
-      await knex('products').insert(data)
-      return res.send()
-    } catch (error) {
-      return res.status(400).send(error)
-    }
+    Product.create(data)
+      .then(() => {
+        return res.status(200).send()
+      })
+      .catch(err => {
+        return res.status(400).send(err)
+      })
   },
 
   async destroy(req, res) {
     const { id } = req.params
 
-    try {
-      await knex('products').delete().where({id})
-      return res.send('Deletou')
-    } catch (error) {
-      return res.status(400).send(error)
-    }
-  }
+    Product.findByIdAndDelete(id)
+      .then(() => {
+        return res.status(200).send()
+      })
+      .catch((err) => {
+        return res.status(400).send(err)
+      })
+  },
 }
