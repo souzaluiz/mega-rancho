@@ -6,10 +6,14 @@
 }
 
 .header__logo {
-	padding: 14px 0 0;
+	padding: 10px 0;
 
 	a {
 		display: inline-block;
+
+		img {
+			height: 50px;
+		}
 	}
 }
 
@@ -141,7 +145,8 @@
 
 		span {
 			color: $heading-color-2;
-			font-weight: 700;
+			font-weight: 600;
+			font-size: 18px;
 		}
 	}
 }

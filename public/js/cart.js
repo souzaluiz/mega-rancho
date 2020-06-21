@@ -15,25 +15,25 @@ function renderDivCartEmpty() {
 }
 
 products.forEach(function(product) {
-  let subtotal = (product.productQuantityValue * product.productPrice).toFixed(2)
+  let subtotal = (product.quantity * product.price).toFixed(2)
 
   $('.products__cart').append(`
     <div class="item__cart">
-      <span style="display: none;">${product.productId}</span>
+      <span style="display: none;">${product.id}</span>
       <div class="header__item">
-        <img src="${product.productImage}" alt="">
-        <span>${product.productName}</span>
+        <img src="${product.image}" />
+        <span>${product.name}</span>
       </div>
       <div class="item__content">
         <div class="item__price">
           <span>Preço</span>
-          <span>R$ <span id="product_price">${(product.productPrice).toFixed(2)}</span></span>
+          <span>R$ <span id="product_price">${(product.price).toFixed(2)}</span></span>
         </div>
         <div class="item__quantity">
           <span>Quantidade</span>
           <div class="quantity_actions">
             <button class="any__less action-btn">-</button>
-            <span class="quantity__value">${product.productQuantityValue}</span>
+            <span class="quantity__value">${product.quantity}</span>
             <button class="more action-btn">+</button>
           </div>
         </div>
@@ -88,8 +88,8 @@ function updateLocalStorageCart(element) {
   let productId = productElement.querySelector('span').innerHTML
 
   let updateProductsCart = productsCart.map(function(product){
-    if(productId == product.productId) {
-      product.productQuantityValue = productQuantity
+    if(productId == product.id) {
+      product.quantity = productQuantity
     }
     return product
   })
@@ -119,7 +119,7 @@ $('.item__actions .delete').click(function(event) {
   let cartQuantityValue = Number(cartQuantityElement.innerHTML)
   
   let updatedProducts = products.filter(function(product){
-    if (product.productId != productId) {
+    if (product.id != productId) {
       return product
     }
   })

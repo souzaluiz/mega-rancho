@@ -12,9 +12,11 @@
 
 	h3 {
 		display: inline-block;
+		font-weight: 600;
 
 		&:after {
 			margin: 0;
+			height: 4px;
 			width: 100%;
 		}
 	}

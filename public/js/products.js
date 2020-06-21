@@ -32,42 +32,42 @@ function addEventInElements(products) {
       const productName = element.querySelector('.product__item__text h6 a').innerHTML
       const productPrice = Number(element.querySelector('.product__item__text h5 span').innerHTML)
       const productImage = element.querySelector('.product__item .product__item__pic img').getAttribute('src')
-      const productQuantityValue = Number(productQuantityElement.innerHTML)
+      const productQuantity = Number(productQuantityElement.innerHTML)
 
-      const cartQuantityValue = Number(cartQuantityElement.innerHTML)
-      const totalPriceValue = Number(totalPriceElement.innerHTML)
+      const cartQuantity = Number(cartQuantityElement.innerHTML)
+      const totalPrice = Number(totalPriceElement.innerHTML)
       const productsCart = JSON.parse(localStorage.getItem('cart')) || []
       let productExists = false
 
       const updatedProducts = productsCart.map(function (item) {
-        if(item.productId == productId) {
+        if(item.id == productId) {
           productExists = true
-          item.productQuantityValue += productQuantityValue   
+          item.quantity += productQuantity   
         }
         return item
       })
 
-      const priceTotalProduct = Number((productPrice * productQuantityValue).toFixed(2))
+      const priceTotalProduct = Number((productPrice * productQuantity).toFixed(2))
 
       if(productExists) {
         localStorage.setItem('cart', JSON.stringify(updatedProducts))
-        totalPriceElement.innerHTML = (totalPriceValue + priceTotalProduct).toFixed(2)
+        totalPriceElement.innerHTML = (totalPrice + priceTotalProduct).toFixed(2)
         productQuantityElement.innerHTML = 1
       } else {
         const productInfo = [
           ...productsCart,
           {
-            productId,
-            productName,
-            productPrice,
-            productImage,
-            productQuantityValue
+            id: productId,
+            name: productName,
+            price: productPrice,
+            image: productImage,
+            quantity: productQuantity
           }
         ]
     
         localStorage.setItem('cart', JSON.stringify(productInfo))
-        cartQuantityElement.innerHTML = cartQuantityValue + 1
-        totalPriceElement.innerHTML = (totalPriceValue + priceTotalProduct).toFixed(2)
+        cartQuantityElement.innerHTML = cartQuantity + 1
+        totalPriceElement.innerHTML = (totalPrice + priceTotalProduct).toFixed(2)
         productQuantityElement.innerHTML = 1
       }
     })
@@ -102,7 +102,7 @@ function renderProducts(products) {
       <div class="col-lg-4 col-md-6 col-sm-6 col-6">
         <div class="product__item">
           <span class="id__product" style="display: none;">${product.id}</span>
-          <div class="product__item__pic set-bg">
+          <div class="product__item__pic">
             <img src="/uploads/${product.image}" />
           </div>
           <div class="product__item__text">
@@ -116,7 +116,7 @@ function renderProducts(products) {
             <span class="quantity__value">1</span>
             <button class="more action-btn">+</button>
           </div>
-          <button class="add__to__cart action-btn">ADICIONAR</button>
+          <button class="button__black" id="add__product__to__cart">ADICIONAR</button>
         </div>
       </div>
     `)

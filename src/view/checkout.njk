@@ -6,77 +6,93 @@
 		<div class="container">
 			<div class="checkout__form">
 				<h4>Detalhes da entrega</h4>
-				<form action="#">
+				<form id="order-details-form">
 					<div class="row">
 						<div class="col-lg-8 col-md-6">
 							<div class="row">
 								<div class="col-lg-6">
 									<div class="checkout__input">
-										<p>Seu nome<span>*</span></p>
-										<input type="text">
+										<p>Seu nome <span>*</span></p>
+										<input
+											id="client_name"
+											name="name" 
+											type="text"
+											required="required"
+										>
 									</div>
 								</div>
 							</div>
 							<div class="checkout__input">
-								<p>Endereço<span>*</span></p>
-								<input type="text" placeholder="Endereço" class="checkout__input__add">
-								<input type="text" placeholder="Apartamento, ect (opcional)">
+								<p>Endereço <span>*</span></p>
+								<input
+									id="addres"
+									name="addres" 
+									required="required" 
+									type="text" 
+									placeholder="Nome da rua e número" 
+									class="checkout__input__add"
+								>
+								<input
+									id="complement"
+									name="complement" 
+									type="text" 
+									placeholder="Apartamento, ect (opcional)"
+								>
 							</div>
 							<div class="row">
 								<div class="col-lg-6">
 									<div class="checkout__input">
-										<p>Telefone<span>*</span></p>
-										<input type="text">
+										<p>Telefone <span>*</span></p>
+										<input
+											id="telephone"
+											name="telephone" 
+											inputmode="numeric" 
+											required="required" 
+											type="text"
+											placeholder="(99) 9 9999-9999"
+											maxlength="16"
+											onkeyup="maskTelephone(this)">
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-6">
-								<div class="checkout__order">
-										<h4>Seu pedido</h4>
-										<div class="checkout__order__products">Products
-												<span>Total</span></div>
-										<ul>
-												<li>Vegetable’s Package
-														<span>$75.99</span></li>
-												<li>Fresh Vegetable
-														<span>$151.99</span></li>
-												<li>Organic Bananas
-														<span>$53.99</span></li>
-										</ul>
-										<div class="checkout__order__subtotal">Subtotal
-												<span>$750.99</span></div>
-										<div class="checkout__order__total">Total
-												<span>$750.99</span></div>
-										<div class="checkout__input__checkbox">
-												<label for="acc-or">
-														Create an account?
-														<input type="checkbox" id="acc-or">
-														<span class="checkmark"></span>
-												</label>
-										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-										<div class="checkout__input__checkbox">
-												<label for="payment">
-														Check Payment
-														<input type="checkbox" id="payment">
-														<span class="checkmark"></span>
-												</label>
-										</div>
-										<div class="checkout__input__checkbox">
-												<label for="paypal">
-														Paypal
-														<input type="checkbox" id="paypal">
-														<span class="checkmark"></span>
-												</label>
-										</div>
-										<button type="submit" class="site-btn">PLACE ORDER</button>
+							<div class="checkout__order">
+								<h4>Seu pedido</h4>
+								<div class="checkout__order__products">Produtos
+									<span>Total</span></div>
+									<ul id="list_products">
+										<!-- js renderer -->
+									</ul>
+								<div class="checkout__order__subtotal"></div>
+								<div class="checkout__order__total">Total
+									<span>R$ <span id="checkout_total">0</span></span>
 								</div>
+								<p class="text-center">
+									Pague os produtos no momento da entrega, seja no dinheiro ou cartão para a sua 
+									comodidade.
+								</p>
+								<button type="submit" class="button__black">REALIZAR PEDIDO</button>
+							</div>
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
 	</section>
+
+	<div id="preloder" class="loader__checkout" style="display: none;">
+		<div class="loader" style="display: none;"></div>
+		<div class="modal__information" style="display: none;">
+			<span></span>
+			<a href="/">
+				<button class="button__black">Voltar para a tela inicial</button>
+			</a>
+		</div>
+	</div>
 	<!-- Checkout Section End -->
+{% endblock %}
+
+{% block script %}
+	<script src="/js/checkout.js"></script>
 {% endblock %}
