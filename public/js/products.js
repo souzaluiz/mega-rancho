@@ -109,7 +109,7 @@ function renderProducts(products) {
             <h6>
               <a href="#">${product.name}</a>
             </h6>
-            <h5>R$ <span>${product.price}</span></h5>
+            <h5>R$ <span>${(product.price).toFixed(2)}</span></h5>
           </div>
           <div class="product__quantity">
             <button class="any__less action-btn">-</button>

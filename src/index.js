@@ -1,6 +1,8 @@
+require('dotenv/config')
 const express = require('express')
 const nunjucks = require('nunjucks')
 const path = require('path')
+const mongoose = require('mongoose')
 require('./telegram')
 
 const routes = require('./routes')
@@ -18,6 +20,12 @@ nunjucks.configure(path.resolve(__dirname, 'view'), {
   express: app,
   noCache: true,
   autoescape: false
+})
+
+mongoose.connect(process.env.DB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false
 })
 
 app.use(express.urlencoded({extended: true}))
