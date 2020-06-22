@@ -16,13 +16,13 @@ module.exports = {
   },
 
   async store (req, res) {
-    const { originalname } = req.file
+    const { filename } = req.file
     const { name, price } = req.body
 
     const data = {
       name,
       price,
-      image: originalname
+      image: filename
     }
 
     Product.create(data)

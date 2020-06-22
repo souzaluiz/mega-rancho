@@ -5,6 +5,7 @@ const products = require('./controllers/products')
 const order = require('./controllers/order')
 const pages = require('./controllers/pages')
 const upload = require('./config/multer')
+const sharp = require('./config/sharp')
 
 // Pages
 routes.get('/', pages.home)
@@ -13,7 +14,7 @@ routes.get('/checkout', pages.checkout)
 
 // CRUD
 routes.get('/products', products.index)
-routes.post('/products', upload.single('image'), products.store)
+routes.post('/products', upload.single('image'), sharp.resizing, products.store)
 routes.delete('/products/:id', products.destroy)
 
 routes.post('/order', order.create)
