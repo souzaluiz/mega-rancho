@@ -4,6 +4,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "npm install && node src/index.js",
+    "build": "babel public/js --presets minify --out-file public/js/compiled.js",
     "server": "nodemon src/index.js",
     "web": "browser-sync start --proxy 'localhost:3333' --files 'public/css/*.min.css, src/view/*.njk'",
     "dev": "npm-run-all -p server web"
@@ -20,6 +21,10 @@
     "sharp": "^0.25.4"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.3",
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "babel-preset-minify": "^0.5.1",
     "browser-sync": "^2.26.7",
     "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5"
