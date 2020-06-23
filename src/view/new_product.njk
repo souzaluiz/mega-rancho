@@ -1,0 +1,77 @@
+  <!DOCTYPE html>
+  <html lang="pt-br">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <meta name="theme-color" content="#fff">
+      <meta name="apple-mobile-web-app-status-bar-style" content="#fff">
+      <link rel="shortcut icon" href="/img/favicon.ico" />
+  		<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+	  	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+      <link rel="stylesheet" href="css/style.min.css" type="text/css">
+      <title>Novo Produto</title>
+    </head>
+    <body>
+      <main>
+        <form class="form__new__product" action="/products" method="post" enctype="multipart/form-data">
+          <div class="header__form">
+            <a href="/">
+              <i class="fa fa-arrow-left"></i>
+            </a>
+            <h3>Novo produto</h3>
+          </div>
+          <div class="input__content">
+            <span>Nova imagem</span>
+
+            <div class="input__image">
+              <div class="preview__image"></div>
+              <label for="imagem">Escolher imagem</label>
+              <input type="file" name="image" id="imagem" required/>
+            </div>
+          </div>
+          <div class="input__content">
+            <span>Nome do produto</span>
+            <input type="text" name="name" placeholder="Ex: Açucar cristal" required>
+          </div>
+          <div class="input__content">
+            <span>Preço do produto</span>
+            <input 
+              type="text"
+              name="price" 
+              placeholder="Ex: 2.50" 
+              inputmode="decimal"
+              required
+            />
+          </div>       
+          <button class="button__black" type="submit">Salvar</button>
+        </form>
+      </main>
+      <script src="https://cdn.jsdelivr.net/npm/vanilla-masker@1.1.1/build/vanilla-masker.min.js"></script>
+      <script>
+        let inputImage = document.querySelector('#imagem')
+        inputImage.addEventListener('change', function() {
+          let previewElement = document.querySelector('.preview__image')
+
+          if(this.files[0]){
+            previewElement.innerHTML = ''
+            let reader = new FileReader()
+
+            reader.onload = function(event) {
+              let imageElement = document.createElement('img')
+              imageElement.setAttribute('src', event.target.result)
+              previewElement.appendChild(imageElement)
+            }
+
+            reader.readAsDataURL(this.files[0])
+          }
+        })
+
+        VMasker(document.querySelector(".input__content input[name=price]")).maskMoney({
+          precision: 2,
+          separator: '.',
+          zeroCents: false
+        });
+      </script>
+    </body>
+  </html>

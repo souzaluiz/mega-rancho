@@ -10,8 +10,8 @@ module.exports = {
     const imageName = `${Date.now()}-${name}.webp`
 
     sharp(req.file.path)
-      .resize(350)
-      .webp({quality: 60})
+      .resize(250)
+      .webp({quality: 55})
       .toFile(
         path.resolve(__dirname, '..', '..', 'uploads', imageName)
       )

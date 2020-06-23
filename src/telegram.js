@@ -17,7 +17,7 @@ bot.onText(/\/start/, async (msg) => {
     await Chat.create({chatId})
   }
 
-  bot.sendMessage(chatId, 'Chat cadastrado no sistema!')
+  bot.sendMessage(chatId, 'Cadastrado no sistema!')
 })
 
 module.exports = bot

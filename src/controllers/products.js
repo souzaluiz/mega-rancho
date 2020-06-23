@@ -27,7 +27,7 @@ module.exports = {
 
     Product.create(data)
       .then(() => {
-        return res.status(200).send()
+        return res.redirect('/')
       })
       .catch(err => {
         return res.status(400).send(err)

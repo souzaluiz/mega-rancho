@@ -15,7 +15,6 @@
 		<!-- Css Styles -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/slicknav.min.css" type="text/css">
 		<link rel="stylesheet" href="css/style.min.css" type="text/css">
 	</head>
 	<body>
@@ -29,10 +28,10 @@
 		<div class="humberger__menu__wrapper">
 			<div class="humberger__menu__logo">
 				<a href="/">
-					<img src="img/logo.svg" alt="">
+					<img src="img/logo.svg">
 				</a>
 			</div>
-			<nav class="humberger__menu__nav mobile-menu">
+			<nav class="humberger__menu__nav">
 				<ul>
 					<li>
 						<a href="/">Página inicial</a>
@@ -42,7 +41,6 @@
 					</li>
 				</ul>
 			</nav>
-			<div id="mobile-menu-wrap"></div>
 			<div class="humberger__menu__contact">
 				<ul>
 					<li><i class="fa fa-envelope"></i> eiempreendimentos@hotmail.com</li>
@@ -61,6 +59,9 @@
 							<a href="/">
 								<img src="img/logo.svg" />
 							</a>
+							<div class="humberger__open">
+								<i class="fa fa-bars"></i>
+							</div>
 						</div>
 					</div>
 					<div class="col-lg-7">
@@ -84,9 +85,6 @@
 								<span>Total R$ </span><span id="cart-total-price">0</span>
 							</div>
 						</div>
-					</div>
-					<div class="humberger__open">
-						<i class="fa fa-bars"></i>
 					</div>
 				</div>			
 			</div>
@@ -126,8 +124,6 @@
 		<!-- Js Plugins -->
 		<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/jquery.slicknav.min.js" integrity="sha256-h/TwuBQqRBiExw0sK/HdwzJI7uYFBrJ2Ebo7gn9AGz4=" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js" integrity="sha256-FnUP2HEr+LnsA4l1YflN3prVZISLwKs2FB7X9/fdPBE=" crossorigin="anonymous"></script>
 		<script src="/js/main.js"></script>
 		{% block script %}{% endblock %}
 	</body>

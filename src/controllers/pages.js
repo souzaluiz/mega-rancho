@@ -18,5 +18,13 @@ module.exports = {
 
   async checkout (req, res) {
     return res.render('checkout')
+  },
+
+  async dashboard (req, res) {
+    return res.render('dashboard')
+  },
+
+  async newProduct (req, res) {
+    return res.render('new_product')
   }
 }

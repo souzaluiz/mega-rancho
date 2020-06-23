@@ -1,6 +1,9 @@
-/*----------------------------------------*/
-/* Template default CSS
-/*----------------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
 html,
 body {
   height: 100%;
@@ -78,9 +81,8 @@ ol {
   margin: 0;
 }
 
-/*---------------------
-  Helper CSS
------------------------*/
+/* Reutilizaveis */
+
 .section-title {
   margin-bottom: 50px;
   text-align: center;
@@ -93,7 +95,7 @@ ol {
     &:after {
       position: absolute;
       left: 0;
-      bottom: -15px;
+      bottom: -12px;
       right: 0;
       height: 4px;
       width: 80px;
@@ -102,19 +104,6 @@ ol {
       margin: 0 auto;
     }
   }
-}
-
-.text-white h1,
-.text-white h2,
-.text-white h3,
-.text-white h4,
-.text-white h5,
-.text-white h6,
-.text-white p,
-.text-white span,
-.text-white li,
-.text-white a {
-  color: #fff;
 }
 
 /* buttons */

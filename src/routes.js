@@ -11,6 +11,8 @@ const sharp = require('./config/sharp')
 routes.get('/', pages.home)
 routes.get('/cart', pages.cart)
 routes.get('/checkout', pages.checkout)
+routes.get('/dashboard', pages.dashboard)
+routes.get('/new-product', pages.newProduct)
 
 // CRUD
 routes.get('/products', products.index)
