@@ -1,15 +1,18 @@
-/*---------------------
-  Footer
------------------------*/
 .footer {
   background: #f3f6fa;
-  padding-top: 30px;
-  padding-bottom: 0;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.footer__about__logo {
+  margin-bottom: 15px;
+
+  a {
+    display: inline-block;
+  }
 }
 
 .footer__about {
-  margin-bottom: 30px;
-
   h4 {
     margin-bottom: 10px;
   }
@@ -25,13 +28,5 @@
       line-height: 36px;
       list-style: none;
     }
-  }
-}
-
-.footer__about__logo {
-  margin-bottom: 15px;
-
-  a {
-    display: inline-block;
   }
 }

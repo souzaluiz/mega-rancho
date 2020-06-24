@@ -28,7 +28,7 @@ function addEventInElements(products) {
       const cartQuantityElement = document.querySelector('#cart-quantity')
       const totalPriceElement = document.querySelector('#cart-total-price')
       // Informações do produto
-      const productId = element.querySelector('.id__product').innerHTML
+      const productId = element.querySelector('input[name=product-id]').value
       const productName = element.querySelector('.product__item__text h6 a').innerHTML
       const productPrice = Number(element.querySelector('.product__item__text h5 span').innerHTML)
       const productImage = element.querySelector('.product__item .product__item__pic img').getAttribute('src')
@@ -79,7 +79,7 @@ $('#btn-more').click(function(event) {
   event.preventDefault()
 
   const buttonValue = Number($('#btn-more').attr('name'))
-  const totalPages = Number($('#total-pages').text())
+  const totalPages = Number(document.querySelector('input[name=total-pages]').value)
 
   $.ajax(`/products?page=${buttonValue}`)
     .then(function(results){
@@ -99,25 +99,23 @@ $('#btn-more').click(function(event) {
 function renderProducts(products) {
   products.forEach(function(product) {
     $('#list-products').append(`
-      <div class="col-lg-4 col-md-6 col-sm-6 col-6">
-        <div class="product__item">
-          <span class="id__product" style="display: none;">${product.id}</span>
-          <div class="product__item__pic">
-            <img src="/uploads/${product.image}" />
-          </div>
-          <div class="product__item__text">
-            <h6>
-              <a href="#">${product.name}</a>
-            </h6>
-            <h5>R$ <span>${(product.price).toFixed(2)}</span></h5>
-          </div>
-          <div class="product__quantity">
-            <button class="any__less action-btn">-</button>
-            <span class="quantity__value">1</span>
-            <button class="more action-btn">+</button>
-          </div>
-          <button class="button__black" id="add__product__to__cart">ADICIONAR</button>
+      <div class="product__item">
+        <input type="hidden" name="product-id" value="${product.id}">>
+        <div class="product__item__pic">
+          <img src="/uploads/${product.image}" />
         </div>
+        <div class="product__item__text">
+          <h6>
+            <a href="#">${product.name}</a>
+          </h6>
+          <h5>R$ <span>${(product.price).toFixed(2)}</span></h5>
+        </div>
+        <div class="product__quantity">
+          <button class="any__less action-btn">-</button>
+          <span class="quantity__value">1</span>
+          <button class="more action-btn">+</button>
+        </div>
+        <button class="button__black" id="add__product__to__cart">ADICIONAR</button>
       </div>
     `)
   })
