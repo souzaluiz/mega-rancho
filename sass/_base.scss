@@ -82,7 +82,6 @@ ol {
 }
 
 /* Reutilizaveis */
-
 .section-title {
   margin-bottom: 50px;
   text-align: center;
@@ -152,6 +151,17 @@ ol {
   border-radius: 60px;
   animation: loader 0.8s linear infinite;
   -webkit-animation: loader 0.8s linear infinite;
+}
+
+.loading {
+  position: fixed;
+  z-index: 555;
+  background-color: $white-color;
+  opacity: 0.5;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
 @keyframes loader {

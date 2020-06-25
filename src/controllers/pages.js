@@ -21,10 +21,21 @@ module.exports = {
   },
 
   async dashboard (req, res) {
-    return res.render('dashboard')
+    const limit = 10
+    const totalProducts = await Product.countDocuments()
+    const totalPages = Math.ceil(totalProducts / limit)
+
+    return res.render('dashboard', {totalPages})
   },
 
   async newProduct (req, res) {
     return res.render('new_product')
+  },
+
+  async editProduct (req, res) {
+    const { id } = req.params
+    const product = await Product.findById(id)
+
+    return res.render('edit_product', {product})
   }
 }

@@ -188,15 +188,15 @@
 	.modal__information {
 		width: 300px;
 		height: 200px;
+		position: absolute;
 		top: 50%;
     left: 50%;
 		transform: translate(-50%, -50%);
-		display: flex;
 		background-color: $gray;
-		box-shadow: 1px 1px 3px rgba($color: #000000, $alpha: 0.6);
+		box-shadow: 2px 2px 2px rgba($color: #000000, $alpha: 0.3);
+		display: flex;
 		flex-direction: column;
 		align-items: center;
-		position: absolute;
 		justify-content: center;
 
 		span {

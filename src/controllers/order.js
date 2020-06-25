@@ -5,6 +5,7 @@ const Chat = require('../models/Chat')
 module.exports = {
   async create(req, res) {
     const data = req.body
+
     try {
       const [chat] = await Chat.find()
       const message = formatMessage(data)

@@ -14,6 +14,10 @@ window.addEventListener('load', function() {
 
   document.querySelector('#cart-quantity').innerHTML = quantityProducts
   document.querySelector('#cart-total-price').innerHTML = (totalProducts).toFixed(2)
+  let checkoutTotal = document.querySelector('#checkout_total')
+  if(checkoutTotal) {
+    checkoutTotal.innerHTML = (totalProducts).toFixed(2)
+  }
 })	
 
 //Humberger Menu
@@ -26,7 +30,7 @@ document.querySelector('.humberger__open').addEventListener('click', function() 
 document.querySelector('.humberger__menu__overlay').addEventListener('click', function() {
   document.querySelector('.humberger__menu__wrapper').classList.remove('show__humberger__menu__wrapper')
   document.querySelector('.humberger__menu__overlay').classList.remove('active')
-  document.querySelector('body').classList.add('over_hid')
+  document.querySelector('body').classList.remove('over_hid')
 })
 
 function fadeOut(element){

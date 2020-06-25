@@ -1,4 +1,6 @@
 const Product = require('../models/Product')
+const path = require('path')
+const fs = require('fs')
 
 module.exports = {
   async index (req, res) {
@@ -25,24 +27,71 @@ module.exports = {
       image: filename
     }
 
-    Product.create(data)
-      .then(() => {
-        return res.redirect('/')
-      })
-      .catch(err => {
-        return res.status(400).send(err)
-      })
+    try {
+      await Product.create(data)
+      return res.redirect('/dashboard')
+    } catch (error) {
+      return res.status(400).send(error)
+    }
   },
 
   async destroy(req, res) {
     const { id } = req.params
+    
+    try {
+      const product = await Product.findById(id)
+      const pathImage = path.resolve(__dirname, '..', '..', 'uploads', product.image)
 
-    Product.findByIdAndDelete(id)
-      .then(() => {
-        return res.status(200).send()
+      fs.access(pathImage, fs.constants.F_OK, async (err) => {
+        if(!err) {
+          fs.unlinkSync(pathImage)
+          await Product.findByIdAndDelete(id)
+          return res.status(200).send()
+        } else {
+          return res.status(400).send()
+        }
       })
-      .catch((err) => {
-        return res.status(400).send(err)
-      })
+    } catch (error) {
+      return res.status(400).send(error)
+    }
   },
+
+  async update (req, res) {
+    const { id } = req.params
+    const { name, price } = req.body
+    console.log(req.file)
+
+    if(req.file) {
+      const { filename } = req.file
+      const product = await Product.findById(id)
+      const imagePath = path.resolve(__dirname, '..', '..', 'uploads', product.image)
+      
+      const data = {
+        name,
+        price,
+        image: filename
+      }
+
+      try {
+        fs.unlinkSync(imagePath)
+        await Product.findByIdAndUpdate(id, data)
+        return res.redirect('/dashboard')
+      } catch (error) {
+        return res.send('falha ao atualizar')
+      }
+    } else {
+      const data = {
+        name,
+        price,
+      } 
+
+      Product.findByIdAndUpdate(id, data)
+        .then(() => {
+          return res.redirect('/dashboard')
+        })
+        .catch(err => {
+          return res.status(400).send(err)
+        })
+    }
+  }
 }

@@ -1,99 +1,124 @@
-{% extends "base.njk" %}
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta name="theme-color" content="#fff">
+		<meta name="apple-mobile-web-app-status-bar-style" content="#fff">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/style.min.css" type="text/css">
+		<title>Mega Rancho</title>
+	</head>
+	<body>
+		<div id="preloder">
+			<div class="loader"></div>
+		</div>
 
-{% block main %}
-	<!-- Checkout Section Begin -->
-	<section class="checkout">
-		<div class="container">
-			<div class="checkout__form">
-				<h4>Detalhes da entrega</h4>
-				<form id="order-details-form">
-					<div class="row">
-						<div class="col-lg-8 col-md-6">
-							<div class="row">
-								<div class="col-lg-6">
-									<div class="checkout__input">
-										<p>Seu nome <span>*</span></p>
-										<input
-											id="client_name"
-											name="name" 
-											type="text"
-											required="required"
-										>
+		{% include "components/header.njk" %}
+
+		{% include "components/headerMobile.njk" %}
+
+		<section class="checkout">
+			<div class="container">
+				<div class="checkout__form">
+					<h4>Detalhes da entrega</h4>
+					<form id="order-details-form">
+						<div class="row">
+							<div class="col-lg-8 col-md-6">
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="checkout__input">
+											<p>Seu nome <span>*</span></p>
+											<input
+												id="client_name"
+												name="name" 
+												type="text"
+												required="required"
+											>
+										</div>
+									</div>
+								</div>
+								<div class="checkout__input">
+									<p>Endereço <span>*</span></p>
+									<input
+										id="addres"
+										name="addres" 
+										required="required" 
+										type="text" 
+										placeholder="Nome da rua e número" 
+										class="checkout__input__add"
+									>
+									<input
+										id="complement"
+										name="complement" 
+										type="text" 
+										placeholder="Apartamento, ect (opcional)"
+									>
+								</div>
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="checkout__input">
+											<p>Telefone <span>*</span></p>
+											<input
+												id="telephone"
+												name="telephone" 
+												inputmode="numeric" 
+												required="required" 
+												type="text"
+												placeholder="(99) 9 9999-9999"
+												maxlength="16"
+												onkeyup="maskTelephone(this)"
+											>
+										</div>
 									</div>
 								</div>
 							</div>
-							<div class="checkout__input">
-								<p>Endereço <span>*</span></p>
-								<input
-									id="addres"
-									name="addres" 
-									required="required" 
-									type="text" 
-									placeholder="Nome da rua e número" 
-									class="checkout__input__add"
-								>
-								<input
-									id="complement"
-									name="complement" 
-									type="text" 
-									placeholder="Apartamento, ect (opcional)"
-								>
-							</div>
-							<div class="row">
-								<div class="col-lg-6">
-									<div class="checkout__input">
-										<p>Telefone <span>*</span></p>
-										<input
-											id="telephone"
-											name="telephone" 
-											inputmode="numeric" 
-											required="required" 
-											type="text"
-											placeholder="(99) 9 9999-9999"
-											maxlength="16"
-											onkeyup="maskTelephone(this)"
-										>
+							<div class="col-lg-4 col-md-6">
+								<div class="checkout__order">
+									<h4>Seu pedido</h4>
+									<div class="checkout__order__products">Produtos
+										<span>Total</span></div>
+										<ul id="list_products">
+											<!-- js renderer -->
+										</ul>
+									<div class="checkout__order__subtotal"></div>
+									<div class="checkout__order__total">Total
+										<span>R$ <span id="checkout_total">0</span></span>
 									</div>
+									<p class="text-center">
+										Pague os produtos no momento da entrega, seja no dinheiro ou cartão para a sua 
+										comodidade.
+									</p>
+									<button type="submit" class="button__black">REALIZAR PEDIDO</button>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-4 col-md-6">
-							<div class="checkout__order">
-								<h4>Seu pedido</h4>
-								<div class="checkout__order__products">Produtos
-									<span>Total</span></div>
-									<ul id="list_products">
-										<!-- js renderer -->
-									</ul>
-								<div class="checkout__order__subtotal"></div>
-								<div class="checkout__order__total">Total
-									<span>R$ <span id="checkout_total">0</span></span>
-								</div>
-								<p class="text-center">
-									Pague os produtos no momento da entrega, seja no dinheiro ou cartão para a sua 
-									comodidade.
-								</p>
-								<button type="submit" class="button__black">REALIZAR PEDIDO</button>
-							</div>
-						</div>
-					</div>
-				</form>
+					</form>
+				</div>
+			</div>
+		</section>
+
+		<div id="preloder" class="loader__checkout" style="display: none;">
+			<div class="loader" style="display: none;"></div>
+			<div class="modal__information" style="display: none;">
+				<span></span>
+				<a href="/">
+					<button class="button__black">Voltar para a tela inicial</button>
+				</a>
 			</div>
 		</div>
-	</section>
 
-	<div id="preloder" class="loader__checkout" style="display: none;">
-		<div class="loader" style="display: none;"></div>
-		<div class="modal__information" style="display: none;">
-			<span></span>
-			<a href="/">
-				<button class="button__black">Voltar para a tela inicial</button>
-			</a>
-		</div>
-	</div>
-	<!-- Checkout Section End -->
-{% endblock %}
-
-{% block script %}
-	<script src="/js/checkout.js"></script>
-{% endblock %}
+		{% include "components/footer.njk" %}
+		<script src="/js/loader.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vanilla-masker@1.1.1/build/vanilla-masker.min.js"></script>
+      <script>
+				VMasker(document.querySelector(".checkout__input input[name=telephone]"))
+					.maskPattern("(99) 9 9999-9999");
+      </script>
+		<script src="/js/checkout.js"></script>
+	</body>
+</html>

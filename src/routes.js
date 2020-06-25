@@ -13,12 +13,13 @@ routes.get('/cart', pages.cart)
 routes.get('/checkout', pages.checkout)
 routes.get('/dashboard', pages.dashboard)
 routes.get('/new-product', pages.newProduct)
+routes.get('/edit-product/:id', pages.editProduct)
 
 // CRUD
 routes.get('/products', products.index)
 routes.post('/products', upload.single('image'), sharp.resizing, products.store)
 routes.delete('/products/:id', products.destroy)
-
+routes.post('/edit/:id',upload.single('image'), sharp.resizing, products.update)
 routes.post('/order', order.create)
 
 module.exports = routes

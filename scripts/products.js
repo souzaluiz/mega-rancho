@@ -74,9 +74,7 @@ function addEventInElements(products) {
 }
 
 // Carrega mais produtos
-document.querySelector('#btn-more').addEventListener('click', (function(event) {
-  event.preventDefault()
-
+window.moreProducts = function () {
   const buttonValue = Number(document.querySelector('#btn-more').getAttribute('name'))
   const totalPages = Number(document.querySelector('input[name=total-pages]').value)
 
@@ -99,7 +97,7 @@ document.querySelector('#btn-more').addEventListener('click', (function(event) {
       alert('Erro ao buscar mais produtos')
     })        
     })
-}))
+}
 
 function renderProducts(products) {
   products.forEach(function(product) {

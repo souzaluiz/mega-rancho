@@ -20,7 +20,7 @@ app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')))
 nunjucks.configure(path.resolve(__dirname, 'view'), {
   express: app,
   noCache: true,
-  autoescape: false,  
+  autoescape: false,
 })
 
 mongoose.connect(process.env.DB_URL, {
@@ -30,6 +30,7 @@ mongoose.connect(process.env.DB_URL, {
 })
 
 app.use(express.urlencoded({extended: true}))
+app.use(express.json())
 
 app.use(minifyHTML({
   override:      true,
