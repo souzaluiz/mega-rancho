@@ -275,6 +275,10 @@
   .over_hid {
     overflow: hidden;
   }
+
+  .checkout__order {
+    padding: 10px 5px 10px;
+  }
 }
 
 /* Small Device = 320px */
@@ -283,9 +287,5 @@
     display: block;
     text-align: center;
     padding: 10px 15px 10px;
-  }
-  
-  .checkout__order {
-    padding: 20px;
   }  
 }

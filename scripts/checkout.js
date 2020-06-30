@@ -3,10 +3,10 @@ const productsCart = JSON.parse(localStorage.getItem('cart')) || []
 productsCart.forEach(function(product){
   let total = (product.price * product.quantity).toFixed(2)
   document.querySelector('#list_products').innerHTML += `
-    <li>- ${product.quantity}x ${product.name}   <span>R$ ${total}</span></li>
+    <li><span>-${product.quantity}x ${product.name}</span><span>R$ ${total}</span></li>
   `
 })
-
+ 
 function fadeOut(element){
   element.style.opacity = 1;
 
