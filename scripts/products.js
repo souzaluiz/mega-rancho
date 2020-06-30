@@ -103,7 +103,7 @@ function renderProducts(products) {
   products.forEach(function(product) {
     document.querySelector('#list-products').innerHTML += `
       <div class="product__item">
-        <input type="hidden" name="product-id" value="${product.id}">
+        <input type="hidden" name="product-id" value="${product._id}">
         <div class="product__item__pic">
           <img src="/uploads/${product.image}" />
         </div>

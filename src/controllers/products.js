@@ -48,7 +48,8 @@ module.exports = {
           await Product.findByIdAndDelete(id)
           return res.status(200).send()
         } else {
-          return res.status(400).send()
+          await Product.findByIdAndDelete(id)
+          return res.status(200).send()
         }
       })
     } catch (error) {
@@ -59,7 +60,6 @@ module.exports = {
   async update (req, res) {
     const { id } = req.params
     const { name, price } = req.body
-    console.log(req.file)
 
     if(req.file) {
       const { filename } = req.file
