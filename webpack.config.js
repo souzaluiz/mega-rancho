@@ -2,7 +2,7 @@ const path = require('path')
 const MinifyPlugin = require('babel-minify-webpack-plugin')
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   devtool: 'source-map',
   context: path.resolve(__dirname, 'scripts'),
   entry: {

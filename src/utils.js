@@ -4,7 +4,11 @@ function formatMessage(data) {
 
   let total = 0
   let message = ''
-  message += 'Novo pedido realizado!\n\n'
+  message += 'CNPJ: 36.936718/0001-31\n'
+  message += 'END: AV CEL GARCIA 90 - SILVEZ/AM\n'
+  message += 'TEL/WHATSAPP (92) 99370-1488\n'
+  message += 'SITE: RANCHO-ONLINE.UMBLER.NET\n\n'
+  message += 'Informações\n\n'
   message += `Nome: ${clientInfo.name}\n`
   message += `Endereço: ${clientInfo.addres}\n`
 
