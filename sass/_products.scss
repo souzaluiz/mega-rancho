@@ -1,6 +1,3 @@
-/*---------------------
-  Produtos
------------------------*/
 .product {
 	padding-bottom: 10px;
 }
@@ -26,6 +23,7 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 20px;
+	margin-bottom: 0 !important;
 }
 
 .product__item {
@@ -69,7 +67,7 @@
 
 .product__item__text {
 	text-align: center;
-	padding-top: 15px;
+	padding-top: 10px;
 
 	h6 {
 		margin-bottom: 10px;

@@ -144,6 +144,14 @@
     padding-top: $padding-top-header;
   }
 
+  .grid__products {
+    .product__item__text {
+      h6 {
+        min-height: 40px;
+      }
+    }
+  }
+
   .shoping-cart {
     padding-top: $padding-top-header;
     overflow: hidden;
@@ -279,13 +287,4 @@
   .checkout__order {
     padding: 10px 5px 10px;
   }
-}
-
-/* Small Device = 320px */
-@media only screen and (max-width: 479px) {  
-  .shoping__checkout .primary-btn {
-    display: block;
-    text-align: center;
-    padding: 10px 15px 10px;
-  }  
 }
