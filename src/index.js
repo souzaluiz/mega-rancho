@@ -1,7 +1,6 @@
 require('dotenv/config')
 const express = require('express')
 const nunjucks = require('nunjucks')
-const minifyHTML = require('express-minify-html')
 const path = require('path')
 const mongoose = require('mongoose')
 require('./telegram')
@@ -31,19 +30,6 @@ mongoose.connect(process.env.DB_URL, {
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
-
-app.use(minifyHTML({
-  override:      true,
-  exception_url: false,
-  htmlMinifier: {
-    removeComments:            true,
-    collapseWhitespace:        true,
-    collapseBooleanAttributes: true,
-    removeAttributeQuotes:     true,
-    removeEmptyAttributes:     true,
-    minifyJS:                  true,    
-  }
-}))
 
 app.use(routes)
 

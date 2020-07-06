@@ -46,9 +46,16 @@ document.querySelector('#order-details-form').addEventListener('submit', functio
     telephone,
   }
 
+  const products = productsCart.map(item => {
+    return {
+      id: item.id,
+      quantity: item.quantity
+    }
+  })
+
   let data = {
     clientInfo,
-    products: productsCart,
+    products
   }
 
   fetch('/order', {
