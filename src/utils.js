@@ -24,7 +24,7 @@ module.exports = {
       const subtotal = Number((item.quantity * item.price).toFixed(2))
       message += `- ${item.quantity}x ${item.name}\n`
       total += Number((item.quantity * item.price).toFixed(2))
-      message += `  - Subtotal: R$ ${(subtotal).toFixed(2)}\n\n`
+      message += `  - VL Unit: ${(item.price).toFixed(2)} | VL Total: R$ ${(subtotal).toFixed(2)}\n\n`
     })
 
     message += `Total a pagar: R$ ${(total).toFixed(2)}`
