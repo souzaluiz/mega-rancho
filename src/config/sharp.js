@@ -8,7 +8,6 @@ module.exports = {
       next()
     } else {
       const { filename: image } = req.file
-
       const [name] = image.split('.')
       const imageName = `${Date.now()}-${name}.webp`
 

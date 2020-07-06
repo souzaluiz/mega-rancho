@@ -6,6 +6,7 @@ const upload = multer.diskStorage({
     callback(null, path.resolve(__dirname, '..', '..', 'uploads'))
   },
   filename: function (req, file, cb) {
+    file.originalname = file.originalname.replace(' ', '_')
     cb(null, file.originalname)
   }
 })
