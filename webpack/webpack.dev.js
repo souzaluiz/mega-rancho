@@ -1,10 +1,10 @@
 const path = require('path')
-const MinifyPlugin = require('babel-minify-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   devtool: 'source-map',
-  context: path.resolve(__dirname, 'scripts'),
+  context: path.resolve(__dirname, '..', 'scripts'),
   entry: {
     cart: './cart.js',
     checkout: './checkout.js',
@@ -15,18 +15,19 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.m?js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
-      }
+        use: {
+          loader: 'babel-loader'
+        }
+      } 
     ]
   },
   plugins: [
-    new MinifyPlugin({}, {
-      comments: false
-    })
+    new CleanWebpackPlugin
   ],
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'public', 'js')
+    path: path.resolve(__dirname, '..', 'public', 'js')
   },
 }
