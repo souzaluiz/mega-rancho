@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Cairo", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a,
+ul {
+  text-decoration: none;
+  list-style: none;
+}
+
+/* Reutilizaveis */
+.container {
+  max-width: 980px;
+  margin: 0 auto;  
+}
+
+.section-title {
+  margin-bottom: 50px;
+  text-align: center;
+
+  h3 {
+    color: $normal-color;
+    font-weight: 700;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      left: 0;
+      bottom: -12px;
+      right: 0;
+      height: 4px;
+      width: 80px;
+      background: $primary-color;
+      content: "";
+      margin: 0 auto;
+    }
+  }
+}
+
+/* buttons */
+.action-btn {
+  font-size: 16px;
+  color: $black-color;
+  font-weight: 800;
+  display: inline-block;
+  background-color: $white-color;
+  border: none;
+}
+
+.button__black {
+  width: 100%;
+  background-color: $black_color;
+  border: none;
+  font-weight: bold;
+  color: $white_color;
+  padding: 6px 0;
+
+  &:active {
+    background-color: $heading-color-2;
+    transform: scale(1.02);
+  }
+}
+

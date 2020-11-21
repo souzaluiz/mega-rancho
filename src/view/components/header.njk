@@ -1,38 +1,53 @@
 <header class="header">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3">
-        <div class="header__logo">
-          <a href="/">
-            <img src="img/logo.svg" />
-          </a>
-          <div class="humberger__open">
-            <i class="fa fa-bars"></i>
-          </div>
+  <div class="container header__content">
+    <div class="header__logo">
+      <a href="/">
+        <img src="img/logo.svg" />
+      </a>
+    </div>
+      
+    <nav class="navbar">
+      <ul>
+        <li class="navbar__item">
+          <a href="/">Página inicial</a>
+        </li>
+        <li class="navbar__item is-active">
+          <a href="/cart">Produtos</a>
+        </li>
+      </ul>
+    </nav> 
+
+    <div class="header__hamburger">
+      <input type="checkbox" id="checkbox">
+      <label for="checkbox">
+        <i class="fa fa-bars" ></i>
+      </label>
+
+      <nav class="header__menu-mobile">
+        <ul>
+          <li class="header__menu-item">
+            <a href="/">Página inicial</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="/cart">Produtos</a>
+          </li>
+        </ul>
+
+        <div class="header__contact">
+          <span><i class="fa fa-envelope"></i> example@email.com</span>
+          <span>Frete grátis nas compras acima de R$50</span>
         </div>
-      </div>
-      <div class="col-lg-7">
-        <nav class="header__menu">
-          <ul>
-            <li><a href="/">Página inicial</a></li>
-            <li class="active"><a href="/cart">Produtos</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="col-lg-2">
-        <div class="header__cart">
-          <ul>
-            <li>
-              <a href="/cart">
-                <i class="fa fa-shopping-bag"></i><span id="cart-quantity">0</span>
-              </a>
-            </li>
-          </ul>
-          <div class="header__cart__price">
-            <span>Total R$ </span><span id="cart-total-price">0</span>
-          </div>
-        </div>
-      </div>
-    </div>			
+      </nav>
+    </div>
+        
+    <div class="header__info">
+      <a href="/cart" class="header__bag">
+        <i class="fa fa-shopping-bag"></i> 
+        <span id="cart-quantity">0</span>
+      </a>
+
+      <span>Total R$ </span>
+      <span id="cart-total-price">0</span>
+    </div>
   </div>
 </header>

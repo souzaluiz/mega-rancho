@@ -3,7 +3,7 @@ const express = require('express')
 const nunjucks = require('nunjucks')
 const path = require('path')
 const mongoose = require('mongoose')
-require('./telegram')
+// require('./telegram')
 
 const routes = require('./routes')
 
@@ -22,7 +22,7 @@ nunjucks.configure(path.resolve(__dirname, 'view'), {
   autoescape: false,
 })
 
-mongoose.connect(process.env.DB_URL, {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false
