@@ -38,14 +38,6 @@
 		font-size: 3rem;
 	}	
 
-	#checkbox {
-		display: none;	
-	}
-
-	#checkbox:checked ~ .header__menu-mobile {
-		left: 0;
-	}
-
 	&__info {
 		font-size: 1.6rem;
 		font-weight: 600;
@@ -78,17 +70,19 @@
 	}
 
 	&__menu-mobile {
-		background-color:#2f3640;
+		background-color: $blue-dark-color;
 		position: absolute;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 
-		transition: .5s;
+		transition: opacity .4s ease-in-out;
 		width: 100vw;
 		height: 100vh;
 		top: 96px;
-		left: -500px;
+		left: 0;
+		opacity: 0;
+		pointer-events: none;
 
 		ul {
 			width: 100%;
@@ -118,6 +112,15 @@
 		}
 	}
 
+	#checkbox {
+		display: none;
+	}
+
+	#checkbox:checked ~ .header__menu-mobile {
+		opacity: 1;
+		pointer-events: all;
+	}
+
 	&__contact {
 		margin-top: 5rem;
 		font-size: 1.6rem;
@@ -129,21 +132,75 @@
 	}
 }
 
+// temp box content height
 .content {
-	background-color: red;
 	margin-top: $top-height-header-mobile;
 	height: 600px;
 }
 
-@media only screen and (max-width: 675px) {
-	.navbar {
-		display: none;
+.navbar {
+	display: none;
+
+	&__item {
+		display: inline-block;
+		margin-right: 3rem;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		& > a {
+			font-size: 1.8rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			transition: color .2s ease-in-out;
+			color: $black-color;
+		}
+
+		&.is-active {
+			a {
+				position: relative;
+
+				&::after {
+					content: "";
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					height: 2px;
+					width: 100%;
+					
+					background-color: $primary-color;
+				}
+			}
+		}
+
+		&:hover {
+			& > a {
+				color: $primary-color;
+			}
+		}
 	}
 }
 
-@media only screen and (min-width: 675px) {
+@media only screen and (min-width: 620px) {
 	.header {
-		flex-wrap: nowrap;
+		display: flex;
+		
+		&__content {
+			flex: 1;
+			flex-wrap: nowrap;
+			display: flex;
+			align-items: center;
+		}
+
+		&__logo {
+			flex: 1;
+			padding-bottom: 1rem;
+		}
+
+		&__info {
+		margin-left: 3rem;
+		}
 
 		&__hamburger {
 			display: none;
@@ -151,83 +208,7 @@
 	}
 
 	.navbar {
-		padding: 24px 0;
-	
-		ul {
-			display: flex;
-			flex-direction: row;
-
-			li {
-				list-style: none;
-				display: inline-block;
-				margin-right: 2rem;
-				position: relative;
-	
-				.header__menu__dropdown {
-					position: absolute;
-					left: 0;
-					top: 50px;
-					background: #222222;
-					width: 180px;
-					z-index: 9;
-					padding: 5px 0;
-					opacity: 0;
-					visibility: hidden;
-	
-					li {
-						margin-right: 0;
-						display: block;
-	
-						&:hover {
-							& > a {
-								color: $primary-color;
-							}
-						}
-	
-						a {
-							text-transform: capitalize;
-							color: $white-color;
-							font-weight: 400;
-							padding: 5px 15px;
-						}
-					}
-				}
-	
-				&.active {
-					a {
-						color: $primary-color;
-					}
-				}
-	
-				&:hover {
-					.header__menu__dropdown {
-						top: 30px;
-						opacity: 1;
-						visibility: visible;
-					}
-	
-					& > a {
-						color: $primary-color;
-					}
-				}
-	
-				&:last-child {
-					margin-right: 0;
-				}
-	
-				a {
-					font-size: 1.2rem;
-					background-color: red;
-					color: $heading-color-2;
-					text-transform: uppercase;
-					font-weight: 700;
-					letter-spacing: 1px;
-					padding: 5px 0;
-					display: block;
-				}
-			}
-		}
+		display: block;
 	}
 }
-
 
