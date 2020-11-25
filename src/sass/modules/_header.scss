@@ -4,11 +4,6 @@
 	background-color: $white-color;
 	width: 100%;
 	min-height: 90px;
-
-	position: fixed;
-	z-index: 500;
-	top: 0;
-	left: 0;
 	
 	&__content {
 		display: flex;
@@ -81,6 +76,7 @@
 		height: 100vh;
 		top: 96px;
 		left: 0;
+		z-index: 500;
 		opacity: 0;
 		pointer-events: none;
 
@@ -132,12 +128,6 @@
 	}
 }
 
-// temp box content height
-.content {
-	margin-top: $top-height-header-mobile;
-	height: 600px;
-}
-
 .navbar {
 	display: none;
 
@@ -185,6 +175,7 @@
 @media only screen and (min-width: 620px) {
 	.header {
 		display: flex;
+		min-height: 80px;
 		
 		&__content {
 			flex: 1;

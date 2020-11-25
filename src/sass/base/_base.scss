@@ -12,9 +12,15 @@ html {
 html,
 body {
   height: 100%;
-  font-family: "Cairo", sans-serif;
   -webkit-font-smoothing: antialiased;
+  background-color: $background-color;
 }
+
+button,
+body {
+  font-family: "Cairo", sans-serif;
+}
+
 a,
 ul {
   text-decoration: none;
@@ -25,29 +31,6 @@ ul {
 .container {
   max-width: 980px;
   margin: 0 auto;  
-}
-
-.section-title {
-  margin-bottom: 50px;
-  text-align: center;
-
-  h3 {
-    color: $normal-color;
-    font-weight: 700;
-    position: relative;
-
-    &:after {
-      position: absolute;
-      left: 0;
-      bottom: -12px;
-      right: 0;
-      height: 4px;
-      width: 80px;
-      background: $primary-color;
-      content: "";
-      margin: 0 auto;
-    }
-  }
 }
 
 /* buttons */

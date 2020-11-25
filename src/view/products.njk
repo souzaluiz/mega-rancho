@@ -15,63 +15,93 @@
 		<main>
 			{% include "components/header.njk" %}
 
-			<section class="container content">
-				<a href="http://www.google.com">Google</a>
+			<section class="container products">
+				<h2 class="products__title">Produtos</h2>
+
+				<div class="products__list">
+					<div class="product-card">
+						<input type="hidden" name="product-id" value="{{product._id}}">
+						<div class="product-card__image">
+							<img src="http://placekitten.com/700/700">
+						</div>
+						
+						<span class="product-card__name">Arroz</span>
+
+						<span class="product-card__price">R$ 2.50</span>
+						
+						<button class="product-card__button">Adicionar ao carrinho</button>
+					</div>
+
+					<div class="product-card">
+						<input type="hidden" name="product-id" value="{{product._id}}">
+						<div class="product-card__image">
+							<img src="http://placekitten.com/700/700">
+						</div>
+						
+						<span class="product-card__name">Arroz</span>
+
+						<span class="product-card__price">R$ 2.50</span>
+						
+						<button class="product-card__button">Adicionar ao carrinho</button>
+					</div>
+
+					<div class="product-card">
+						<input type="hidden" name="product-id" value="{{product._id}}">
+						<div class="product-card__image">
+							<img src="http://placekitten.com/700/700">
+						</div>
+						
+						<span class="product-card__name">Arroz</span>
+
+						<span class="product-card__price">R$ 2.50</span>
+						
+						<button class="product-card__button">Adicionar ao carrinho</button>
+					</div>
+
+					<div class="product-card">
+						<input type="hidden" name="product-id" value="{{product._id}}">
+						<div class="product-card__image">
+							<img src="http://placekitten.com/700/700">
+						</div>
+						
+						<span class="product-card__name">Arroz</span>
+
+						<span class="product-card__price">R$ 2.50</span>
+						
+						<button class="product-card__button">Adicionar ao carrinho</button>
+					</div>
+					
+				</div>
 			</section>
 
 			{% include "components/footer.njk" %}
 		</main>
-		{# <main class="container">
-			{% include "components/header.njk" %}
-
-			<section class="product">
-				<input type="hidden" name="total-pages" value="{{totalPages}}">
-				<div class="container">
-					<div class="section-title product__title">
-						<h3>Produtos</h3>
-					</div>
-					<div class="grid__products" id="list-products">
-						<!-- único produto -->
-						{% for product in products %}					
-							<div class="product__item">
-								<input type="hidden" name="product-id" value="{{product._id}}">
-								<div class="product__item__pic">
-									<img src="/uploads/{{product.image}}">
-								</div>
-								<div class="product__item__text">
-									<h6>
-										<a href="#">{{product.name}}</a>
-									</h6>
-									<h5>R$ <span>{{(product.price).toFixed(2)}}</span></h5>
-								</div>
-								<div class="product__quantity">
-									<button class="any__less action-btn">-</button>
-									<span class="quantity__value">1</span>
-									<button class="more action-btn">+</button>
-								</div>
-								<button class="button__black" id="add__product__to__cart">ADICIONAR</button>
-							</div>
-						{% endfor %}
-					</div>
-					{% if totalPages > 1 %}
-						<div class="container buttons">
-							<a href="/cart">
-								<button>Ver carrinho</button>
-							</a>
-							<button id="btn-more" onclick="moreProducts()" class="more__products" name="2">Mais produtos</button>
-						</div>
-					{% else %}
-						<div class="container buttons">
-							<a href="/cart">
-								<button>Ver carrinho</button>
-							</a>
-						</div>
-					{% endif %}
+		{#
+			<div class="grid__products" id="list-products">
+					<!-- único produto -->
+					{% for product in products %}					
+						
+					{% endfor %}
 				</div>
-			</section>
-		</main>
-		{% include "components/footer.njk" %}
-		<script src="/js/loader.js"></script>
-		<script src="/js/products.js"></script> #}
+				{% if totalPages > 1 %}
+					<div class="container buttons">
+						<a href="/cart">
+							<button>Ver carrinho</button>
+						</a>
+						<button id="btn-more" onclick="moreProducts()" class="more__products" name="2">Mais produtos</button>
+					</div>
+				{% else %}
+					<div class="container buttons">
+						<a href="/cart">
+							<button>Ver carrinho</button>
+						</a>
+					</div>
+				{% endif %}
+			</div>
+		</section>
+	</main>
+	{% include "components/footer.njk" %}
+	<script src="/js/loader.js"></script>
+	<script src="/js/products.js"></script> #}
 	</body>
 </html>
