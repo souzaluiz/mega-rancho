@@ -1,5 +1,6 @@
 .products {
 	min-height: 600px;
+	margin-bottom: 2rem;
 
 	&__title {
 		color: $normal-color;
@@ -77,6 +78,34 @@
 		&:hover,
 		&:active {
 			background-color: $heading-color-2;
+		}
+	}
+}
+
+@media only screen and (min-width: 620px) {
+	.products {
+		&__list {
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 1.5rem;
+		}
+	}
+
+	.product-card {
+		&__image {
+			height: 200px;
+		}
+
+		&__button {
+			padding: 6px 0;
+		}
+	}
+}
+
+@media only screen and (min-width: 750px) {
+	.products {
+		&__list {
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 2rem;
 		}
 	}
 }
