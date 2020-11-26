@@ -73,10 +73,9 @@
 		cursor: pointer;
 		margin-top: 5px;
 		margin-bottom: 5px;
-		padding: 3px 0;
+		padding: 4px 0;
 
-		&:hover,
-		&:active {
+		&:hover {
 			background-color: $heading-color-2;
 		}
 	}

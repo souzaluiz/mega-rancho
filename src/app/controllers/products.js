@@ -1,4 +1,4 @@
-const Product = require('../models/Product')
+const Product = require('../../models/Product')
 const path = require('path')
 const fs = require('fs')
 
@@ -29,8 +29,9 @@ module.exports = {
 
     try {
       await Product.create(data)
-      return res.redirect('/dashboard')
+      //return res.redirect('/dashboard')
     } catch (error) {
+      console.log(error)
       return res.status(400).send(error)
     }
   },

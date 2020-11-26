@@ -15,7 +15,7 @@ module.exports = {
         .resize(250)
         .webp({quality: 55})
         .toFile(
-          path.resolve(__dirname, '..', '..', 'uploads', imageName)
+          path.resolve(__dirname, '..','..', '..', 'uploads', imageName)
         )
         .then(() => {
           fs.unlinkSync(req.file.path)

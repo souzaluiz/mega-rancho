@@ -1,19 +1,19 @@
 const express = require('express')
 const routes = express.Router()
 
-const products = require('./controllers/products')
-const order = require('./controllers/order')
-const pages = require('./controllers/pages')
-const upload = require('./config/multer')
-const sharp = require('./config/sharp')
+const products = require('./app/controllers/products')
+const order = require('./app/controllers/order')
+const PagesController = require('./app/controllers/PagesController')
+const upload = require('./app/config/multer')
+const sharp = require('./app/config/sharp')
 
 // Pages
-routes.get('/', pages.home)
-routes.get('/cart', pages.cart)
-routes.get('/checkout', pages.checkout)
-routes.get('/dashboard', pages.dashboard)
-routes.get('/new-product', pages.newProduct)
-routes.get('/edit-product/:id', pages.editProduct)
+routes.get('/', PagesController.products)
+routes.get('/cart', PagesController.cart)
+routes.get('/checkout', PagesController.checkout)
+routes.get('/dashboard', PagesController.dashboard)
+routes.get('/new-product', PagesController.newProduct)
+routes.get('/edit-product/:id', PagesController.editProduct)
 
 // CRUD
 routes.get('/products', products.index)

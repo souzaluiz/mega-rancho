@@ -1,7 +1,7 @@
-const telegram = require('../telegram')
-const { formatMessage } = require('../utils')
-const Chat = require('../models/Chat')
-const Product = require('../models/Product')
+const telegram = require('../../telegram')
+const { formatMessage } = require('../../utils')
+const Chat = require('../../models/Chat')
+const Product = require('../../models/Product')
 
 module.exports = {
   async create(req, res) {

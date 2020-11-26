@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#fff">
+		<meta name="apple-mobile-web-app-status-bar-style" content="#fff">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+		<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<link rel="stylesheet" href="/css/styles.css" type="text/css">
+		<title>Mega Rancho</title>
+	</head>
+	<body>
+		<main>
+			{% include "components/header.njk" %}
+
+			<section class="container products">
+				<h2 class="products__title">Produtos</h2>
+
+				<div class="products__list">
+					<input type="hidden" name="total-pages" value="{{totalPages}}">
+					<input type="hidden" name="current-page" value="{{currentPage}}">
+
+					{% for product in products %}
+						<div class="product-card">
+							<input type="hidden" name="product-id" value="{{product._id}}">
+							<div class="product-card__image">
+								<img src="http://localhost:3333/uploads/{{product.image}}">
+							</div>
+							
+							<span class="product-card__name">{{product.name}}</span>
+
+							<span class="product-card__price">R$ {{product.price}}</span>
+							
+							<button class="product-card__button">Adicionar ao carrinho</button>
+						</div>
+					{% endfor %}										
+				</div>
+			</section>
+
+			<div class="pagination">
+				{% for page in pages %}
+					{{page}}
+				{% endfor %}
+			</div>
+
+			{% include "components/footer.njk" %}
+		</main>
+		<script src="/js/products.js"></script> 
+		{#
+			<script src="/js/loader.js"></script>
+		#}
+	</body>
+</html>
