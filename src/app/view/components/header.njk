@@ -1,22 +1,5 @@
 <header class="header">
   <div class="container header__content">
-    <div class="header__logo">
-      <a href="/">
-        <img src="img/logo.svg" />
-      </a>
-    </div>
-      
-    <nav class="navbar">
-      <ul>
-        <li class="navbar__item is-active">
-          <a href="/">Página inicial</a>
-        </li>
-        <li class="navbar__item">
-          <a href="/cart">Produtos</a>
-        </li>
-      </ul>
-    </nav> 
-
     <div class="header__hamburger">
       <input type="checkbox" id="checkbox">
       <label for="checkbox">
@@ -26,10 +9,10 @@
       <nav class="header__menu-mobile">
         <ul>
           <li class="header__menu-item">
-            <a href="/">Página inicial</a>
+            <a href="/">Produtos</a>
           </li>
           <li class="header__menu-item">
-            <a href="/cart">Produtos</a>
+            <a href="/cart">Carrinho</a>
           </li>
         </ul>
 
@@ -39,15 +22,29 @@
         </div>
       </nav>
     </div>
-        
-    <div class="header__info">
-      <a href="/cart" class="header__bag">
-        <i class="fa fa-shopping-bag"></i> 
-        <span id="cart-quantity">0</span>
-      </a>
 
-      <span>Total R$ </span>
-      <span id="cart-total-price">0</span>
+    <div class="header__logo">
+      <a href="/">
+        <img src="img/logo.svg" />
+      </a>
+    </div>
+      
+    <nav class="navbar">
+      <ul>
+        <li class="navbar__item is-active">
+          <a href="/">Produtos</a>
+        </li>
+        <li class="navbar__item">
+          <a href="/cart">Carrinho</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header__cart">
+      <a href="/cart" class="header__basket">
+        <i class="fa fa-shopping-basket"></i> 
+        <span id="cart-quantity">99</span>
+      </a>
     </div>
   </div>
 </header>
