@@ -1,10 +1,10 @@
 const Product = require('../../models/Product')
-const pagination = require('./helpers/pagination')
+const paginationCreate = require('./helpers/paginationCreate')
 
 class PagesController {
   async products (req, res) {
     const currentPage = Number(req.query.page || 1)
-    const limit = Number(req.query.limit || 1)
+    const limit = Number(req.query.limit || 15)
     
     const skip = (currentPage - 1) * limit
 
@@ -19,16 +19,14 @@ class PagesController {
     
     const totalPages = Math.ceil(totalProducts / limit)
 
-    const pages = []
-    for(let page = 1; page <= totalPages; page++) {
-      pages.push(`<a href="/?page=${page}">${page}</a>`)
-    }
+    const pagination = paginationCreate(currentPage, totalPages)
 
-    // 1° Número maximo de paginações
-    // 2° Número dos links laterais maximo/2
-    // 3° 
-
-    return res.render('products', {products, totalPages, currentPage, pages})
+    return res.render('products', {
+      products, 
+      totalPages, 
+      currentPage, 
+      pagination
+    })
   }
 
   async cart (req, res) {

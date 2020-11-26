@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm install && build:sass && node src/index.js",
     "nodemon": "nodemon src/server.js",
-    "browser-sync": "browser-sync start --proxy 'localhost:3333' --files 'public/**, src/view/**'",
+    "browser-sync": "browser-sync start --proxy 'localhost:3333' --files 'public/**, src/app/view/**'",
     "dev:sass": "sass --watch --style=compressed ./src/sass/index.scss:public/css/styles.css",
     "dev": "npm-run-all -p nodemon dev:sass browser-sync"
   },
