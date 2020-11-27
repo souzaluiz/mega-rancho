@@ -52,31 +52,33 @@
 
 .product-card {
 	background-color: $white-color;
-	overflow: hidden;
 	border: 1px solid rgba($color: #000000, $alpha: 0.1);
-	padding: 0.5rem;
 
 	&__image {
 		height: 150px;
-		overflow: hidden;
 
 		img {
 			width: 100%;
 			height: 100%;
-			object-fit: contain;
+			object-fit: cover;
 		}
+	}
+
+	&__info {
+		padding: 0 .5rem .5rem .5rem
 	}
 
 	&__name {
 		display: block;
-		font-size: 2rem;
+		font-size: 1.5rem;
 		font-weight: 600;
-		margin-left: .4rem;
+    white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 
 	&__price {
 		font-size: 1.4rem;
-		margin-left: .5rem;
+		margin-left: .4rem;
 		font-weight: 600;
 		color: $para-color;
 	}
