@@ -1,12 +1,3 @@
-const totalPages = Number(document.querySelector('input[name=total-pages]').value)
-const currentPage = Number(document.querySelector('input[name=current-page]').value)
-
-function createPagination () {
-  console.log(totalPages)
-}
-
-createPagination()
-
 // const products = document.querySelectorAll('.product__item')
 
 // // Percorre todos os produtos para adicionar eventos de click
@@ -18,7 +9,7 @@ createPagination()
 //     const buttonMore = element.querySelector('.product__quantity .more')
 //     const productQuantityElement = element.querySelector('.product__quantity .quantity__value')
 //     const addToCartButton = element.querySelector('#add__product__to__cart')
-    
+
 //     buttonAnyLess.addEventListener('click', function () {
 //       let quantityValue = Number(productQuantityElement.innerHTML)
 //       if(quantityValue > 1) {
@@ -30,7 +21,7 @@ createPagination()
 //       let quantityValue = Number(productQuantityElement.innerHTML)
 //       productQuantityElement.innerHTML = quantityValue + 1
 //     })
-    
+
 //     addToCartButton.addEventListener('click', function () {
 //       // Informações do carrinho
 //       const cartQuantityElement = document.querySelector('#cart-quantity')
@@ -50,7 +41,7 @@ createPagination()
 //       const updatedProducts = productsCart.map(function (item) {
 //         if(item.id == productId) {
 //           productExists = true
-//           item.quantity += productQuantity   
+//           item.quantity += productQuantity
 //         }
 //         return item
 //       })
@@ -72,7 +63,7 @@ createPagination()
 //             quantity: productQuantity
 //           }
 //         ]
-    
+
 //         localStorage.setItem('cart', JSON.stringify(productInfo))
 //         cartQuantityElement.innerHTML = cartQuantity + 1
 //         totalPriceElement.innerHTML = (totalPrice + priceTotalProduct).toFixed(2)

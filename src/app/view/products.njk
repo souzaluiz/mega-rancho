@@ -18,25 +18,30 @@
 			<section class="container products">
 				<h2 class="products__title">Produtos</h2>
 
-				<div class="products__list">
-					<input type="hidden" name="total-pages" value="{{totalPages}}">
-					<input type="hidden" name="current-page" value="{{currentPage}}">
+				{% if products === 0 %}
+					<div class="products__void">
+						<span>Desculpe parece não haver produtos disponíveis</span>
 
-					{% for product in products %}
-						<div class="product-card">
-							<input type="hidden" name="product-id" value="{{product._id}}">
-							<div class="product-card__image">
-								<img src="http://localhost:3333/uploads/{{product.image}}">
+						<img src="/img/bad.svg" alt="Emoji bad">
+					</div>
+				{% else %}
+					<div class="products__list">
+						{% for product in products %}
+							<div class="product-card">
+								<input type="hidden" name="product-id" value="{{product._id}}">
+								<div class="product-card__image">
+									<img src="http://localhost:3333/uploads/{{product.image}}">
+								</div>
+
+								<span class="product-card__name">{{product.name}}</span>
+
+								<span class="product-card__price">R$ {{product.price}}</span>
+
+								<button class="product-card__button">Adicionar ao carrinho</button>
 							</div>
-
-							<span class="product-card__name">{{product.name}}</span>
-
-							<span class="product-card__price">R$ {{product.price}}</span>
-
-							<button class="product-card__button">Adicionar ao carrinho</button>
-						</div>
-					{% endfor %}
-				</div>
+						{% endfor %}
+					</div>
+				{% endif %}
 			</section>
 
 			<div class="pagination">

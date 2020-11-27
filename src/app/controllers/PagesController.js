@@ -4,7 +4,7 @@ const paginationCreate = require('./helpers/paginationCreate')
 class PagesController {
   async products (req, res) {
     const currentPage = Number(req.query.page || 1)
-    const limit = Number(req.query.limit || 1)
+    const limit = Number(req.query.limit || 15)
 
     const skip = (currentPage - 1) * limit
 
@@ -13,13 +13,18 @@ class PagesController {
       Product.find().limit(limit).skip(skip)
     ])
 
-    if (totalProducts === 0) {
-      // retorna página vazia
-    }
-
     const totalPages = Math.ceil(totalProducts / limit)
 
     const pagination = paginationCreate(currentPage, totalPages)
+
+    if (totalProducts === 0) {
+      return res.render('products', {
+        products: 0,
+        totalPages: 1,
+        currentPage: 1,
+        pagination: [1]
+      })
+    }
 
     return res.render('products', {
       products,

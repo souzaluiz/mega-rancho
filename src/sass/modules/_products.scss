@@ -23,6 +23,24 @@
     }
 	}
 
+	&__void {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		min-height: 350px;
+
+		font-size: 1.8rem;
+		font-weight: 600;
+		text-align: center;
+
+		img {
+			margin-top: 1rem;
+			width: 70px;
+		}
+	}
+
 	&__list {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
