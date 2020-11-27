@@ -28,14 +28,14 @@
 							<div class="product-card__image">
 								<img src="http://localhost:3333/uploads/{{product.image}}">
 							</div>
-							
+
 							<span class="product-card__name">{{product.name}}</span>
 
 							<span class="product-card__price">R$ {{product.price}}</span>
-							
+
 							<button class="product-card__button">Adicionar ao carrinho</button>
 						</div>
-					{% endfor %}										
+					{% endfor %}
 				</div>
 			</section>
 
@@ -69,7 +69,22 @@
 
 			{% include "components/footer.njk" %}
 		</main>
-		<script src="/js/products.js"></script> 
+		<script>
+			let menuOpen = document.querySelector('.js-menu-open')
+			let menuClose = document.querySelector('.js-menu-close')
+			let menuMobile = document.querySelector('.js-menu-mobile')
+
+			menuOpen.addEventListener('click', function () {
+				menuMobile.classList.toggle('is-visible')
+				document.body.style.overflow = 'hidden'
+			})
+
+			menuClose.addEventListener('click', function () {
+				menuMobile.classList.toggle('is-visible')
+				document.body.style.overflow = 'auto'
+			})
+		</script>
+		<script src="/js/products.js"></script>
 		{#
 			<script src="/js/loader.js"></script>
 		#}

@@ -5,26 +5,26 @@ class PagesController {
   async products (req, res) {
     const currentPage = Number(req.query.page || 1)
     const limit = Number(req.query.limit || 15)
-    
+
     const skip = (currentPage - 1) * limit
 
     const [totalProducts, products] = await Promise.all([
       Product.countDocuments(),
       Product.find().limit(limit).skip(skip)
     ])
-    
-    if(totalProducts === 0) {
+
+    if (totalProducts === 0) {
       // retorna página vazia
-    }   
-    
+    }
+
     const totalPages = Math.ceil(totalProducts / limit)
 
     const pagination = paginationCreate(currentPage, totalPages)
 
     return res.render('products', {
-      products, 
-      totalPages, 
-      currentPage, 
+      products,
+      totalPages,
+      currentPage,
       pagination
     })
   }
@@ -42,7 +42,7 @@ class PagesController {
     const totalProducts = await Product.countDocuments()
     const totalPages = Math.ceil(totalProducts / limit)
 
-    return res.render('dashboard', {totalPages})
+    return res.render('dashboard', { totalPages })
   }
 
   async newProduct (req, res) {
@@ -53,7 +53,7 @@ class PagesController {
     const { id } = req.params
     const product = await Product.findById(id)
 
-    return res.render('edit_product', {product})
+    return res.render('edit_product', { product })
   }
 }
 

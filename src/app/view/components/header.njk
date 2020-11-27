@@ -1,34 +1,17 @@
 <header class="header">
-  <div class="container header__content">
+	{% include "./menu-mobile.njk" %}
+
+  <div class="header__content container">
     <div class="header__hamburger">
-      <input type="checkbox" id="checkbox">
-      <label for="checkbox">
-        <i class="fa fa-bars" ></i>
-      </label>
-
-      <nav class="header__menu-mobile">
-        <ul>
-          <li class="header__menu-item">
-            <a href="/">Produtos</a>
-          </li>
-          <li class="header__menu-item">
-            <a href="/cart">Carrinho</a>
-          </li>
-        </ul>
-
-        <div class="header__contact">
-          <span><i class="fa fa-envelope"></i> example@email.com</span>
-          <span>Frete grátis nas compras acima de R$50</span>
-        </div>
-      </nav>
+      <i class="fa fa-bars js-menu-open"></i>
     </div>
 
     <div class="header__logo">
       <a href="/">
-        <img src="img/logo.svg" />
+        <img src="/img/logo.svg" />
       </a>
     </div>
-      
+
     <nav class="navbar">
       <ul>
         <li class="navbar__item is-active">
@@ -42,7 +25,7 @@
 
     <div class="header__cart">
       <a href="/cart" class="header__basket">
-        <i class="fa fa-shopping-basket"></i> 
+        <i class="fa fa-shopping-basket"></i>
         <span id="cart-quantity">99</span>
       </a>
     </div>

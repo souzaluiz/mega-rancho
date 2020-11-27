@@ -1,26 +1,27 @@
+@import "menu-mobile";
 
 .header {
 	border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
 	background-color: $white-color;
 	width: 100%;
-	
+
 	&__content {
 		display: flex;
 		align-items: center;
-		
+
 		padding: .5rem;
 	}
 
-	&__hamburger {		
+	&__hamburger {
 		flex: 1;
-		font-size: 3.5rem;
+		font-size: 3.2rem;
 		margin-left: .4rem;
-	}	
-	
+	}
+
 	&__logo {
 		flex: 2;
 		text-align: center;
-		
+
 		img {
 			height: 40px;
 		}
@@ -35,9 +36,9 @@
 		margin-right: .5rem;
 		position: relative;
 		display: inline-block;
-		
+
 		i {
-			font-size: 3rem;
+			font-size: 2.6rem;
 			color: $primary-color;
 		}
 
@@ -52,75 +53,12 @@
 
 			border-radius: 50%;
 			width: 20px;
-			height: 20px;	
+			height: 20px;
 			font-size: 1rem;
 			font-weight: 700;
 			top: -4px;
 			right: -6px;
 		}
-	}
-
-	&__menu-mobile {
-		background-color: $blue-dark-color;
-		position: absolute;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-
-		transition: opacity .4s ease-in-out;
-		width: 100vw;
-		height: 100vh;
-		top: 96px;
-		left: 0;
-		z-index: 500;
-		opacity: 0;
-		pointer-events: none;
-
-		ul {
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-		}
-	}
-
-	&__menu-item {
-		border-bottom: 1.5px solid $para-color;
-		width: 100%;
-		text-align: center;
-		transition: background-color .3s;
-
-		& > a {
-			color: $white-color;
-			font-size: 1.8rem;
-			padding: 1rem 0;
-			
-			text-transform: uppercase;
-			display: block;
-		}
-
-		&:active {
-			background-color:#3a4049;
-		}
-	}
-
-	#checkbox {
-		display: none;
-	}
-
-	#checkbox:checked ~ .header__menu-mobile {
-		opacity: 1;
-		pointer-events: all;
-	}
-
-	&__contact {
-		margin-top: 5rem;
-		font-size: 1.6rem;
-		color: $white-color;
-
-		display: flex;
-		flex-direction: column;
-		text-align: center;
 	}
 }
 
@@ -154,7 +92,7 @@
 					bottom: 0;
 					height: 2px;
 					width: 100%;
-					
+
 					background-color: $primary-color;
 				}
 			}
@@ -171,7 +109,7 @@
 @media only screen and (min-width: 620px) {
 	.header {
 		display: flex;
-		
+
 		&__content {
 			flex: 1;
 			display: flex;
