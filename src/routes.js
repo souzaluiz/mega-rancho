@@ -4,8 +4,8 @@ const routes = express.Router()
 const products = require('./app/controllers/products')
 const order = require('./app/controllers/order')
 const PagesController = require('./app/controllers/PagesController')
-const upload = require('./app/config/multer')
-const sharp = require('./app/config/sharp')
+const upload = require('./config/multer')
+const sharp = require('./config/sharp')
 
 // Pages
 routes.get('/', PagesController.products)
@@ -19,7 +19,7 @@ routes.get('/edit-product/:id', PagesController.editProduct)
 routes.get('/products', products.index)
 routes.post('/products', upload.single('image'), sharp.resizing, products.store)
 routes.delete('/products/:id', products.destroy)
-routes.post('/edit/:id',upload.single('image'), sharp.resizing, products.update)
+routes.post('/edit/:id', upload.single('image'), sharp.resizing, products.update)
 routes.post('/order', order.create)
 
 module.exports = routes
