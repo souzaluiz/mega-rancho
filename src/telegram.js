@@ -10,10 +10,10 @@ bot.onText(/\/start/, async (msg) => {
 
   const [exists] = await Chat.find()
 
-  if(exists) {
-    await Chat.findByIdAndUpdate(exists._id, {chatId})
+  if (exists) {
+    await Chat.findByIdAndUpdate(exists._id, { chatId })
   } else {
-    await Chat.create({chatId})
+    await Chat.create({ chatId })
   }
 
   bot.sendMessage(chatId, 'Cadastrado no sistema!')
