@@ -4,7 +4,7 @@ const paginationCreate = require('./helpers/paginationCreate')
 class PagesController {
   async products (req, res) {
     const currentPage = Number(req.query.page || 1)
-    const limit = Number(req.query.limit || 15)
+    const limit = Number(req.query.limit || 1)
 
     const skip = (currentPage - 1) * limit
 

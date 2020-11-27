@@ -1,5 +1,4 @@
 .products {
-	min-height: 600px;
 	margin-bottom: 2rem;
 	padding: 0 1rem;
 
@@ -23,7 +22,7 @@
       margin: 0 auto;
     }
 	}
-	
+
 	&__list {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
