@@ -1,11 +1,11 @@
-require('dotenv/config')
-const express = require('express')
-const nunjucks = require('nunjucks')
-const path = require('path')
-const mongoose = require('mongoose')
+import 'dotenv/config'
+import express from 'express'
+import nunjucks from 'nunjucks'
+import path from 'path'
+import mongoose from 'mongoose'
 // require('./telegram')
 
-const routes = require('./routes')
+import routes from './routes'
 
 const app = express()
 const PORT = process.env.PORT || 3333

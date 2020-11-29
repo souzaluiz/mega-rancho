@@ -1,11 +1,12 @@
-const express = require('express')
-const routes = express.Router()
+import express from 'express'
 
-const products = require('./app/controllers/products')
-const order = require('./app/controllers/order')
-const PagesController = require('./app/controllers/PagesController')
-const upload = require('./config/multer')
-const sharp = require('./config/sharp')
+import products from './app/controllers/products'
+import order from './app/controllers/order'
+import PagesController from './app/controllers/PagesController'
+import upload from './config/multer'
+import sharp from './config/sharp'
+
+const routes = express.Router()
 
 // Pages
 routes.get('/', PagesController.products)
@@ -22,4 +23,4 @@ routes.delete('/products/:id', products.destroy)
 routes.post('/edit/:id', upload.single('image'), sharp.resizing, products.update)
 routes.post('/order', order.create)
 
-module.exports = routes
+export default routes

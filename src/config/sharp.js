@@ -4,7 +4,7 @@ const fs = require('fs')
 
 module.exports = {
   resizing (req, res, next) {
-    if(!req.file) {
+    if (!req.file) {
       next()
     } else {
       const { filename: image } = req.file
@@ -13,7 +13,7 @@ module.exports = {
 
       sharp(req.file.path)
         .resize(250)
-        .webp({quality: 55})
+        .webp({ quality: 55 })
         .toFile(
           path.resolve(__dirname, '..', '..', 'uploads', imageName)
         )
@@ -25,6 +25,6 @@ module.exports = {
         .catch(err => {
           return res.status(400).send(err)
         })
-    } 
+    }
   }
 }

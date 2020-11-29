@@ -1,5 +1,5 @@
-const Product = require('../../models/Product')
-const paginationCreate = require('./helpers/paginationCreate')
+import Product from '../../models/Product'
+import paginationCreate from './helpers/paginationCreate'
 
 class PagesController {
   async products (req, res) {
@@ -62,4 +62,4 @@ class PagesController {
   }
 }
 
-module.exports = new PagesController()
+export default new PagesController()

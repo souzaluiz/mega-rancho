@@ -1,7 +1,7 @@
-const { Schema, model } = require('mongoose')
+import { Schema, model } from 'mongoose'
 
 const Chat = new Schema({
   chatId: Number
 })
 
-module.exports = model('chat', Chat)
+export default model('chat', Chat)

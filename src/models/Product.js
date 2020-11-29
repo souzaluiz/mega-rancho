@@ -1,11 +1,11 @@
-const { Schema, model } = require('mongoose')
+import { Schema, model } from 'mongoose'
 
 const Product = new Schema({
   name: String,
   price: Number,
-  image: String,
+  image: String
 }, {
   timestamps: true
 })
 
-module.exports = model('product', Product)
+export default model('product', Product)
