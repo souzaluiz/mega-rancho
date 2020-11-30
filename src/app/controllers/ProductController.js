@@ -1,8 +1,11 @@
-const Product = require('../../models/Product')
-const path = require('path')
-const fs = require('fs')
+import path from 'path'
+import fs from 'fs/promises'
 
-module.exports = {
+import Product from '../models/Product'
+import StorageService from '../services/StorageService'
+import { cleanPrice } from './helpers/convertMoney'
+
+class ProductController {
   async index (req, res) {
     let { page } = req.query
 
@@ -15,36 +18,39 @@ module.exports = {
       .skip(skip)
 
     return res.send(products)
-  },
+  }
 
   async store (req, res) {
-    const { filename } = req.file
+    const { filename, path } = req.file
     const { name, price } = req.body
 
-    const data = {
-      name,
-      price,
-      image: filename
-    }
-
     try {
+      const { imageName, imageUrl } = await StorageService.save(path, filename)
+
+      const data = {
+        name,
+        price: cleanPrice(price),
+        imageName,
+        imageUrl
+      }
+
       await Product.create(data)
-      //return res.redirect('/dashboard')
+
+      return res.redirect('/new-product')
     } catch (error) {
-      console.log(error)
       return res.status(400).send(error)
     }
-  },
+  }
 
-  async destroy(req, res) {
+  async destroy (req, res) {
     const { id } = req.params
-    
+
     try {
       const product = await Product.findById(id)
       const pathImage = path.resolve(__dirname, '..', '..', 'uploads', product.image)
 
       fs.access(pathImage, fs.constants.F_OK, async (err) => {
-        if(!err) {
+        if (!err) {
           fs.unlinkSync(pathImage)
           await Product.findByIdAndDelete(id)
           return res.status(200).send()
@@ -56,17 +62,17 @@ module.exports = {
     } catch (error) {
       return res.status(400).send(error)
     }
-  },
+  }
 
   async update (req, res) {
     const { id } = req.params
     const { name, price } = req.body
 
-    if(req.file) {
+    if (req.file) {
       const { filename } = req.file
       const product = await Product.findById(id)
       const imagePath = path.resolve(__dirname, '..', '..', 'uploads', product.image)
-      
+
       const data = {
         name,
         price,
@@ -83,8 +89,8 @@ module.exports = {
     } else {
       const data = {
         name,
-        price,
-      } 
+        price
+      }
 
       Product.findByIdAndUpdate(id, data)
         .then(() => {
@@ -96,3 +102,5 @@ module.exports = {
     }
   }
 }
+
+export default new ProductController()

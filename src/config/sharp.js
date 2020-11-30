@@ -1,30 +1,30 @@
-const sharp = require('sharp')
-const path = require('path')
-const fs = require('fs')
+import sharp from 'sharp'
+import path from 'path'
+import fs from 'fs/promises'
+import { v4 as uuidv4 } from 'uuid'
 
-module.exports = {
-  resizing (req, res, next) {
+export default {
+  async resizing (req, res, next) {
     if (!req.file) {
       next()
-    } else {
-      const { filename: image } = req.file
-      const [name] = image.split('.')
-      const imageName = `${Date.now()}-${name}.webp`
+    }
 
-      sharp(req.file.path)
-        .resize(250)
+    const datetime = Date.now()
+    const randomId = uuidv4()
+    const imageName = `${randomId}-${datetime}.webp`
+
+    try {
+      await sharp(req.file.path)
+        .resize(300)
         .webp({ quality: 55 })
-        .toFile(
-          path.resolve(__dirname, '..', '..', 'uploads', imageName)
-        )
-        .then(() => {
-          fs.unlinkSync(req.file.path)
-          req.file.filename = imageName
-          next()
-        })
-        .catch(err => {
-          return res.status(400).send(err)
-        })
+        .toFile(path.resolve(__dirname, '..', 'temp', imageName))
+
+      await fs.unlink(req.file.path)
+      req.file.path = path.resolve(__dirname, '..', 'temp', imageName)
+      req.file.filename = imageName
+      next()
+    } catch (error) {
+      return res.status(400).send(error)
     }
   }
 }

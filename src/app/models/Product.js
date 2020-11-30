@@ -3,7 +3,8 @@ import { Schema, model } from 'mongoose'
 const Product = new Schema({
   name: String,
   price: Number,
-  image: String
+  imageName: String,
+  imageUrl: String
 }, {
   timestamps: true
 })

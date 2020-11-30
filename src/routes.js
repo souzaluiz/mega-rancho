@@ -1,8 +1,9 @@
 import express from 'express'
 
-import products from './app/controllers/products'
+import ProductController from './app/controllers/ProductController'
 import order from './app/controllers/order'
 import PagesController from './app/controllers/PagesController'
+
 import upload from './config/multer'
 import sharp from './config/sharp'
 
@@ -18,10 +19,11 @@ routes.get('/dashboard', PagesController.dashboard)
 routes.get('/edit-product/:id', PagesController.editProduct)
 
 // CRUD
-routes.get('/products', products.index)
-routes.post('/products', upload.single('image'), sharp.resizing, products.store)
-routes.delete('/products/:id', products.destroy)
-routes.post('/edit/:id', upload.single('image'), sharp.resizing, products.update)
+routes.get('/products', ProductController.index)
+routes.delete('/products/:id', ProductController.destroy)
 routes.post('/order', order.create)
+
+routes.post('/products', upload.single('image'), sharp.resizing, ProductController.store)
+routes.post('/edit/:id', upload.single('image'), sharp.resizing, ProductController.update)
 
 export default routes
