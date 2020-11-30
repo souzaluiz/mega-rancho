@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3333
 
 app.set('view engine', 'njk')
 
-app.use(express.static(path.resolve(__dirname, '..', 'public')))
+app.use(express.static(path.resolve(__dirname, 'public')))
 
 app.use('/files', express.static(path.resolve(__dirname, 'temp')))
 
