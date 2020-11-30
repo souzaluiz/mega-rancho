@@ -25,12 +25,12 @@ class ProductController {
     const { name, price } = req.body
 
     try {
-      const { imageName, imageUrl } = await StorageService.save(path, filename)
+      const { imageId, imageUrl } = await StorageService.save(path, filename)
 
       const data = {
         name,
         price: cleanPrice(price),
-        imageName,
+        imageId,
         imageUrl
       }
 
