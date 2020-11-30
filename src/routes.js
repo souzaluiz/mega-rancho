@@ -10,10 +10,11 @@ const routes = express.Router()
 
 // Pages
 routes.get('/', PagesController.products)
+routes.get('/new-product', PagesController.newProduct)
+
 routes.get('/cart', PagesController.cart)
 routes.get('/checkout', PagesController.checkout)
 routes.get('/dashboard', PagesController.dashboard)
-routes.get('/new-product', PagesController.newProduct)
 routes.get('/edit-product/:id', PagesController.editProduct)
 
 // CRUD

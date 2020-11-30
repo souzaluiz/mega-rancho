@@ -50,8 +50,8 @@ class PagesController {
     return res.render('dashboard', { totalPages })
   }
 
-  async newProduct (req, res) {
-    return res.render('new_product')
+  async newProduct (_, res) {
+    return res.render('new-product')
   }
 
   async editProduct (req, res) {
