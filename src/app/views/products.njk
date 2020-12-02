@@ -27,8 +27,8 @@
 				{% else %}
 					<div class="products__list">
 						{% for product in products %}
-							<div class="product-card">
-								<input type="hidden" name="product-id" value="{{product._id}}">
+							<div class="product-card js-product-card">
+								<input type="hidden" class="js-product-id" name="product-id" value="{{product._id}}">
 								<div class="product-card__image">
 									<img src="{{product.imageUrl}}">
 								</div>
@@ -38,7 +38,7 @@
 
 									<span class="product-card__price">R$ {{product.price}}</span>
 
-									<button class="product-card__button">Adicionar ao carrinho</button>
+									<button class="product-card__button js-cart-button">Adicionar ao carrinho</button>
 								</div>
 							</div>
 						{% endfor %}
@@ -91,9 +91,7 @@
 				document.body.style.overflow = 'auto'
 			})
 		</script>
+		<script src="/scripts/load-products-cart.js"></script>
 		<script src="/scripts/products.js"></script>
-		{#
-			<script src="/js/loader.js"></script>
-		#}
 	</body>
 </html>
