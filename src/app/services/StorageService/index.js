@@ -1,8 +1,8 @@
-import { StorageServiceDev } from './implementations/StorageServiceDev'
-import { StorageServiceCloudinary } from './implementations/StorageServiceCloudinary'
+import { StorageDevelopment } from './implementations/StorageDevelopment'
+import { StorageCloudinary } from './implementations/StorageCloudinary'
 
 const StorageService = process.env.ENVIROMENT === 'development'
-  ? new StorageServiceDev()
-  : new StorageServiceCloudinary()
+  ? new StorageDevelopment()
+  : new StorageCloudinary()
 
 export default StorageService

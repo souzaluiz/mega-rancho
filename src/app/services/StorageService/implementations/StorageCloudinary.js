@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import { StorageServiceModel } from '../StorageServiceModel'
 import { v2 as cloudinary } from 'cloudinary'
+import { StorageService } from '../StorageService'
 
-export class StorageServiceCloudinary extends StorageServiceModel {
+export class StorageCloudinary extends StorageService {
   async save (path, filename) {
     const { public_id, url } = await cloudinary.uploader.upload(
       path,

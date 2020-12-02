@@ -1,6 +1,5 @@
 .products {
 	margin-bottom: 2rem;
-	padding: 0 1rem;
 
 	&__title {
 		color: $normal-color;
@@ -163,6 +162,8 @@
 
 @media only screen and (min-width: 620px) {
 	.products {
+		padding: 0 .5rem;
+
 		&__list {
 			grid-template-columns: 1fr 1fr 1fr;
 			gap: 1.5rem;

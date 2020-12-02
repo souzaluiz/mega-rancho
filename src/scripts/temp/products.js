@@ -1,24 +1,26 @@
+console.log(document.cookie)
+
 // const products = document.querySelectorAll('.product__item')
 
 // // Percorre todos os produtos para adicionar eventos de click
 // addEventInElements(products)
 
-// function addEventInElements(products) {
-//   products.forEach(function(element) {
+// function addEventInElements (products) {
+//   products.forEach(function (element) {
 //     const buttonAnyLess = element.querySelector('.product__quantity .any__less')
 //     const buttonMore = element.querySelector('.product__quantity .more')
 //     const productQuantityElement = element.querySelector('.product__quantity .quantity__value')
 //     const addToCartButton = element.querySelector('#add__product__to__cart')
 
 //     buttonAnyLess.addEventListener('click', function () {
-//       let quantityValue = Number(productQuantityElement.innerHTML)
-//       if(quantityValue > 1) {
+//       const quantityValue = Number(productQuantityElement.innerHTML)
+//       if (quantityValue > 1) {
 //         productQuantityElement.innerHTML = quantityValue - 1
 //       }
 //     })
 
 //     buttonMore.addEventListener('click', function () {
-//       let quantityValue = Number(productQuantityElement.innerHTML)
+//       const quantityValue = Number(productQuantityElement.innerHTML)
 //       productQuantityElement.innerHTML = quantityValue + 1
 //     })
 
@@ -39,7 +41,7 @@
 //       let productExists = false
 
 //       const updatedProducts = productsCart.map(function (item) {
-//         if(item.id == productId) {
+//         if (item.id == productId) {
 //           productExists = true
 //           item.quantity += productQuantity
 //         }
@@ -48,7 +50,7 @@
 
 //       const priceTotalProduct = Number((productPrice * productQuantity).toFixed(2))
 
-//       if(productExists) {
+//       if (productExists) {
 //         localStorage.setItem('cart', JSON.stringify(updatedProducts))
 //         totalPriceElement.innerHTML = (totalPrice + priceTotalProduct).toFixed(2)
 //         productQuantityElement.innerHTML = 1

@@ -3,7 +3,7 @@ import fs from 'fs/promises'
 
 import Product from '../models/Product'
 import StorageService from '../services/StorageService'
-import { cleanPrice } from './helpers/convertMoney'
+import { cleanPrice } from './helpers/cleanPrice'
 
 class ProductController {
   async index (req, res) {
