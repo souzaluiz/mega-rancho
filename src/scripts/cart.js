@@ -1,13 +1,7 @@
 import Cookie from 'js-cookie'
 import loadProductsCart from './lib/loadProductsCart'
 
-const productsCart = Cookie.get('products_cart') || []
-
-const productsIds = typeof productsCart === 'string'
-  ? JSON.parse(productsCart)
-  : productsCart
-
-const localInfoProducts = JSON.parse(window.localStorage.getItem('@products_cart')) || []
+// const localInfoProducts = JSON.parse(window.localStorage.getItem('@products_cart')) || []
 
 function updateSubtotalOfProducts () {
   const products = document.querySelectorAll('.js-product-card')
@@ -49,6 +43,13 @@ function getSumaryData () {
       element: document.querySelector('.js-rate'),
       value: Number(document.querySelector('.js-rate').innerHTML)
     }
+  }
+}
+
+function getElementData (selector) {
+  return {
+    element: document.querySelector(selector),
+    value: Number(document.querySelector(selector).innerHTML)
   }
 }
 
@@ -96,6 +97,28 @@ function updateTotalAndSubtotalPrice (element, operation) {
       productQuantityElement.innerText = productQuantity + 1
       break
   }
+}
+
+function deleteProductFromCookie (productId) {
+  const productsCart = Cookie.get('products_cart') || []
+
+  const products = typeof productsCart === 'string'
+    ? JSON.parse(productsCart)
+    : productsCart
+
+  const remainingProducts = products.filter(product => product !== productId)
+
+  Cookie.set('products_cart', JSON.stringify(remainingProducts))
+}
+
+function removeProductFromCart (element) {
+  const productCard = element.closest('.js-product-card')
+  const productId = productCard.querySelector('.js-product-id').value
+  const cartQuantity = getElementData('.js-cart-quantity')
+
+  deleteProductFromCookie(productId)
+  cartQuantity.element.innerHTML = cartQuantity.value - 1
+  productCard.remove()
 }
 
 // // Atualiza dados do produto no carrinho
@@ -153,6 +176,9 @@ function updateTotalAndSubtotalPrice (element, operation) {
 //     }
 //   })
 // })
+document.querySelectorAll('.js-delete-product').forEach((element) => {
+  element.addEventListener('click', () => removeProductFromCart(element))
+})
 
 // // Aumenta a quantidade de um produto da lista
 document.querySelectorAll('.js-button-more').forEach((element) => {
