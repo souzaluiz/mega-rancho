@@ -35,7 +35,14 @@ class PagesController {
   }
 
   async cart (req, res) {
-    return res.render('cart')
+    const { products_cart } = req.cookies
+    const productsId = JSON.parse(products_cart)
+
+    const products = await Product
+      .find({ _id: { $in: productsId } })
+      .select('_id name price imageUrl')
+
+    return res.render('cart', { products })
   }
 
   async checkout (req, res) {

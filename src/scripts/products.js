@@ -1,11 +1,12 @@
 import Cookie from 'js-cookie'
+import loadProductsCart from './lib/loadProductsCart'
 
 const products = document.querySelectorAll('.js-product-card')
 
 function addToCart (productId) {
   const cartQuantity = document.querySelector('.js-cart-quantity')
 
-  const productsCart = Cookie.get('products-cart') || []
+  const productsCart = Cookie.get('products_cart') || []
 
   const products = typeof productsCart === 'string'
     ? JSON.parse(productsCart)
@@ -15,7 +16,7 @@ function addToCart (productId) {
 
   if (!isProductExists) {
     products.push(productId)
-    Cookie.set('products-cart', JSON.stringify(products), { expires: 2 })
+    Cookie.set('products_cart', JSON.stringify(products), { expires: 2 })
     cartQuantity.innerHTML = Number(cartQuantity.innerText) + 1
   }
 }
@@ -29,4 +30,5 @@ function addEventInProducts (products) {
   })
 }
 
+loadProductsCart()
 addEventInProducts(products)

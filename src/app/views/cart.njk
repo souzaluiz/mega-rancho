@@ -3,61 +3,99 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<meta name="theme-color" content="#fff">
 		<meta name="apple-mobile-web-app-status-bar-style" content="#fff">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-		<link rel="stylesheet" href="css/style.min.css" type="text/css">
-		<title>Mega Rancho</title>
+		<link rel="stylesheet" href="/css/styles.css" type="text/css">
+		<title>Carrinho</title>
 	</head>
 	<body>
-		<div id="preloder">
-			<div class="loader"></div>
-		</div>
+		<main>
+			{% include "components/header.njk" %}
 
-		{% include "components/header.njk" %}
-
-		{% include "components/headerMobile.njk" %}
-		
-		<section class="shoping-cart">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 col-12">
-						<div class="products__cart">
-							<h4 class="text-center">Seu carrinho de compras</h4>
-							<!-- Conteúdo gerado pelo js -->						
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="shoping__checkout">
-							<h5 class="text-center">Resumo</h5>
+			<section class="shooping-cart container">
+				<div class="shooping-cart__product-list">
+					{% for product in products %}
+						<div class="cart-product-card js-product-card">
 							<div>
-								<span>Total</span>
-								<div class="total__price__card">
-									<span>R$ <span id="checkout_total">0</span></span>
-								</div>
+								<img src="{{product.imageUrl}}" alt="{{product.name}}" class="cart-product-card__image">
+								<p class="cart-product-card__name">{{product.name}}</p>
 							</div>
-							<a href="/checkout">
-								<button class="button__black">INSERIR ENDEREÇO</button>
-							</a>
-							<a href="/">
-								<button class="button__black">CONTINUAR COMPRANDO</button>
-							</a>
+							<div class="js-product-info">
+								<input type="hidden" class="js-product-id" value={{product._id}}>
+								<i
+									class="fa fa-times cart-product-card__delete js-delete-product"
+									aria-hidden="true">
+								</i>
+								<table>
+									<tr>
+										<td class="cart-product-card__title">Quantidade</td>
+										<td class="cart-product-card__title">Preço</td>
+										<td class="cart-product-card__title">Subtotal</td>
+									</tr>
+									<tr>
+										<td class="quantity-options">
+											<span class="quantity-options__button is-blocked js-button-less">-</span>
+											<span class="quantity-options__value js-product-quantity">1</span>
+											<span class="quantity-options__button js-button-more">+</span>
+										</td>
+										<td class="cart-product-card__value">
+											R$&nbsp;<span class="js-product-price">{{product.price}}</span>
+										</td>
+										<td class="cart-product-card__value">
+											R$&nbsp;<span class="js-product-subtotal">0</span>
+										</td>
+									</tr>
+								</table>
+							</div>
 						</div>
-					</div>
+					{% endfor %}
 				</div>
-			</div>
-		</section>
 
-		{% include "components/footer.njk" %}
+				<div class="shooping-cart__sumary">
+					<div class="shooping-cart__line">
+						<span>Subtotal</span>
+						<span class="shooping-cart__money">
+							R$&nbsp;<span class="js-subtotal">0</span>
+						</span>
+					</div>
+					<div class="shooping-cart__line">
+						<span>Taxa de entrega</span>
+						<span class="shooping-cart__money">
+							R$&nbsp;<span class="js-rate">0</span>
+						</span>
+					</div>
+					<div class="shooping-cart__line">
+						<span>Total a pagar</span>
+						<span class="shooping-cart__money">
+							R$&nbsp;<span class="js-total">0</span>
+						</span>
+					</div>
+					<a href="/checkout" class="shooping-cart__continue">
+						Continuar
+					</a>
+				</div>
+			</section>
 
-		<script src="/js/loader.js"></script>
-		<script src="/js/cart.js"></script>
+			{% include "components/footer.njk" %}
+		</main>
+		<script>
+			let menuOpen = document.querySelector('.js-menu-open')
+			let menuClose = document.querySelector('.js-menu-close')
+			let menuMobile = document.querySelector('.js-menu-mobile')
+
+			menuOpen.addEventListener('click', function () {
+				menuMobile.classList.toggle('is-visible')
+				document.body.style.overflow = 'hidden'
+			})
+
+			menuClose.addEventListener('click', function () {
+				menuMobile.classList.toggle('is-visible')
+				document.body.style.overflow = 'auto'
+			})
+		</script>
+		<script src="/scripts/cart.js"></script>
 	</body>
 </html>

@@ -3,6 +3,7 @@ import express from 'express'
 import nunjucks from 'nunjucks'
 import path from 'path'
 import mongoose from 'mongoose'
+import cookieParser from 'cookie-parser'
 
 import routes from './routes'
 
@@ -14,6 +15,8 @@ app.set('view engine', 'njk')
 app.use(express.static(path.resolve(__dirname, 'public')))
 
 app.use('/files', express.static(path.resolve(__dirname, 'temp')))
+
+app.use(cookieParser())
 
 nunjucks.configure(path.resolve(__dirname, 'app', 'views'), {
   express: app,
