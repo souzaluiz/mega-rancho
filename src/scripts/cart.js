@@ -47,9 +47,17 @@ function getSumaryData () {
 }
 
 function getElementData (selector) {
-  return {
-    element: document.querySelector(selector),
-    value: Number(document.querySelector(selector).innerHTML)
+  // Somente para elementos do tipo Number
+  if (typeof selector === 'string') {
+    return {
+      element: document.querySelector(selector),
+      value: Number(document.querySelector(selector).innerHTML)
+    }
+  } else if (selector instanceof HTMLElement) {
+    return {
+      element: selector,
+      value: Number(selector.innerHTML)
+    }
   }
 }
 
@@ -69,32 +77,29 @@ function adjustTotalPrice () {
 
 function updateTotalAndSubtotalPrice (element, operation) {
   const productElement = element.closest('.js-product-info')
+
+  const subtotalProduct = getElementData(productElement.querySelector('.js-product-subtotal'))
+  const productPrice = getElementData(productElement.querySelector('.js-product-price'))
+  const productQuantity = getElementData(productElement.querySelector('.js-product-quantity'))
+
   const { subtotal } = getSumaryData()
-
-  const subtotalProductELement = productElement.querySelector('.js-product-subtotal')
-  const productPriceElement = productElement.querySelector('.js-product-price')
-  const productQuantityElement = productElement.querySelector('.js-product-quantity')
-
-  const subtotalProduct = Number(subtotalProductELement.innerText)
-  const productPrice = Number(productPriceElement.innerText)
-  const productQuantity = Number(productQuantityElement.innerText)
 
   switch (operation) {
     case 'subtraction':
-      if (productQuantity > 1) {
-        subtotalProductELement.innerText = (subtotalProduct - productPrice).toFixed(2)
-        subtotal.element.innerHTML = (subtotal.value - productPrice).toFixed(2)
+      if (productQuantity.value > 1) {
+        subtotalProduct.element.innerHTML = (subtotalProduct.value - productPrice.value).toFixed(2)
+        subtotal.element.innerHTML = (subtotal.value - productPrice.value).toFixed(2)
         adjustRate()
         adjustTotalPrice()
-        productQuantityElement.innerText = productQuantity - 1
+        productQuantity.element.innerHTML = productQuantity.value - 1
       }
       break
     case 'addition':
-      subtotalProductELement.innerText = (subtotalProduct + productPrice).toFixed(2)
-      subtotal.element.innerHTML = (subtotal.value + productPrice).toFixed(2)
+      subtotalProduct.element.innerHTML = (subtotalProduct.value + productPrice.value).toFixed(2)
+      subtotal.element.innerHTML = (subtotal.value + productPrice.value).toFixed(2)
       adjustRate()
       adjustTotalPrice()
-      productQuantityElement.innerText = productQuantity + 1
+      productQuantity.element.innerHTML = productQuantity.value + 1
       break
   }
 }
