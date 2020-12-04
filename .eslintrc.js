@@ -11,7 +11,6 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    camelcase: 'off',
-    'no-undef': 'off'
+    camelcase: 'off'
   }
 }
