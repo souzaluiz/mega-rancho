@@ -5,7 +5,6 @@ export default function calculateCartQuantity () {
     const cartQuantity = document.querySelector('.js-cart-quantity')
 
     const productsCart = getJSON('products_cart') || []
-    console.log(productsCart)
 
     cartQuantity.innerHTML = productsCart.length
   })

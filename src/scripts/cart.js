@@ -1,5 +1,6 @@
 import Cookie from 'js-cookie'
 import calculateCartQuantity from './lib/calculateCartQuantity'
+import { getElementData } from './lib/elementManager'
 
 function updateSubtotalOfProducts () {
   const products = document.querySelectorAll('.js-product-card')
@@ -18,7 +19,9 @@ function updateSummary () {
   const subtotalElements = [...document.querySelectorAll('.js-product-subtotal')]
   const { subtotal } = getSummaryData()
 
-  // verficar se tem produtos
+  if (!subtotalElements.length) {
+    console.log('ta vazio')
+  }
 
   const subtotalSum = subtotalElements.reduce((prev, { innerHTML }) => {
     return prev + Number(innerHTML)
@@ -31,33 +34,9 @@ function updateSummary () {
 
 function getSummaryData () {
   return {
-    subtotal: {
-      element: document.querySelector('.js-subtotal'),
-      value: Number(document.querySelector('.js-subtotal').innerHTML)
-    },
-    total: {
-      element: document.querySelector('.js-total'),
-      value: Number(document.querySelector('.js-total').innerHTML)
-    },
-    rate: {
-      element: document.querySelector('.js-rate'),
-      value: Number(document.querySelector('.js-rate').innerHTML)
-    }
-  }
-}
-
-function getElementData (selector) {
-  // Somente para elementos do tipo Number
-  if (typeof selector === 'string') {
-    return {
-      element: document.querySelector(selector),
-      value: Number(document.querySelector(selector).innerHTML)
-    }
-  } else if (selector instanceof window.HTMLElement) {
-    return {
-      element: selector,
-      value: Number(selector.innerHTML)
-    }
+    subtotal: getElementData('.js-subtotal'),
+    total: getElementData('.js-total'),
+    rate: getElementData('.js-rate')
   }
 }
 
@@ -75,33 +54,32 @@ function adjustTotalPrice () {
   total.element.innerHTML = (subtotal.value + rate.value).toFixed(2)
 }
 
-function updateTotalAndSubtotalPrice (element, operation) {
+function getProductInfo (element) {
   const productElement = element.closest('.js-product-info')
 
   const subtotalProduct = getElementData(productElement.querySelector('.js-product-subtotal'))
   const productPrice = getElementData(productElement.querySelector('.js-product-price'))
   const productQuantity = getElementData(productElement.querySelector('.js-product-quantity'))
 
-  const { subtotal } = getSummaryData()
+  return { subtotalProduct, productPrice, productQuantity }
+}
 
-  switch (operation) {
-    case 'subtraction':
-      if (productQuantity.value > 1) {
-        subtotalProduct.element.innerHTML = (subtotalProduct.value - productPrice.value).toFixed(2)
-        subtotal.element.innerHTML = (subtotal.value - productPrice.value).toFixed(2)
-        adjustRate()
-        adjustTotalPrice()
-        productQuantity.element.innerHTML = productQuantity.value - 1
-      }
-      break
-    case 'addition':
-      subtotalProduct.element.innerHTML = (subtotalProduct.value + productPrice.value).toFixed(2)
-      subtotal.element.innerHTML = (subtotal.value + productPrice.value).toFixed(2)
-      adjustRate()
-      adjustTotalPrice()
-      productQuantity.element.innerHTML = productQuantity.value + 1
-      break
+function decreaseQuantityProducts (event) {
+  const { productPrice, productQuantity, subtotalProduct } = getProductInfo(event.target)
+
+  if (productQuantity.value > 1) {
+    subtotalProduct.element.innerHTML = (subtotalProduct.value - productPrice.value).toFixed(2)
+    productQuantity.element.innerHTML = productQuantity.value - 1
+    updateSummary()
   }
+}
+
+function increaseQuantityProducts (event) {
+  const { productPrice, productQuantity, subtotalProduct } = getProductInfo(event.target)
+
+  subtotalProduct.element.innerHTML = (subtotalProduct.value + productPrice.value).toFixed(2)
+  productQuantity.element.innerHTML = productQuantity.value + 1
+  updateSummary()
 }
 
 function deleteProductFromCookie (productId) {
@@ -109,7 +87,7 @@ function deleteProductFromCookie (productId) {
 
   const remainingProducts = productsCart.filter(product => product !== productId)
 
-  Cookie.set('products_cart', JSON.stringify(remainingProducts))
+  Cookie.set('products_cart', JSON.stringify(remainingProducts), { expires: 2 })
 }
 
 function removeProductFromCart (element) {
@@ -123,27 +101,21 @@ function removeProductFromCart (element) {
   updateSummary()
 }
 
-// Listeners
 document.querySelectorAll('.js-delete-product').forEach((element) => {
   element.addEventListener('click', () => removeProductFromCart(element))
 })
 
 // Aumenta a quantidade de um produto da lista
 document.querySelectorAll('.js-button-more').forEach((element) => {
-  element.addEventListener('click', () => {
-    updateTotalAndSubtotalPrice(element, 'addition')
-    // updateLocalStorageCart(this)
-  })
+  element.addEventListener('click', increaseQuantityProducts)
 })
 
 // Diminui a quantidade de um produto da lista
 document.querySelectorAll('.js-button-less').forEach((element) => {
-  element.addEventListener('click', () => {
-    updateTotalAndSubtotalPrice(element, 'subtraction')
-    // updateLocalStorageCart(this)
-  })
+  element.addEventListener('click', decreaseQuantityProducts)
 })
 
 calculateCartQuantity()
+// carregar produtos do localstorage
 updateSubtotalOfProducts()
 updateSummary()
