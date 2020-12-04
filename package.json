@@ -8,8 +8,8 @@
     "dev": "npm-run-all -p nodemon sass:dev parcel:dev browser-sync",
     "nodemon": "nodemon -r esm src/server.js",
     "browser-sync": "browser-sync start --proxy 'localhost:3333' --files 'src/public/**, src/app/views/**'",
-    "sass:dev": "sass --watch src/sass/index.scss:src/public/css/styles.css",
-    "sass:build": "sass --no-source-map --style=compressed src/sass/index.scss:src/public/css/styles.css",
+    "sass:dev": "sass --watch src/sass/index.scss:src/public/styles/index.css",
+    "sass:build": "sass --no-source-map --style=compressed src/sass/index.scss:src/public/styles/index.css",
     "parcel:dev": "parcel watch src/scripts/*.js -d src/public/scripts --public-url ./",
     "parcel:build": "parcel build --no-source-maps src/scripts/*.js -d src/public/scripts"
   },
