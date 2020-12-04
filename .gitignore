@@ -2,10 +2,12 @@ node_modules/
 .env
 
 src/temp/*
-src/public/css/*
-src/public/scripts/*
 !.gitkeep
 
+**/public/scripts/
+**/public/styles/
+
 .cache
+.dist
 
 *.map
