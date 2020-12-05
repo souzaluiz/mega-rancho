@@ -36,7 +36,8 @@ class PagesController {
 
   async cart (req, res) {
     const { products_cart } = req.cookies
-    const productsId = JSON.parse(products_cart)
+
+    const productsId = products_cart ? JSON.parse(products_cart) : []
 
     const products = await Product
       .find({ _id: { $in: productsId } })
