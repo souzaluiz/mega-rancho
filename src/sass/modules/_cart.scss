@@ -91,29 +91,27 @@
 
 	&__title {
 		font-weight: 600;
-		font-size: 1.5rem;
+		font-size: 1.6rem;
 	}
 
 	&__value {
+		font-weight: 600;
 		font-size: 1.4rem;
 	}
 }
 
 .quantity-options {
 	&__button {
-		font-size: 1.8rem;
+		font-size: 2rem;
 		font-weight: bold;
-		color: $primary-color;
+		color: $black-color;
 		user-select: none;
 		cursor: pointer;
-
-		&.is-blocked {
-			color: $para-color;
-		}
 	}
 
 	&__value {
-		font-size: 1.4rem;
-		margin: 0 2rem;
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin: 0 1.5rem;
 	}
 }
