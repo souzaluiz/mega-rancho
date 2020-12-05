@@ -6,12 +6,45 @@ function updateSubtotalOfProducts () {
   const products = document.querySelectorAll('.js-product-card')
 
   products.forEach((product) => {
-    const quantity = Number(product.querySelector('.js-product-quantity').innerText)
-    const price = Number(product.querySelector('.js-product-price').innerText)
-    const subtotalElement = product.querySelector('.js-product-subtotal')
+    const quantity = getElementData(product.querySelector('.js-product-quantity'))
+    const price = getElementData(product.querySelector('.js-product-price'))
+    const subtotal = getElementData(product.querySelector('.js-product-subtotal'))
 
-    const subtotal = (quantity * price).toFixed(2)
-    subtotalElement.innerText = subtotal
+    const subtotalSum = (quantity.value * price.value).toFixed(2)
+    subtotal.element.innerHTML = subtotalSum
+  })
+}
+
+function setQuantityProductsInLocalStorage () {
+  const productsCard = [...document.querySelectorAll('.js-product-card')]
+
+  const productsInfo = productsCard.map((product) => {
+    const quantity = getElementData(product.querySelector('.js-product-quantity'))
+    const id = getElementData(product.querySelector('.js-product-id'))
+
+    return {
+      quantity: quantity.value,
+      id: id.element.value
+    }
+  })
+
+  window.localStorage.setItem('@products_cart', JSON.stringify(productsInfo))
+}
+
+function setQuantityProducts () {
+  const products = JSON.parse(window.localStorage.getItem('@products_cart')) || []
+
+  const productsCard = document.querySelectorAll('.js-product-card')
+
+  productsCard.forEach((product) => {
+    const quantity = getElementData(product.querySelector('.js-product-quantity'))
+    const id = getElementData(product.querySelector('.js-product-id'))
+
+    products.forEach(productInfo => {
+      if (productInfo.id === id.element.value) {
+        quantity.element.innerHTML = productInfo.quantity
+      }
+    })
   })
 }
 
@@ -30,6 +63,7 @@ function updateSummary () {
   subtotal.element.innerHTML = (subtotalSum).toFixed(2)
   adjustRate()
   adjustTotalPrice()
+  setQuantityProductsInLocalStorage()
 }
 
 function getSummaryData () {
@@ -116,6 +150,6 @@ document.querySelectorAll('.js-button-less').forEach((element) => {
 })
 
 calculateCartQuantity()
-// carregar produtos do localstorage
+setQuantityProducts()
 updateSubtotalOfProducts()
 updateSummary()

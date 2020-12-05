@@ -1,19 +1,28 @@
 import Cookie from 'js-cookie'
 import calculateCartQuantity from './lib/calculateCartQuantity'
+import { getElementData } from './lib/elementManager'
 
 const products = document.querySelectorAll('.js-product-card')
 
 function addToCart (productId) {
-  const cartQuantity = document.querySelector('.js-cart-quantity')
+  const cartQuantity = getElementData('.js-cart-quantity')
 
   const productsCart = Cookie.getJSON('products_cart') || []
+  const producstCartLocal = JSON.parse(window.localStorage.getItem('@products_cart')) || []
 
   const isProductExists = productsCart.includes(productId)
 
   if (!isProductExists) {
-    productsCart.push(productId)
-    Cookie.set('products_cart', JSON.stringify(productsCart), { expires: 2 })
-    cartQuantity.innerHTML = Number(cartQuantity.innerText) + 1
+    const product = {
+      id: productId,
+      quantity: 1
+    }
+
+    productsCart.push(product.id)
+    producstCartLocal.push(product)
+    Cookie.set('products_cart', JSON.stringify(productsCart), { expires: 1 })
+    window.localStorage.setItem('@products_cart', JSON.stringify(producstCartLocal))
+    cartQuantity.element.innerHTML = cartQuantity.value + 1
   }
 }
 
