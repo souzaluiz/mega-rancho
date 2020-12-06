@@ -1,3 +1,5 @@
+@import './warning-message';
+
 .products {
 	margin-bottom: 2rem;
 
@@ -79,28 +81,6 @@
 		&:hover {
 			background-color: $heading-color-2;
 		}
-	}
-}
-
-.products-empty {
-	width: 90%;
-	display: none;
-	text-align: center;
-	padding-top: 2rem;
-	min-height: 450px;
-
-	font-size: 1.8rem;
-	font-weight: 600;
-
-	&__text {
-		background-color: $warning-color;
-		padding: .5rem;
-		border-radius: 5px;
-		display: inline-block;
-	}
-
-	&.is-visible {
-		display: block;
 	}
 }
 
