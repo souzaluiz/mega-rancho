@@ -1,4 +1,6 @@
 .shooping-cart {
+	min-height: 450px;
+
 	&.is-hidden {
 		display: none;
 	}
@@ -12,7 +14,6 @@
 		margin: 1rem 1.5rem;
 		padding: 1rem;
 		border-radius: 5px;
-
 	}
 
 	&__line {
@@ -117,5 +118,58 @@
 		font-size: 1.5rem;
 		font-weight: 600;
 		margin: 0 1.5rem;
+	}
+}
+
+
+@media only screen and (min-width: 620px) {
+	.shooping-cart {
+		margin-top: 1rem;
+		display: flex;
+
+		&__product-list {
+			flex: 3;
+			padding-right: .5rem;
+			margin-right: .5rem;
+			max-height: 450px;
+			overflow-y: scroll;
+		}
+
+		&__sumary {
+			flex: 2;
+			max-width: 300px;
+			margin-left: .5rem;
+			align-self: flex-start;
+		}
+
+	}
+}
+
+@media only screen and (min-width: 800px) {
+	.cart-product-card {
+		display: flex;
+
+		&__delete {
+			top: .5rem;
+		}
+
+		div:first-child {
+			border: none;
+			flex: 2;
+		}
+
+		div:last-child {
+			flex: 2;
+			display: flex;
+			align-items: center;
+		}
+	}
+}
+
+@media only screen and (min-width: 800px) {
+	.cart-product-card {
+		div:last-child {
+			flex: 3;
+		}
 	}
 }
