@@ -48,13 +48,20 @@ function setQuantityProducts () {
   })
 }
 
+function showCartEmpty () {
+  const shoopingCart = getElementData('.js-shooping-cart')
+  const cartEmpty = getElementData('.js-cart-empty')
+
+  shoopingCart.element.classList.add('is-hidden')
+  cartEmpty.element.classList.add('is-visible')
+}
+
 function updateSummary () {
   const subtotalElements = [...document.querySelectorAll('.js-product-subtotal')]
   const { subtotal } = getSummaryData()
 
   if (!subtotalElements.length) {
-    // Remover sumario
-    // Mostrar que carrinho está vazio
+    showCartEmpty()
   }
 
   const subtotalSum = subtotalElements.reduce((prev, { innerHTML }) => {

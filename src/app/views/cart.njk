@@ -15,7 +15,20 @@
 		<main>
 			{% include "components/header.njk" %}
 
-			<section class="shooping-cart container">
+				<div
+					class="products-empty container js-cart-empty
+					{% if cartEmpty %}is-visible{% endif %}"
+				>
+					<span class="products-empty__text">
+						<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+						&nbsp;Seu carrinho está vazio
+					</span>
+				</div>
+
+			<section
+				class="shooping-cart container js-shooping-cart
+				{% if cartEmpty %}is-hidden{% endif %}"
+			>
 				<div class="shooping-cart__product-list">
 					{% for product in products %}
 						<div class="cart-product-card js-product-card">

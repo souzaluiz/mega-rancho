@@ -1,4 +1,8 @@
 .shooping-cart {
+	&.is-hidden {
+		display: none;
+	}
+
 	&__product-list {
 		margin: 1rem 1.5rem 0;
 	}

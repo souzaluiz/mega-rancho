@@ -34,6 +34,10 @@ class PagesController {
 
     const productsId = products_cart ? JSON.parse(products_cart) : []
 
+    if (!productsId.length) {
+      return res.render('cart', { cartEmpty: true })
+    }
+
     const products = await Product
       .find({ _id: { $in: productsId } })
       .select('_id name price imageUrl')
