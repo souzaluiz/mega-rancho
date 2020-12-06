@@ -17,13 +17,8 @@ class PagesController {
 
     const pagination = paginationCreate(currentPage, totalPages)
 
-    if (totalProducts === 0) {
-      return res.render('products', {
-        products: 0,
-        totalPages: 1,
-        currentPage: 1,
-        pagination: [1]
-      })
+    if (!totalProducts) {
+      return res.render('products', { productsEmpty: true })
     }
 
     return res.render('products', {

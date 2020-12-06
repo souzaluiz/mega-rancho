@@ -53,7 +53,8 @@ function updateSummary () {
   const { subtotal } = getSummaryData()
 
   if (!subtotalElements.length) {
-    console.log('ta vazio')
+    // Remover sumario
+    // Mostrar que carrinho está vazio
   }
 
   const subtotalSum = subtotalElements.reduce((prev, { innerHTML }) => {

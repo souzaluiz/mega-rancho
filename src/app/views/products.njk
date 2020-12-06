@@ -18,32 +18,34 @@
 			<section class="container products">
 				<h2 class="products__title">Produtos</h2>
 
-				{% if products === 0 %}
-					<div class="products__void">
-						<span>Desculpe parece não haver produtos disponíveis</span>
+				<div
+					class="products-empty container
+					{% if productsEmpty %}is-visible{% endif %}"
+				>
+					<span class="products-empty__text">
+						<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+						&nbsp;Desculpe não há produtos disponíveis
+					</span>
+				</div>
 
-						<img src="/img/bad.svg" alt="Emoji bad">
-					</div>
-				{% else %}
-					<div class="products__list">
-						{% for product in products %}
-							<div class="product-card js-product-card">
-								<input type="hidden" class="js-product-id" name="product-id" value="{{product._id}}">
-								<div class="product-card__image">
-									<img src="{{product.imageUrl}}">
-								</div>
-
-								<div class="product-card__info">
-									<span class="product-card__name">{{product.name}}</span>
-
-									<span class="product-card__price">R$ {{product.price}}</span>
-
-									<button class="product-card__button js-cart-button">Adicionar ao carrinho</button>
-								</div>
+				<div class="products__list">
+					{% for product in products %}
+						<div class="product-card js-product-card">
+							<input type="hidden" class="js-product-id" name="product-id" value="{{product._id}}">
+							<div class="product-card__image">
+								<img src="{{product.imageUrl}}">
 							</div>
-						{% endfor %}
-					</div>
-				{% endif %}
+
+							<div class="product-card__info">
+								<span class="product-card__name">{{product.name}}</span>
+
+								<span class="product-card__price">R$ {{product.price}}</span>
+
+								<button class="product-card__button js-cart-button">Adicionar ao carrinho</button>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
 			</section>
 
 			<div class="pagination">
