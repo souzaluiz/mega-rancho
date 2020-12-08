@@ -12,7 +12,7 @@ const routes = express.Router()
 // Pages
 routes.get('/', PagesController.products)
 routes.get('/new-product', PagesController.newProduct)
-routes.get('/cart', PagesController.cart)
+routes.get('/shooping-cart', PagesController.shoopingCart)
 routes.get('/checkout', PagesController.checkout)
 
 routes.get('/dashboard', PagesController.dashboard)

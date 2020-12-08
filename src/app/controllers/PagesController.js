@@ -29,7 +29,7 @@ class PagesController {
     })
   }
 
-  async cart (req, res) {
+  async shoopingCart (req, res) {
     const { products_cart } = req.cookies
 
     const productsId = products_cart ? JSON.parse(products_cart) : []
@@ -42,7 +42,7 @@ class PagesController {
       .find({ _id: { $in: productsId } })
       .select('_id name price imageUrl')
 
-    return res.render('cart', { products })
+    return res.render('shooping-cart', { products })
   }
 
   async checkout (req, res) {

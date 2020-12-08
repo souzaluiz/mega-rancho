@@ -1,0 +1,24 @@
+.c-alert {
+	background-color: red;
+	text-align: center;
+	width: 90%;
+	&__content {
+		font-size: 1.8rem;
+		font-weight: 600;
+		border-radius: $border-value;
+		padding: .5rem;
+
+		&.is-sucess {
+			background-color: $sucess-color;
+		}
+
+		&.is-warning {
+			background-color: $warning-color;
+		}
+
+		&.is-danger {
+			background-color: $danger-color;
+		}
+	}
+
+}

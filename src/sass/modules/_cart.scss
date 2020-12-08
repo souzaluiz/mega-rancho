@@ -1,4 +1,4 @@
-@import './warning-message';
+@import './c-alert';
 
 .shooping-cart {
 	min-height: 450px;
@@ -127,6 +127,7 @@
 @media only screen and (min-width: 620px) {
 	.shooping-cart {
 		margin-top: 1rem;
+		margin-bottom: 1rem;
 		display: flex;
 
 		&__product-list {
