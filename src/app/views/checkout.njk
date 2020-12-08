@@ -18,7 +18,9 @@
 				<section class="checkout container">
 					<h2 class="checkout__title">Detalhes da entrega</h4>
 
-					<form class="checkout__form">
+					<form class="checkout__form" method="POST" action="/order">
+						<input type="hidden" name="products_list" class="js-products-list">
+
 						<div class="checkout__input-box">
 							<p class="checkout__fieldname">Seu nome</p>
 							<input

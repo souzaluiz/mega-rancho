@@ -1,9 +1,9 @@
-const TelegramBot = require('node-telegram-bot-api')
-const Chat = require('./app/models/Chat')
+import TelegramBot from 'node-telegram-bot-api'
+import Chat from '../../models/Chat'
 
-const token = process.env.TELEGRAM_TOKEN
+const token = process.env.TELEGRAM_BOT_TOKEN
 
-const bot = new TelegramBot(token, { polling: false })
+const bot = new TelegramBot(token, { polling: true })
 
 bot.onText(/\/start/, async (msg) => {
   const chatId = msg.chat.id
@@ -19,4 +19,4 @@ bot.onText(/\/start/, async (msg) => {
   bot.sendMessage(chatId, 'Cadastrado no sistema!')
 })
 
-module.exports = bot
+export default bot
