@@ -35,7 +35,7 @@ class PagesController {
     const productsId = products_cart ? JSON.parse(products_cart) : []
 
     if (!productsId.length) {
-      return res.render('cart', { cartEmpty: true })
+      return res.render('shooping-cart', { cartEmpty: true })
     }
 
     const products = await Product
