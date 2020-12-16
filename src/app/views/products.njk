@@ -12,21 +12,19 @@
 		<title>Mega Rancho</title>
 	</head>
 	<body>
-		<main>
-			{% include "components/header.njk" %}
+		{% include "components/header.njk" %}
 
-			<section class="container products">
+		<main>
+			<section class="l-container l-min-height products">
 				<h2 class="products__title">Produtos</h2>
 
-				<div
-					class="c-alert container js-cart-empty
+				<span
+					class="c-alert is-warning
 					{% if productsEmpty %}is-visible{% endif %}"
 				>
-					<span class="c-alert__content is-warning">
-						<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-						&nbsp;Desculpe não há produtos disponíveis
-					</span>
-				</div>
+					<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+					&nbsp;Desculpe não há produtos disponíveis
+				</span>
 
 				<div class="products__list">
 					{% for product in products %}
@@ -76,8 +74,8 @@
 				</ul>
 			</div>
 
-			{% include "components/footer.njk" %}
 		</main>
+		{% include "components/footer.njk" %}
 		<script>
 			let menuOpen = document.querySelector('.js-menu-open')
 			let menuClose = document.querySelector('.js-menu-close')

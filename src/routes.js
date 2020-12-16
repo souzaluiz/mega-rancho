@@ -14,6 +14,7 @@ routes.get('/', PagesController.products)
 routes.get('/new-product', PagesController.newProduct)
 routes.get('/shooping-cart', PagesController.shoopingCart)
 routes.get('/checkout', PagesController.checkout)
+routes.get('/order-result', PagesController.orderResult)
 
 routes.get('/dashboard', PagesController.dashboard)
 routes.get('/edit-product/:id', PagesController.editProduct)

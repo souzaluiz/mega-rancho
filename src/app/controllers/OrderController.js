@@ -34,11 +34,9 @@ class OrderController {
 
       telegram.sendMessage(chat.chatId, message)
 
-      // Mostrar que deu tudo certo
-      return res.status(200).send()
+      return res.render('order-result', { completedOrder: true })
     } catch (error) {
-      // Mostrar tela de error
-      return res.status(400).send(error)
+      return res.render('order-result', { completedOrder: false })
     }
   }
 }

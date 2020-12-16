@@ -14,16 +14,14 @@
 	<body>
 		{% include "components/header.njk" %}
 
-		<main>
-				<div
-					class="c-alert container js-cart-empty
-					{% if cartEmpty %}is-visible{% endif %}"
-				>
-					<span class="c-alert__content is-warning">
-						<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-						&nbsp;Seu carrinho está vazio
-					</span>
-				</div>
+		<main class='l-container l-min-height'>
+			<span
+				class="c-alert is-warning js-cart-empty
+				{% if cartEmpty %}is-visible{% endif %}"
+			>
+				<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+				&nbsp;Seu carrinho está vazio
+			</span>
 
 			<section
 				class="shooping-cart container js-shooping-cart
@@ -96,8 +94,8 @@
 				</div>
 			</section>
 
-			{% include "components/footer.njk" %}
 		</main>
+		{% include "components/footer.njk" %}
 		<script>
 			let menuOpen = document.querySelector('.js-menu-open')
 			let menuClose = document.querySelector('.js-menu-close')

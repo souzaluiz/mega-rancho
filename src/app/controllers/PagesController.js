@@ -49,6 +49,10 @@ class PagesController {
     return res.render('checkout')
   }
 
+  async orderResult (req, res) {
+    return res.render('order-result')
+  }
+
   async dashboard (req, res) {
     const limit = 10
     const totalProducts = await Product.countDocuments()
