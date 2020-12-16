@@ -16,18 +16,34 @@
 
 		<main class="l-container l-min-height l-display-flex">
 			<div class="c-result-card">
-				<span	class="c-alert is-sucess is-visible">
-					<i class="fa fa-check" aria-hidden="true"></i>
-					&nbsp;Pedido realizado com sucesso
-				</span>
+				{% if completedOrder %}
+					<span	class="c-alert is-sucess is-visible">
+						<i class="fa fa-check" aria-hidden="true"></i>
+						&nbsp;Pedido realizado com sucesso
+					</span>
 
-				<p class="c-result-card__message">
-					Em alguns minutos seus produtos chegarão no endereço informado.
-				</p>
+					<p class="c-result-card__message">
+						Em alguns minutos seus produtos chegarão no endereço informado.
+					</p>
 
-				<div class="c-result-card__actions">
-					<a href="/" class="c-result-card__button">Página Inicial</a>
-				</div>
+					<div class="c-result-card__actions">
+						<a href="/" class="c-result-card__button">Página Inicial</a>
+					</div>
+				{% else %}
+					<span	class="c-alert is-danger is-visible">
+						<i class="fa fa-exclamation" aria-hidden="true"></i>
+						&nbsp;Houston, temos um problema!
+					</span>
+
+					<p class="c-result-card__message">
+						Algo inesperado aconteceu, tente novamente.
+					</p>
+
+					<div class="c-result-card__actions">
+						<a href="/shooping-cart" class="c-result-card__button">Meu carrinho</a>
+					</div>
+				{% endif %}
+
 			</div>
 		</main>
 		{% include "components/footer.njk" %}
