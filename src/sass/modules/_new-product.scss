@@ -1,31 +1,3 @@
-$margin-appbar: 1rem;
-
-.appbar {
-	border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
-	background-color: $white-color;
-
-	&__content {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		min-height: 50px;
-	}
-
-	&__button-back {
-		color: $black-color;
-		font-size: 2rem;
-		margin-left: $margin-appbar;
-	}
-
-	&__title {
-		font-weight: 600;
-		font-size: 1.8rem;
-		flex: 1;
-		text-align: center;
-		margin-right: $margin-appbar;
-	}
-}
-
 .image-field {
 	border: 1px solid rgba($color: #000000, $alpha: 0.3);
 	height: 120px;

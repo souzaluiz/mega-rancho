@@ -12,16 +12,18 @@
       <title>Novo Produto</title>
     </head>
     <body>
-      <main>
-				<header class="appbar">
-					<div class="l-container appbar__content">
-						<a class="appbar__button-back" href="/dashboard">
-							<i class="fa fa-arrow-left"></i>
-						</a>
-						<h3 class="appbar__title">Novo produto</h3>
-					</div>
-				</header>
+			<header class="c-appbar">
+				<div class="l-container l-centralized c-appbar__content">
+					<a class="c-appbar__button" href="/admin-dashboard">
+						<i class="fa fa-arrow-left" aria-hidden="true"></i>
+					</a>
 
+					<h3 class="c-appbar__title">Novo produto</h3>
+
+					<div class="c-appbar__void"></div>
+				</div>
+			</header>
+      <main>
         <form class="product-form" action="/products" method="post" enctype="multipart/form-data">
           <div class="product-form__fieldbox">
             <span class="product-form__fieldname">Nova imagem</span>

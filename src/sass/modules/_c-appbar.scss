@@ -1,0 +1,27 @@
+$margin-appbar: 1rem;
+
+.c-appbar {
+	border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+	background-color: $white-color;
+
+	&__content {
+		min-height: 50px;
+		padding: 0 1rem;
+		justify-content: space-between;
+	}
+
+	&__void {
+		width: 20px;
+		height: 20px;
+	}
+
+	&__button {
+		color: $black-color;
+		font-size: 2rem;
+	}
+
+	&__title {
+		font-weight: 600;
+		font-size: 1.8rem;
+	}
+}

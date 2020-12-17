@@ -9,22 +9,22 @@
 		<link rel="shortcut icon" href="/img/favicon.ico" />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-		<link rel="stylesheet" href="css/style.min.css" type="text/css">
+		<link rel="stylesheet" href="/styles/admin-dashboard.css" type="text/css">
 		<title>Dashboard</title>
 	</head>
 	<body>
-    <div class="dashboard">
-			<input type="hidden" name="total_pages" value={{totalPages}}>
-			<h3>Meus produtos</h3>
+		<header class="c-appbar">
+			<div class="l-container l-centralized c-appbar__content">
+				<div class="c-appbar__void"></div>
 
-			<div class="new-product">
-				<a href="/new-product">Novo produto</a>
-			</div>			
-			<div id="list-products"></div>
-    </div>
+				<h3 class="c-appbar__title l-text-center">Seus produtos</h3>
 
-		<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-		<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-		<script src="/js/dashboard.js"></script>
+				<a class="c-appbar__button" href="/new-product">
+					<i class="fa fa-plus" aria-hidden="true"></i>
+				</a>
+			</div>
+		</header>
+
+    <script src="/scripts/admin-dashboard.js"></script>
 	</body>
 </html>

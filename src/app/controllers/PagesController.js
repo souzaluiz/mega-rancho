@@ -53,12 +53,12 @@ class PagesController {
     return res.render('order-result')
   }
 
-  async dashboard (req, res) {
+  async adminDashboard (req, res) {
     const limit = 10
     const totalProducts = await Product.countDocuments()
     const totalPages = Math.ceil(totalProducts / limit)
 
-    return res.render('dashboard', { totalPages })
+    return res.render('admin-dashboard', { totalPages })
   }
 
   async newProduct (_, res) {
