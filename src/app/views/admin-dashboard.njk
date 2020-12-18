@@ -25,6 +25,24 @@
 			</div>
 		</header>
 
+		<main class="l-container c-product-list">
+			{% for product in products %}
+				<div class="c-product-list__item">
+					<img src={{product.imageUrl}} alt={{product.name}} class="c-product-list__image">
+
+					<div class="c-product-list__informations">
+						<h2 class="c-product-list__title">{{product.name}}</h2>
+						<h4 class="c-product-list__price">{{product.price}}</h4>
+
+						<div class="c-product-list__actions">
+							<a href="/edit-product/{{product.id}}" class="c-product-list__button l-centralized">Editar</a>
+							<a href="/products/" class="c-product-list__button is-delete l-centralized">Excluir</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</main>
+
     <script src="/scripts/admin-dashboard.js"></script>
 	</body>
 </html>

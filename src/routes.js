@@ -15,13 +15,12 @@ routes.get('/shooping-cart', PagesController.shoopingCart)
 routes.get('/checkout', PagesController.checkout)
 routes.get('/order-result', PagesController.orderResult)
 routes.get('/admin-dashboard', PagesController.adminDashboard)
-
-routes.post('/products', upload.single('image'), sharp.resizing, ProductController.store)
-routes.post('/order', OrderController.store)
-
 routes.get('/edit-product/:id', PagesController.editProduct)
 
+routes.post('/products', upload.single('image'), sharp.resizing, ProductController.store)
+routes.put('/products/:id', upload.single('image'), sharp.resizing, ProductController.update)
 routes.delete('/products/:id', ProductController.destroy)
-routes.post('/edit/:id', upload.single('image'), sharp.resizing, ProductController.update)
+
+routes.post('/order', OrderController.store)
 
 export default routes

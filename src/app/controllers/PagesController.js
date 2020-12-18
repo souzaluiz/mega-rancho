@@ -54,11 +54,30 @@ class PagesController {
   }
 
   async adminDashboard (req, res) {
-    const limit = 10
-    const totalProducts = await Product.countDocuments()
+    const currentPage = Number(req.query.page || 1)
+    const limit = Number(req.query.limit || 15)
+
+    const skip = (currentPage - 1) * limit
+
+    const [totalProducts, products] = await Promise.all([
+      Product.countDocuments(),
+      Product.find().limit(limit).skip(skip)
+    ])
+
     const totalPages = Math.ceil(totalProducts / limit)
 
-    return res.render('admin-dashboard', { totalPages })
+    const pagination = paginationCreate(currentPage, totalPages)
+
+    if (!totalProducts) {
+      return res.render('admin-dashboard', { productsEmpty: true })
+    }
+
+    return res.render('admin-dashboard', {
+      products,
+      totalPages,
+      currentPage,
+      pagination
+    })
   }
 
   async newProduct (_, res) {
