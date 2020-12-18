@@ -26,6 +26,14 @@
 		</header>
 
 		<main class="l-container c-product-list">
+			<span
+				class="c-alert is-warning
+				{% if productsEmpty %}is-visible{% endif %}"
+			>
+				<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+				&nbsp;Desculpe não há produtos disponíveis
+			</span>
+
 			{% for product in products %}
 				<div class="c-product-list__item">
 					<img src={{product.imageUrl}} alt={{product.name}} class="c-product-list__image">
@@ -41,6 +49,34 @@
 					</div>
 				</div>
 			{% endfor %}
+
+			<div class="c-pagination {% if productsEmpty %}is-hidden{% endif %}">
+				<ul class="c-pagination__list l-centralized">
+					<li>
+						{% if currentPage > 1 %}
+							<a class="c-pagination__controls" href="/admin-dashboard?page={{currentPage - 1}}"><i class="fa fa-arrow-left"></i></a>
+						{% else %}
+							<a class="c-pagination__controls is-disable"><i class="fa fa-arrow-left"></i></a>
+						{% endif %}
+					</li>
+
+					{% for page in pagination %}
+						{% if page === currentPage %}
+							<li><a class="c-pagination__item is-current" href="/admin-dashboard?page={{page}}">{{page}}</a></li>
+						{%else%}
+							<li><a class="c-pagination__item" href="/admin-dashboard?page={{page}}">{{page}}</a></li>
+						{% endif %}
+					{% endfor %}
+
+					<li>
+						{% if currentPage < totalPages %}
+							<a class="c-pagination__controls" href="/admin-dashboard?page={{currentPage + 1}}"><i class="fa fa-arrow-right"></i></a>
+						{% else %}
+							<a class="c-pagination__controls is-disable"><i class="fa fa-arrow-right"></i></a>
+						{% endif %}
+					</li>
+				</ul>
+			</div>
 		</main>
 
     <script src="/scripts/admin-dashboard.js"></script>

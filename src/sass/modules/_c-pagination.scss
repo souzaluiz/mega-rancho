@@ -1,0 +1,59 @@
+.c-pagination {
+	display: flex;
+	justify-content: center;
+	margin: 1rem 0;
+
+	&.is-hidden {
+		display: none;
+	}
+
+	&__list {
+		min-width: 300px;
+
+		li {
+			margin: 0 .3rem;
+			user-select: none;
+		}
+	}
+
+	&__controls {
+		width: 40px;
+		height: 30px;
+		border-radius: 4px;
+		background-color: $black-color;
+		color: $white-color;
+		font-size: 1.4rem;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&.is-disable {
+			background-color: $para-color;
+			pointer-events: none;
+		}
+	}
+
+	&__item {
+		font-size: 1.6rem;
+		color: $black-color;
+		font-weight: 600;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&.is-current {
+			background-color: $primary-color;
+			color: $white-color;
+			pointer-events: none;
+		}
+
+		&:hover {
+			border: 2px solid $black-color;
+		}
+	}
+}
