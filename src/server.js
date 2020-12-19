@@ -4,6 +4,7 @@ import nunjucks from 'nunjucks'
 import path from 'path'
 import mongoose from 'mongoose'
 import cookieParser from 'cookie-parser'
+import methodOverride from 'method-override'
 
 import './app/services/telegram'
 import routes from './routes'
@@ -18,6 +19,7 @@ app.use(express.static(path.resolve(__dirname, 'public')))
 app.use('/files', express.static(path.resolve(__dirname, 'temp')))
 
 app.use(cookieParser())
+app.use(methodOverride('_method'))
 
 nunjucks.configure(path.resolve(__dirname, 'app', 'views'), {
   express: app,
@@ -30,8 +32,6 @@ mongoose.connect(process.env.MONGODB_URI, {
   useUnifiedTopology: true,
   useFindAndModify: false
 })
-
-app.use(express.urlencoded({ extended: true }))
 
 app.use(routes)
 

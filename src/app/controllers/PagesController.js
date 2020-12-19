@@ -1,5 +1,6 @@
 import Product from '../models/Product'
 import paginationCreate from './helpers/paginationCreate'
+import productManager from './helpers/productManager'
 
 class PagesController {
   async products (req, res) {
@@ -73,7 +74,7 @@ class PagesController {
     }
 
     return res.render('admin-dashboard', {
-      products,
+      products: products.map(productManager.toClean),
       totalPages,
       currentPage,
       pagination
@@ -88,7 +89,7 @@ class PagesController {
     const { id } = req.params
     const product = await Product.findById(id)
 
-    return res.render('edit_product', { product })
+    return res.render('edit-product', { product })
   }
 }
 

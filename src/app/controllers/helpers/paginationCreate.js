@@ -7,8 +7,8 @@ module.exports = function paginationCreate (currentPage, totalPages) {
   const endPagination = currentPage + sidePages
 
   const pages = []
-  for(let page = startPagination; page <= endPagination; page++) {
-    if(page >=1 && page <= totalPages) {
+  for (let page = startPagination; page <= endPagination; page++) {
+    if (page >= 1 && page <= totalPages) {
       pages.push(page)
     }
   }

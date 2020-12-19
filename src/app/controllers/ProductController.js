@@ -1,5 +1,6 @@
 import path from 'path'
 import fs from 'fs/promises'
+import VMasker from 'vanilla-masker'
 
 import Product from '../models/Product'
 import StorageService from '../services/StorageService'
@@ -52,40 +53,35 @@ class ProductController {
 
   async update (req, res) {
     const { id } = req.params
-    const { name, price } = req.body
+    const { name } = req.body
+    const price = Number(VMasker.toNumber(req.body.price))
 
     if (req.file) {
-      const { filename } = req.file
-      const product = await Product.findById(id)
-      const imagePath = path.resolve(__dirname, '..', '..', 'uploads', product.image)
-
-      const data = {
-        name,
-        price,
-        image: filename
-      }
-
-      try {
-        fs.unlinkSync(imagePath)
-        await Product.findByIdAndUpdate(id, data)
-        return res.redirect('/dashboard')
-      } catch (error) {
-        return res.send('falha ao atualizar')
-      }
+      // Salvar nova imagem
     } else {
-      const data = {
-        name,
-        price
-      }
-
-      Product.findByIdAndUpdate(id, data)
-        .then(() => {
-          return res.redirect('/dashboard')
-        })
-        .catch(err => {
-          return res.status(400).send(err)
-        })
+      await Product.findByIdAndUpdate(id, { name, price })
+      return res.redirect('/admin-dashboard')
     }
+
+    // if (req.file) {
+    //   const { filename } = req.file
+    //   const product = await Product.findById(id)
+    //   const imagePath = path.resolve(__dirname, '..', '..', 'uploads', product.image)
+
+    //   const data = {
+    //     name,
+    //     price,
+    //     image: filename
+    //   }
+
+    //   try {
+    //     fs.unlinkSync(imagePath)
+    //     await Product.findByIdAndUpdate(id, data)
+    //     return res.redirect('/dashboard')
+    //   } catch (error) {
+    //     return res.send('falha ao atualizar')
+    //   }
+    // }
   }
 }
 

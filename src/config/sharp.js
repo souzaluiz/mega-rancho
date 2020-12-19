@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 export default {
   async resizing (req, res, next) {
     if (!req.file) {
-      next()
+      return next()
     }
 
     const datetime = Date.now()
