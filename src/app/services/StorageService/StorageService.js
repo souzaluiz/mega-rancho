@@ -4,7 +4,7 @@ export class StorageService {
     throw new Error('ERR_METHOD_NOT_IMPLEMENTED')
   }
 
-  async deleteFromLocal (path) {
+  async delete (imageId) {
     throw new Error('ERR_METHOD_NOT_IMPLEMENTED')
   }
 }
