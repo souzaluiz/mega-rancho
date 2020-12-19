@@ -19,6 +19,7 @@ app.use(express.static(path.resolve(__dirname, 'public')))
 app.use('/files', express.static(path.resolve(__dirname, 'temp')))
 
 app.use(cookieParser())
+app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
 nunjucks.configure(path.resolve(__dirname, 'app', 'views'), {

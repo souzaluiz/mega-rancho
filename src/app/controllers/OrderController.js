@@ -33,7 +33,6 @@ class OrderController {
       const message = formatMessage(clientInfo, productsWithQuantity)
 
       telegram.sendMessage(chat.chatId, message)
-      res.render()
 
       return res.render('order-result', { completedOrder: true })
     } catch (error) {
