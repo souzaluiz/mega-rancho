@@ -29,7 +29,7 @@
 				<div class="products__list">
 					{% for product in products %}
 						<div class="product-card js-product-card">
-							<input type="hidden" class="js-product-id" name="product-id" value="{{product._id}}">
+							<input type="hidden" class="js-product-id" name="product-id" value="{{product.id}}">
 							<div class="product-card__image">
 								<img src="{{product.imageUrl}}">
 							</div>
@@ -37,7 +37,7 @@
 							<div class="product-card__info">
 								<span class="product-card__name">{{product.name}}</span>
 
-								<span class="product-card__price">R$ {{product.price}}</span>
+								<span class="product-card__price">{{product.price}}</span>
 
 								<button class="product-card__button js-cart-button">Adicionar ao carrinho</button>
 							</div>

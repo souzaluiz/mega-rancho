@@ -35,7 +35,7 @@
 								<p class="cart-product-card__name">{{product.name}}</p>
 							</div>
 							<div class="js-product-info">
-								<input type="hidden" class="js-product-id" value={{product._id}}>
+								<input type="hidden" class="js-product-id" value={{product.id}}>
 								<i
 									class="fa fa-times cart-product-card__delete js-delete-product"
 									aria-hidden="true">
@@ -57,10 +57,10 @@
 											</span>
 										</td>
 										<td class="cart-product-card__value">
-											R$&nbsp;<span class="js-product-price">{{product.price}}</span>
+											<span class="js-product-price">{{product.price}}</span>
 										</td>
 										<td class="cart-product-card__value">
-											R$&nbsp;<span class="js-product-subtotal">0</span>
+											<span class="js-product-subtotal">0</span>
 										</td>
 									</tr>
 								</table>

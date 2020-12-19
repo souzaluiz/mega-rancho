@@ -23,7 +23,7 @@ class PagesController {
     }
 
     return res.render('products', {
-      products,
+      products: products.map(productManager.toClean),
       totalPages,
       currentPage,
       pagination
@@ -41,9 +41,10 @@ class PagesController {
 
     const products = await Product
       .find({ _id: { $in: productsId } })
-      .select('_id name price imageUrl')
 
-    return res.render('shooping-cart', { products })
+    return res.render('shooping-cart', {
+      products: products.map(productManager.toClean)
+    })
   }
 
   async checkout (req, res) {

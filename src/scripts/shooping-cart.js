@@ -1,6 +1,7 @@
 import Cookie from 'js-cookie'
 import calculateCartQuantity from './lib/calculateCartQuantity'
 import { getElementData } from './lib/elementManager'
+import { numberForMoney, centsForNumber } from './lib/money'
 
 function updateSubtotalOfProducts () {
   const products = document.querySelectorAll('.js-product-card')
@@ -10,8 +11,8 @@ function updateSubtotalOfProducts () {
     const price = getElementData(product.querySelector('.js-product-price'))
     const subtotal = getElementData(product.querySelector('.js-product-subtotal'))
 
-    const subtotalSum = (quantity.value * price.value).toFixed(2)
-    subtotal.element.innerHTML = subtotalSum
+    const subtotalSum = (centsForNumber(price.text) * quantity.value)
+    subtotal.element.innerHTML = numberForMoney(subtotalSum)
   })
 }
 
@@ -65,10 +66,10 @@ function updateSummary () {
   }
 
   const subtotalSum = subtotalElements.reduce((prev, { innerHTML }) => {
-    return prev + Number(innerHTML)
+    return (prev + centsForNumber(innerHTML))
   }, 0)
 
-  subtotal.element.innerHTML = (subtotalSum).toFixed(2)
+  subtotal.element.innerHTML = numberForMoney(subtotalSum)
   adjustRate()
   adjustTotalPrice()
   setQuantityProductsInLocalStorage()
@@ -85,15 +86,17 @@ function getSummaryData () {
 function adjustRate () {
   const { subtotal, rate } = getSummaryData()
 
-  rate.element.innerHTML = subtotal.value >= 50
-    ? (0).toFixed(2)
-    : (5).toFixed(2)
+  rate.element.innerHTML = centsForNumber(subtotal.text) >= 50
+    ? numberForMoney(0)
+    : numberForMoney(5)
 }
 
 function adjustTotalPrice () {
   const { subtotal, rate, total } = getSummaryData()
 
-  total.element.innerHTML = (subtotal.value + rate.value).toFixed(2)
+  total.element.innerHTML = numberForMoney(
+    (centsForNumber(subtotal.text) + centsForNumber(rate.text))
+  )
 }
 
 function getProductInfo (element) {
@@ -103,23 +106,38 @@ function getProductInfo (element) {
   const productPrice = getElementData(productElement.querySelector('.js-product-price'))
   const productQuantity = getElementData(productElement.querySelector('.js-product-quantity'))
 
-  return { subtotalProduct, productPrice, productQuantity }
+  return {
+    subtotalProduct,
+    subtotalValue: centsForNumber(subtotalProduct.text),
+    productPrice: centsForNumber(productPrice.text),
+    productQuantity
+  }
 }
 
 function decreaseQuantityProducts (event) {
-  const { productPrice, productQuantity, subtotalProduct } = getProductInfo(event.target)
+  const {
+    productPrice,
+    subtotalValue,
+    productQuantity,
+    subtotalProduct
+  } = getProductInfo(event.target)
 
   if (productQuantity.value > 1) {
-    subtotalProduct.element.innerHTML = (subtotalProduct.value - productPrice.value).toFixed(2)
+    subtotalProduct.element.innerHTML = numberForMoney(subtotalValue - productPrice)
     productQuantity.element.innerHTML = productQuantity.value - 1
     updateSummary()
   }
 }
 
 function increaseQuantityProducts (event) {
-  const { productPrice, productQuantity, subtotalProduct } = getProductInfo(event.target)
+  const {
+    productPrice,
+    subtotalValue,
+    productQuantity,
+    subtotalProduct
+  } = getProductInfo(event.target)
 
-  subtotalProduct.element.innerHTML = (subtotalProduct.value + productPrice.value).toFixed(2)
+  subtotalProduct.element.innerHTML = numberForMoney(subtotalValue + productPrice)
   productQuantity.element.innerHTML = productQuantity.value + 1
   updateSummary()
 }
