@@ -16,8 +16,9 @@
 	}
 
 	&__image {
+		max-height: 100px;
 		min-width: 100px;
-		max-width: 100px;
+		object-fit: contain;
 	}
 
 	&__title {
@@ -56,6 +57,10 @@
 
 @media only screen and (min-width: 600px) {
 	.c-product-list {
+		&__image {
+			margin-left: 1rem;
+		}
+
 		&__informations {
 			display: flex;
 			align-items: center;
