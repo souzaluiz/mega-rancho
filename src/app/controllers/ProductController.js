@@ -27,7 +27,7 @@ class ProductController {
 
       const product = await Product.findById(id)
 
-      await StorageService.delete(product.imageId)
+      StorageService.delete(product.imageId)
 
       const { imageId, imageUrl } = await StorageService.save(path, filename)
 
@@ -43,7 +43,7 @@ class ProductController {
 
     const product = await Product.findByIdAndDelete(id)
 
-    await StorageService.delete(product.imageId)
+    StorageService.delete(product.imageId)
 
     return res.redirect('/admin-dashboard')
   }
