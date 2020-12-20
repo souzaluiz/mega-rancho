@@ -17,6 +17,7 @@
 		<main class="l-container l-min-height l-centralized">
 			<div class="c-result-card">
 				{% if completedOrder %}
+					<input type="hidden" class="js-completed-order" value="true">
 					<span	class="c-alert is-sucess is-visible">
 						<i class="fa fa-check" aria-hidden="true"></i>
 						&nbsp;Pedido realizado com sucesso
@@ -30,6 +31,7 @@
 						<a href="/" class="c-result-card__button">Página Inicial</a>
 					</div>
 				{% else %}
+					<input type="hidden" class="js-completed-order" value="false">
 					<span	class="c-alert is-danger is-visible">
 						<i class="fa fa-exclamation" aria-hidden="true"></i>
 						&nbsp;Houston, temos um problema!
