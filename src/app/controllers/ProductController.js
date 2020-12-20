@@ -1,6 +1,3 @@
-import path from 'path'
-import fs from 'fs/promises'
-
 import Product from '../models/Product'
 import StorageService from '../services/StorageService'
 import { centsForNumber } from './helpers/money'
@@ -18,28 +15,6 @@ class ProductController {
     return res.redirect('/admin-dashboard')
   }
 
-  async destroy (req, res) {
-    const { id } = req.params
-
-    try {
-      const product = await Product.findById(id)
-      const pathImage = path.resolve(__dirname, '..', '..', 'uploads', product.image)
-
-      fs.access(pathImage, fs.constants.F_OK, async (err) => {
-        if (!err) {
-          fs.unlinkSync(pathImage)
-          await Product.findByIdAndDelete(id)
-          return res.status(200).send()
-        } else {
-          await Product.findByIdAndDelete(id)
-          return res.status(200).send()
-        }
-      })
-    } catch (error) {
-      return res.status(400).send(error)
-    }
-  }
-
   async update (req, res) {
     const { id } = req.params
     const { name } = req.body
@@ -48,7 +23,7 @@ class ProductController {
     const productInfo = { name, price }
 
     if (req.file) {
-      const { filename } = req.file
+      const { filename, path } = req.file
 
       const product = await Product.findById(id)
 
@@ -60,6 +35,16 @@ class ProductController {
     }
 
     await Product.findByIdAndUpdate(id, productInfo)
+    return res.redirect('/admin-dashboard')
+  }
+
+  async destroy (req, res) {
+    const { id } = req.params
+
+    const product = await Product.findByIdAndDelete(id)
+
+    await StorageService.delete(product.imageId)
+
     return res.redirect('/admin-dashboard')
   }
 }

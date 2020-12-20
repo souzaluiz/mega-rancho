@@ -44,7 +44,14 @@
 
 						<div class="c-product-list__actions">
 							<a href="/edit-product/{{product.id}}" class="c-product-list__button l-centralized">Editar</a>
-							<a href="/products/" class="c-product-list__button is-delete l-centralized">Excluir</a>
+
+							<form
+								method="POST"
+								action="/products/{{product.id}}?_method=DELETE"
+								class="c-product-list__button"
+							>
+								<button type="submit" class="c-product-list__button is-delete">Excluir</button>
+							</form>
 						</div>
 					</div>
 				</div>
