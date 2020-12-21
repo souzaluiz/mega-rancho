@@ -9,7 +9,7 @@
     "nodemon": "nodemon -r esm src/server.js",
     "browser-sync": "browser-sync start --proxy 'localhost:3333' --files 'src/public/**, src/app/views/**'",
     "sass:dev": "sass --watch src/sass:src/public/styles",
-    "sass:build": "sass --no-source-map --style=compressed src/sass/pages:src/public/styles",
+    "sass:build": "sass --no-source-map --style=compressed src/sass:src/public/styles",
     "parcel:dev": "parcel watch src/scripts/*.js -d src/public/scripts --public-url ./",
     "parcel:build": "parcel build --no-source-maps src/scripts/*.js -d src/public/scripts"
   },
