@@ -16,7 +16,7 @@
   "license": "MIT",
 	"engines": {
     "node": "14.x"
-  }
+  },
   "dependencies": {
     "cloudinary": "^1.23.0",
     "cookie-parser": "^1.4.5",
