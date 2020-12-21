@@ -1,0 +1,26 @@
+.c-alert {
+	border-radius: $border-radius-value;
+	margin: 1rem auto;
+	display: none;
+
+	font-size: 1.8rem;
+	font-weight: 600;
+	padding: 0.2rem 0.5rem;
+
+	&.is-visible {
+		display: block;
+		width: max-content;
+	}
+
+	&.is-sucess {
+		background-color: $sucess-color;
+	}
+
+	&.is-warning {
+		background-color: $warning-color;
+	}
+
+	&.is-danger {
+		background-color: $danger-color;
+	}
+}

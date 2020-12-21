@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#fff">
+		<meta name="apple-mobile-web-app-status-bar-style" content="#fff">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+		<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<link rel="stylesheet" href="/styles/shooping-cart.css" type="text/css">
+		<title>Carrinho</title>
+	</head>
+	<body>
+		{% include "components/header.njk" %}
+
+		<main class='l-container l-min-height'>
+			<span
+				class="c-alert is-warning js-cart-empty
+				{% if cartEmpty %}is-visible{% endif %}"
+			>
+				<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+				&nbsp;Seu carrinho está vazio
+			</span>
+
+			<section
+				class="shooping-cart container js-shooping-cart
+				{% if cartEmpty %}is-hidden{% endif %}"
+			>
+				<div class="shooping-cart__product-list">
+					{% for product in products %}
+						<div class="cart-product-card js-product-card">
+							<div>
+								<img src="{{product.imageUrl}}" alt="{{product.name}}" class="cart-product-card__image">
+								<p class="cart-product-card__name">{{product.name}}</p>
+							</div>
+							<div class="js-product-info">
+								<input type="hidden" class="js-product-id" value={{product.id}}>
+								<i
+									class="fa fa-times cart-product-card__delete js-delete-product"
+									aria-hidden="true">
+								</i>
+								<table>
+									<tr>
+										<td class="cart-product-card__title">Quantidade</td>
+										<td class="cart-product-card__title">Preço</td>
+										<td class="cart-product-card__title">Subtotal</td>
+									</tr>
+									<tr>
+										<td class="quantity-options">
+											<span class="quantity-options__button js-button-less">
+												<i class="fa fa-minus-square" aria-hidden="true"></i>
+											</span>
+											<span class="quantity-options__value js-product-quantity">1</span>
+											<span class="quantity-options__button js-button-more">
+												<i class="fa fa-plus-square" aria-hidden="true"></i>
+											</span>
+										</td>
+										<td class="cart-product-card__value">
+											<span class="js-product-price">{{product.price}}</span>
+										</td>
+										<td class="cart-product-card__value">
+											<span class="js-product-subtotal">0</span>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+
+				<div class="shooping-cart__sumary">
+					<div class="shooping-cart__line">
+						<span>Subtotal</span>
+						<span class="shooping-cart__money">
+							R$&nbsp;<span class="js-subtotal">0</span>
+						</span>
+					</div>
+					<div class="shooping-cart__line">
+						<span>Taxa de entrega</span>
+						<span class="shooping-cart__money">
+							R$&nbsp;<span class="js-rate">0</span>
+						</span>
+					</div>
+					<div class="shooping-cart__line">
+						<span>Total a pagar</span>
+						<span class="shooping-cart__money">
+							R$&nbsp;<span class="js-total">0</span>
+						</span>
+					</div>
+					<a href="/checkout" class="shooping-cart__continue">
+						Continuar
+					</a>
+				</div>
+			</section>
+
+		</main>
+		{% include "components/footer.njk" %}
+		<script>
+			let menuOpen = document.querySelector('.js-menu-open')
+			let menuClose = document.querySelector('.js-menu-close')
+			let menuMobile = document.querySelector('.js-menu-mobile')
+
+			menuOpen.addEventListener('click', function () {
+				menuMobile.classList.toggle('is-visible')
+				document.body.style.overflow = 'hidden'
+			})
+
+			menuClose.addEventListener('click', function () {
+				menuMobile.classList.toggle('is-visible')
+				document.body.style.overflow = 'auto'
+			})
+		</script>
+		<script src="/scripts/shooping-cart.js"></script>
+	</body>
+</html>

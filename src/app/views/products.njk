@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#fff">
+		<meta name="apple-mobile-web-app-status-bar-style" content="#fff">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+		<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<link rel="stylesheet" href="/styles/products.css" type="text/css">
+		<title>Mega Rancho</title>
+	</head>
+	<body>
+		{% include "components/header.njk" %}
+
+		<main>
+			<section class="l-container l-min-height products">
+				<h2 class="products__title">Produtos</h2>
+
+				<span
+					class="c-alert is-warning
+					{% if productsEmpty %}is-visible{% endif %}"
+				>
+					<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+					&nbsp;Desculpe não há produtos disponíveis
+				</span>
+
+				<div class="products__list">
+					{% for product in products %}
+						<div class="product-card js-product-card">
+							<input type="hidden" class="js-product-id" name="product-id" value="{{product.id}}">
+							<div class="product-card__image">
+								<img src="{{product.imageUrl}}">
+							</div>
+
+							<div class="product-card__info">
+								<span class="product-card__name">{{product.name}}</span>
+
+								<span class="product-card__price">{{product.price}}</span>
+
+								<button class="product-card__button js-cart-button">Adicionar ao carrinho</button>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</section>
+
+			<div class="c-pagination {% if productsEmpty %}is-hidden{% endif %}">
+				<ul class="c-pagination__list l-centralized">
+					<li>
+						{% if currentPage > 1 %}
+							<a class="c-pagination__controls" href="/?page={{currentPage - 1}}"><i class="fa fa-arrow-left"></i></a>
+						{% else %}
+							<a class="c-pagination__controls is-disable"><i class="fa fa-arrow-left"></i></a>
+						{% endif %}
+					</li>
+
+					{% for page in pagination %}
+						{% if page === currentPage %}
+							<li><a class="c-pagination__item is-current" href="/?page={{page}}">{{page}}</a></li>
+						{%else%}
+							<li><a class="c-pagination__item" href="/?page={{page}}">{{page}}</a></li>
+						{% endif %}
+					{% endfor %}
+
+					<li>
+						{% if currentPage < totalPages %}
+							<a class="c-pagination__controls" href="/?page={{currentPage + 1}}"><i class="fa fa-arrow-right"></i></a>
+						{% else %}
+							<a class="c-pagination__controls is-disable"><i class="fa fa-arrow-right"></i></a>
+						{% endif %}
+					</li>
+				</ul>
+			</div>
+
+		</main>
+		{% include "components/footer.njk" %}
+		<script>
+			let menuOpen = document.querySelector('.js-menu-open')
+			let menuClose = document.querySelector('.js-menu-close')
+			let menuMobile = document.querySelector('.js-menu-mobile')
+
+			menuOpen.addEventListener('click', function () {
+				menuMobile.classList.toggle('is-visible')
+				document.body.style.overflow = 'hidden'
+			})
+
+			menuClose.addEventListener('click', function () {
+				menuMobile.classList.toggle('is-visible')
+				document.body.style.overflow = 'auto'
+			})
+		</script>
+		<script src="/scripts/products.js"></script>
+	</body>
+</html>

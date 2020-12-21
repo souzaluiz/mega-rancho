@@ -1,3 +1,13 @@
 node_modules/
 .env
-js/
+
+src/temp/*
+!.gitkeep
+
+**/public/scripts/
+**/public/styles/
+
+.cache
+.dist
+
+*.map

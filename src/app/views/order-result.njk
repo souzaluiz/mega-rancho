@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#fff">
+		<meta name="apple-mobile-web-app-status-bar-style" content="#fff">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+		<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<link rel="stylesheet" href="/styles/order-result.css" type="text/css">
+		<title>Resultado do Pedido</title>
+	</head>
+	<body>
+		{% include "components/header.njk" %}
+
+		<main class="l-container l-min-height l-centralized">
+			<div class="c-result-card">
+				{% if completedOrder %}
+					<input type="hidden" class="js-completed-order" value="true">
+					<span	class="c-alert is-sucess is-visible">
+						<i class="fa fa-check" aria-hidden="true"></i>
+						&nbsp;Pedido realizado com sucesso
+					</span>
+
+					<p class="c-result-card__message">
+						Em alguns minutos seus produtos chegarão no endereço informado.
+					</p>
+
+					<div class="c-result-card__actions">
+						<a href="/" class="c-result-card__button">Página Inicial</a>
+					</div>
+				{% else %}
+					<input type="hidden" class="js-completed-order" value="false">
+					<span	class="c-alert is-danger is-visible">
+						<i class="fa fa-exclamation" aria-hidden="true"></i>
+						&nbsp;Houston, temos um problema!
+					</span>
+
+					<p class="c-result-card__message">
+						Algo inesperado aconteceu, tente novamente.
+					</p>
+
+					<div class="c-result-card__actions">
+						<a href="/shooping-cart" class="c-result-card__button">Meu carrinho</a>
+					</div>
+				{% endif %}
+
+			</div>
+		</main>
+		{% include "components/footer.njk" %}
+		<script>
+			let menuOpen = document.querySelector('.js-menu-open')
+			let menuClose = document.querySelector('.js-menu-close')
+			let menuMobile = document.querySelector('.js-menu-mobile')
+
+			menuOpen.addEventListener('click', function () {
+				menuMobile.classList.toggle('is-visible')
+				document.body.style.overflow = 'hidden'
+			})
+
+			menuClose.addEventListener('click', function () {
+				menuMobile.classList.toggle('is-visible')
+				document.body.style.overflow = 'auto'
+			})
+		</script>
+		<script src="/scripts/order-result.js"></script>
+	</body>
+</html>

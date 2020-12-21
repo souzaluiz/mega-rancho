@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#fff">
+		<meta name="apple-mobile-web-app-status-bar-style" content="#fff">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+		<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<link rel="stylesheet" href="/styles/checkout.css" type="text/css">
+		<title>checkout</title>
+	</head>
+	<body>
+		<main>
+			{% include "components/header.njk" %}
+
+				<section class="checkout l-container">
+					<h2 class="checkout__title">Detalhes da entrega</h4>
+
+					<form class="checkout__form" method="POST" action="/order">
+						<input type="hidden" name="products_list" class="js-products-list">
+
+						<div class="checkout__input-box">
+							<p class="checkout__fieldname">Seu nome</p>
+							<input
+								name="name"
+								type="text"
+								class="checkout__field"
+								required="required"
+							>
+						</div>
+
+						<div class="checkout__input-box">
+							<p class="checkout__fieldname">Endereço</p>
+							<input
+								name="addres"
+								type="text"
+								required="required"
+								placeholder="Nome da rua, número"
+								class="checkout__field"
+							>
+							<input
+								name="complement"
+								type="text"
+								placeholder="Apartamento, etc (opcional)"
+								class="checkout__field has-margin-top"
+							>
+						</div>
+
+						<div class="checkout__input-box">
+							<p class="checkout__fieldname">Telefone</p>
+							<input
+								name="telephone"
+								inputmode="numeric"
+								required="required"
+								class="checkout__field js-mask-telephone"
+								type="text"
+								placeholder="(99) 9 9999-9999"
+								maxlength="16"
+							>
+						</div>
+
+						<button class="checkout__button" type="submit">Finalizar pedido</button>
+					</form>
+				</section>
+
+			{% include "components/footer.njk" %}
+		</main>
+		<script src="https://cdn.jsdelivr.net/npm/vanilla-masker@1.1.1/build/vanilla-masker.min.js"></script>
+		<script src="/scripts/checkout.js"></script>
+		<script>
+			let menuOpen = document.querySelector('.js-menu-open')
+			let menuClose = document.querySelector('.js-menu-close')
+			let menuMobile = document.querySelector('.js-menu-mobile')
+
+			menuOpen.addEventListener('click', function () {
+				menuMobile.classList.toggle('is-visible')
+				document.body.style.overflow = 'hidden'
+			})
+
+			menuClose.addEventListener('click', function () {
+				menuMobile.classList.toggle('is-visible')
+				document.body.style.overflow = 'auto'
+			})
+
+			VMasker(document.querySelector('.js-mask-telephone'))
+				.maskPattern('(99) 99999-9999')
+		</script>
+	</body>
+</html>

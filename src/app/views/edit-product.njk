@@ -1,0 +1,106 @@
+  <!DOCTYPE html>
+  <html lang="pt-br">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <meta name="theme-color" content="#fff">
+      <meta name="apple-mobile-web-app-status-bar-style" content="#fff">
+      <link rel="shortcut icon" href="/img/favicon.ico" />
+  		<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+	  	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+      <link rel="stylesheet" href="/styles/edit-product.css" type="text/css">
+      <title>Editar Produto</title>
+    </head>
+    <body>
+			<header class="c-appbar">
+				<div class="l-container l-centralized c-appbar__content">
+					<a class="c-appbar__button" href="/admin-dashboard">
+						<i class="fa fa-arrow-left" aria-hidden="true"></i>
+					</a>
+
+					<h3 class="c-appbar__title">Editar produto</h3>
+
+					<div class="c-appbar__void"></div>
+				</div>
+			</header>
+      <main>
+        <form class="product-form" method="POST" action="/products/{{product.id}}?_method=PUT" enctype="multipart/form-data">
+          <div class="product-form__fieldbox">
+            <span class="product-form__fieldname">Nova imagem</span>
+
+            <div class="image-field">
+              <div class="image-field__preview js-preview-image">
+                <img src="{{product.imageUrl}}" />
+							</div>
+              <label class="image-field__choose" for="imagem" >Escolher imagem</label>
+              <input
+								class="js-choose-image"
+								type="file"
+								name="image"
+								id="imagem"
+							/>
+            </div>
+          </div>
+
+          <div class="product-form__fieldbox">
+            <span class="product-form__fieldname">Nome do produto</span>
+            <input
+							class="product-form__field"
+							placeholder="Ex: Açucar cristal"
+							type="text"
+							name="name"
+							value="{{product.name}}"
+							required
+						/>
+          </div>
+
+          <div class="product-form__fieldbox">
+            <span class="product-form__fieldname">Preço do produto</span>
+            <input
+              type="text"
+              name="price"
+							class="product-form__field js-price-mask"
+              placeholder="Ex: 2.50"
+              inputmode="decimal"
+							value="{{(product.price).toFixed(2)}}"
+              required
+            />
+          </div>
+
+          <button	class="product-form__button"type="submit">
+						Atualizar
+					</button>
+        </form>
+      </main>
+      <script src="https://cdn.jsdelivr.net/npm/vanilla-masker@1.1.1/build/vanilla-masker.min.js"></script>
+      <script>
+				let inputImage = document.querySelector('.js-choose-image')
+
+        inputImage.addEventListener('change', function() {
+          let previewElement = document.querySelector('.js-preview-image')
+
+          if(this.files[0]){
+            previewElement.innerHTML = ''
+            let reader = new FileReader()
+
+            reader.onload = function(event) {
+              let imageElement = document.createElement('img')
+              imageElement.setAttribute('src', event.target.result)
+              previewElement.appendChild(imageElement)
+            }
+
+            reader.readAsDataURL(this.files[0])
+          }
+        })
+
+        VMasker(document.querySelector(".js-price-mask")).maskMoney({
+          precision: 2,
+          separator: ',',
+  				delimiter: '.',
+					unit: 'R$',
+          zeroCents: false
+        })
+      </script>
+    </body>
+  </html>

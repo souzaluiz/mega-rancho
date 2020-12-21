@@ -1,0 +1,59 @@
+.checkout {
+	padding: 1rem;
+	background-color: $white-color;
+	border: 1px solid rgba($color: #000000, $alpha: 0.1);
+	border-radius: 5px;
+	max-width: 500px;
+	width: 95%;
+	margin: 1rem auto;
+
+	&__title {
+		font-size: 2rem;
+		font-weight: 600;
+	}
+
+	&__input-box {
+		margin-bottom: 1rem;
+	}
+
+	&__fieldname {
+		font-size: 1.4rem;
+		font-weight: 600;
+
+		&::after {
+			content: ' *';
+			color: $danger-color;
+			font-weight: bold;
+		}
+	}
+
+	&__field {
+		width: 100%;
+		height: 46px;
+		border: 1px solid $border-gray;
+		padding-left: 15px;
+		font-size: 1.6rem;
+		color: $normal-color;
+		border-radius: 5px;
+
+		&.has-margin-top {
+			margin-top: 1rem;
+		}
+
+		&::placeholder {
+			color: $para-color;
+		}
+	}
+
+	&__button {
+		background-color: $black-color;
+		width: 100%;
+		border: none;
+		color: $white-color;
+		height: 40px;
+		border-radius: 5px;
+		margin-top: .5rem;
+		font-size: 1.6rem;
+		cursor: pointer;
+	}
+}
