@@ -1,7 +1,7 @@
 import TelegramBot from 'node-telegram-bot-api'
 import Chat from '../../models/Chat'
 
-const token = process.env.TELEGRAM_BOT_TOKEN
+const token = process.env.TELEGRAM_TOKEN
 
 const bot = new TelegramBot(token, { polling: true })
 
