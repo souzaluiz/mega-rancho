@@ -6,7 +6,6 @@ import mongoose from 'mongoose'
 import cookieParser from 'cookie-parser'
 import methodOverride from 'method-override'
 
-import './app/services/telegram'
 import routes from './routes'
 
 const app = express()

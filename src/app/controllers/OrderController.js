@@ -1,7 +1,4 @@
-import Chat from '../models/Chat'
 import Product from '../models/Product'
-import formatMessage from './helpers/formatMessage'
-import telegram from '../services/telegram'
 
 class OrderController {
   async store (req, res) {
@@ -13,8 +10,6 @@ class OrderController {
     const productsIds = productsCart.map(item => item.id)
 
     try {
-      const [chat] = await Chat.find()
-
       const products = await Product.find()
         .where('_id')
         .in(productsIds)
@@ -29,10 +24,6 @@ class OrderController {
           price: item.price
         }
       })
-
-      const message = formatMessage(clientInfo, productsWithQuantity)
-
-      telegram.sendMessage(chat.chatId, message)
 
       return res.render('order-result', { completedOrder: true })
     } catch (error) {

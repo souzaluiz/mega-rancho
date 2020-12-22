@@ -3,9 +3,9 @@
   "version": "2.0.0",
   "main": "src/server.js",
   "scripts": {
-    "start": "yarn build && node -r esm src/server.js",
+    "start": "node -r esm src/server.js",
     "build": "yarn sass:build && yarn parcel:build",
-    "dev": "npm-run-all -p nodemon sass:dev parcel:dev browser-sync",
+    "start:dev": "npm-run-all -p nodemon sass:dev parcel:dev browser-sync",
     "nodemon": "nodemon -r esm src/server.js",
     "browser-sync": "browser-sync start --proxy 'localhost:3333' --files 'src/public/**, src/app/views/**'",
     "sass:dev": "sass --watch src/sass:src/public/styles",
