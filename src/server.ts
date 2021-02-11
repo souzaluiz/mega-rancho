@@ -9,7 +9,6 @@ import methodOverride from 'method-override'
 import routes from './routes'
 
 const app = express()
-const PORT = process.env.PORT || 3333
 
 app.set('view engine', 'njk')
 
@@ -35,4 +34,4 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 app.use(routes)
 
-app.listen(PORT)
+app.listen(process.env.PORT || 3333)
