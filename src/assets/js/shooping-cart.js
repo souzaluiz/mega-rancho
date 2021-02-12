@@ -1,3 +1,5 @@
+import '../sass/shooping-cart.scss'
+
 import Cookie from 'js-cookie'
 import calculateCartQuantity from './lib/calculateCartQuantity'
 import { getElementData } from './lib/elementManager'

@@ -6,15 +6,13 @@ import mongoose from 'mongoose'
 import cookieParser from 'cookie-parser'
 import methodOverride from 'method-override'
 
-import './app/services/telegram'
 import routes from './routes'
 
 const app = express()
-const PORT = process.env.PORT || 3333
 
 app.set('view engine', 'njk')
 
-app.use(express.static(path.resolve(__dirname, 'public')))
+app.use(express.static(path.resolve(__dirname, '..', 'public')))
 
 app.use('/files', express.static(path.resolve(__dirname, 'temp')))
 
@@ -36,4 +34,4 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 app.use(routes)
 
-app.listen(PORT)
+app.listen(process.env.PORT || 3333)

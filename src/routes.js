@@ -1,7 +1,7 @@
 import express from 'express'
 
 import ProductController from './app/controllers/ProductController'
-import OrderController from './app/controllers/OrderController'
+// import OrderController from './app/controllers/OrderController'
 import PagesController from './app/controllers/PagesController'
 
 import upload from './config/multer'
@@ -21,6 +21,8 @@ routes.post('/products', upload.single('image'), sharp.resizing, ProductControll
 routes.put('/products/:id', upload.single('image'), sharp.resizing, ProductController.update)
 routes.delete('/products/:id', ProductController.destroy)
 
-routes.post('/order', OrderController.store)
+routes.post('/order', (_, res) => {
+  return res.render('order-result', { completedOrder: true })
+})
 
 export default routes

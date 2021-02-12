@@ -1,3 +1,5 @@
+import '../sass/checkout.scss'
+
 import calculateCartQuantity from './lib/calculateCartQuantity'
 import { getElementData } from './lib/elementManager'
 

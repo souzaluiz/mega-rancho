@@ -1,3 +1,5 @@
+import '../sass/order-result.scss'
+
 import Cookie from 'js-cookie'
 import calculateCartQuantity from './lib/calculateCartQuantity'
 
