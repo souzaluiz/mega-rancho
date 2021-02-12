@@ -12,7 +12,7 @@ const app = express()
 
 app.set('view engine', 'njk')
 
-app.use(express.static(path.resolve(__dirname, 'public')))
+app.use(express.static(path.resolve(__dirname, '..', 'public')))
 
 app.use('/files', express.static(path.resolve(__dirname, 'temp')))
 

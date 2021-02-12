@@ -1,11 +1,12 @@
 node_modules/
+/dist
 .env
 
 src/temp/*
 !.gitkeep
 
-**/public/scripts/
-**/public/styles/
+/public/js/
+/public/css/
 
 .cache
 .dist
