@@ -1,25 +1,28 @@
-const express = require('express')
+import express from 'express'
+
+import ProductController from './app/controllers/ProductController'
+// import OrderController from './app/controllers/OrderController'
+import PagesController from './app/controllers/PagesController'
+
+import upload from './config/multer'
+import sharp from './config/sharp'
+
 const routes = express.Router()
 
-const products = require('./controllers/products')
-const order = require('./controllers/order')
-const pages = require('./controllers/pages')
-const upload = require('./config/multer')
-const sharp = require('./config/sharp')
+routes.get('/', PagesController.products)
+routes.get('/new-product', PagesController.newProduct)
+routes.get('/shooping-cart', PagesController.shoopingCart)
+routes.get('/checkout', PagesController.checkout)
+routes.get('/order-result', PagesController.orderResult)
+routes.get('/admin-dashboard', PagesController.adminDashboard)
+routes.get('/edit-product/:id', PagesController.editProduct)
 
-// Pages
-routes.get('/', pages.home)
-routes.get('/cart', pages.cart)
-routes.get('/checkout', pages.checkout)
-routes.get('/dashboard', pages.dashboard)
-routes.get('/new-product', pages.newProduct)
-routes.get('/edit-product/:id', pages.editProduct)
+routes.post('/products', upload.single('image'), sharp.resizing, ProductController.store)
+routes.put('/products/:id', upload.single('image'), sharp.resizing, ProductController.update)
+routes.delete('/products/:id', ProductController.destroy)
 
-// CRUD
-routes.get('/products', products.index)
-routes.post('/products', upload.single('image'), sharp.resizing, products.store)
-routes.delete('/products/:id', products.destroy)
-routes.post('/edit/:id',upload.single('image'), sharp.resizing, products.update)
-routes.post('/order', order.create)
+routes.post('/order', (_, res) => {
+  return res.render('order-result', { completedOrder: true })
+})
 
-module.exports = routes
+export default routes

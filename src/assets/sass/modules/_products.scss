@@ -1,0 +1,113 @@
+.products {
+	margin-bottom: 2rem;
+
+	&__title {
+		color: $normal-color;
+    font-weight: 600;
+		position: relative;
+		display: inline;
+		margin-left: 1rem;
+		font-size: 2rem;
+
+    &:after {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 3px;
+      width: 100%;
+      background: $primary-color;
+      content: "";
+      margin: 0 auto;
+    }
+	}
+
+	&__list {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+
+		margin: 1rem;
+	}
+}
+
+.product-card {
+	background-color: $white-color;
+	border: 1px solid rgba($color: #000000, $alpha: 0.1);
+
+	&__image {
+		height: 150px;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+
+	&__info {
+		padding: 0 .5rem .5rem .5rem
+	}
+
+	&__name {
+		display: block;
+		font-size: 1.5rem;
+		font-weight: 600;
+    white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+
+	&__price {
+		font-size: 1.4rem;
+		margin-left: .4rem;
+		font-weight: 600;
+		color: $para-color;
+	}
+
+	&__button {
+		width: 100%;
+		background-color: $black-color;
+		border: none;
+		font-weight: 600;
+		color: $white-color;
+		transition: background-color .2s ease-in-out;
+		cursor: pointer;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		padding: 4px 0;
+
+		&:hover {
+			background-color: $heading-color-2;
+		}
+	}
+}
+
+@media only screen and (min-width: 620px) {
+	.products {
+		padding: 0 .5rem;
+
+		&__list {
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 1.5rem;
+		}
+	}
+
+	.product-card {
+		&__image {
+			height: 200px;
+		}
+
+		&__button {
+			padding: 6px 0;
+		}
+	}
+}
+
+@media only screen and (min-width: 750px) {
+	.products {
+		&__list {
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 2rem;
+		}
+	}
+}

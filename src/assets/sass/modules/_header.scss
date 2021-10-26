@@ -1,0 +1,141 @@
+@import "menu-mobile";
+
+.header {
+	border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+	background-color: $white-color;
+	width: 100%;
+
+	&__content {
+		display: flex;
+		align-items: center;
+
+		padding: .5rem;
+	}
+
+	&__hamburger {
+		flex: 1;
+		font-size: 3.2rem;
+		margin-left: .4rem;
+	}
+
+	&__logo {
+		flex: 2;
+		text-align: center;
+
+		img {
+			height: 40px;
+		}
+	}
+
+	&__cart {
+		flex: 1;
+		text-align: right;
+	}
+
+	&__basket {
+		margin-right: .5rem;
+		position: relative;
+		display: inline-block;
+
+		i {
+			font-size: 2.6rem;
+			color: $primary-color;
+		}
+
+		span {
+			position: absolute;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			color: $white-color;
+			background-color: $black-color;
+
+			border-radius: 50%;
+			width: 20px;
+			height: 20px;
+			font-size: 1rem;
+			font-weight: 700;
+			top: -4px;
+			right: -6px;
+		}
+	}
+}
+
+.navbar {
+	display: none;
+
+	&__item {
+		display: inline-block;
+		margin-right: 3rem;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		& > a {
+			font-size: 1.8rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			transition: color .2s ease-in-out;
+			color: $black-color;
+		}
+
+		&.is-active {
+			a {
+				position: relative;
+
+				&::after {
+					content: "";
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					height: 2px;
+					width: 100%;
+
+					background-color: $primary-color;
+				}
+			}
+		}
+
+		&:hover {
+			& > a {
+				color: $primary-color;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 620px) {
+	.header {
+		display: flex;
+
+		&__content {
+			flex: 1;
+			display: flex;
+			align-items: center;
+		}
+
+		&__logo {
+			flex: 1;
+			padding-bottom: 1rem;
+			text-align: left;
+		}
+
+		&__cart {
+			flex: none;
+			margin-left: 3rem;
+		}
+
+		&__hamburger {
+			display: none;
+		}
+	}
+
+	.navbar {
+		flex: 2;
+		display: block;
+		text-align: right;
+	}
+}
+

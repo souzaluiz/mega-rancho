@@ -1,0 +1,33 @@
+.c-result-card {
+	max-width: 350px;
+	width: 90%;
+	padding: 1rem 0 2rem;
+	text-align: center;
+	border-radius: $border-radius-value;
+
+	border: 1px solid rgba($color: #000000, $alpha: 0.1);
+	background-color: $white-color;
+
+	&__message {
+		font-size: 1.6rem;
+		font-weight: 600;
+		margin: 0 2rem;
+	}
+
+	&__actions {
+		margin: 1rem auto 0;
+		width: 150px;
+	}
+
+	&__button {
+		display: block;
+		height: 32px;
+		font-size: 1.6rem;
+		border-radius: $border-radius-value;
+		background-color: $black-color;
+		color: $white-color;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
